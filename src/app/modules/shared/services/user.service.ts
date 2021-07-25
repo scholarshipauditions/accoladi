@@ -1,0 +1,300 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+
+import { Observable, throwError } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
+import { catchError } from 'rxjs/operators';
+
+import { environment } from '../../../../environments/environment';
+import { UserModel } from '../models/user.model';
+
+@Injectable({
+	providedIn: 'root'
+})
+
+export class UserService {
+
+	private apiURL: string;
+	sidebarSubject = new Subject();
+
+	constructor(
+		private http: HttpClient
+	) {
+		this.apiURL = environment.apiUrl + environment.apiPath;
+	}
+
+	get token() {
+		return localStorage.getItem('id_token');
+	}
+
+	get user() {
+		return localStorage.getItem('user');
+	}
+
+	get currentUser() {
+		return JSON.parse(this.user);
+	}
+
+	get sidebar() {
+		return localStorage.getItem('sidebar');
+	}
+
+	set sidebar(value) {
+		this.sidebarSubject.next(value);
+		localStorage.setItem('sidebar', value);
+	}
+
+	getUserProfile(id: string): Observable<UserModel> {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': this.token
+			})
+		};
+		return this.http
+					.get<any>(
+						this.apiURL + '/users/' + id, 
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	updateUserAccount(user: any) {
+		
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				//'Authorization': this.token
+			})
+		};
+
+		// PUT api/users/:uid/account/update
+		return this.http
+					.put(
+						this.apiURL + '/users/' + user._id + '/account/update',
+						user,
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	updateUserDemographics(id: string, demographics: any) {
+		
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': this.token
+			})
+		};
+
+		// PUT api/users/:uid/demographics
+		return this.http
+					.put(
+						this.apiURL + '/users/' + id + '/demographics',
+						demographics,
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	updateUserAddress(id: any, user: any) {
+		
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				//'Authorization': this.token
+			})
+		};
+
+		// PUT api/users/:uid/address
+		return this.http
+					.put(
+						this.apiURL + '/users/' + id + '/address',
+						user,
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	updateUserPhone(id: any,user: any) {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				//'Authorization': this.token
+			})
+		};
+
+		// PUT api/users/:uid/address/update
+		return this.http
+					.put(
+						this.apiURL + '/users/' + id + '/phone/update',
+						user,
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	updateUserParent(user: any) {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				//'Authorization': this.token
+			})
+		};
+
+		// PUT api/users/:uid/address/update
+		return this.http
+					.post(
+						this.apiURL + '/users/' + user._id + '/parent/update',
+						{
+							...user,
+							ui_url: environment.uiUrl
+						},
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	addPromoCode(user: any) {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				//'Authorization': this.token
+			})
+		};
+
+		// PUT api/users/:uid/address/update
+		return this.http
+					.post(
+						this.apiURL + '/users/' + user._id + '/promo/add',
+						user,
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	getUserAccount(user: any) {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': this.token
+			})
+		};
+
+		return this.http
+					.get(
+						this.apiURL + '/users/' + user + '/account',
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	editUserInformation(data: any) {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': this.token
+			})
+		};
+
+		return this.http
+					.put(
+						this.apiURL + '/users/' + data._id + '/password/update',
+						data,
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	checkEmailNotTaken(email: string) {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json'
+			})
+		};
+
+		return this.http
+					.get<any>(
+						this.apiURL + '/users/?email=' + email, 
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	uploadProfileImage(file: File, userId): Observable<any> {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Authorization': this.token
+			})
+		};
+
+		const formData: FormData = new FormData();
+		formData.append('Image', file, file.name);
+
+		const url = this.apiURL + '/imageupload/userprofileimage/' + userId;
+		return this.http
+					.post(
+						url, 
+						formData, 
+						httpOptions
+					);
+	}
+
+	sideNavigation(id, role) {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': this.token
+			})
+		};
+
+		const url = this.apiURL + '/users/' + id + '/sidebar/' + role;
+		return this.http
+					.get(
+						url, 
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+
+	private handleError(error: HttpErrorResponse) {
+		if (error.error instanceof ErrorEvent) {
+			// A client-side or network error occurred. Handle it accordingly.
+			console.error('An error occurred:', error.error.message);
+		} else {
+			// The backend returned an unsuccessful response code.
+			// The response body may contain clues as to what went wrong,
+			console.error(
+				`Backend returned code ${error.status}, ` +
+				`body was: ${error.error}`
+			);
+		}
+		// return an observable with a user-facing error message
+		// return throwError('Something bad happened; please try again later.');
+
+		return throwError(error);
+	}
+
+}

@@ -1,0 +1,361 @@
+<div class="wrapper gold-page" >
+
+	<ng-container *ngIf="!role" >
+
+		<h1>Colleges Are Looking For You</h1>
+		<p>Build your student profile, find schools that are a fit and connect with colleges.</p>
+
+		<div class="row justify-content-center align-items-center h-100" >
+			
+			<div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3" >
+
+				<form [formGroup]="form" class="justify-content-center" >
+
+					<div class="form-group" >
+						
+						<label class="control-label " for="role" >
+							Role
+						</label>
+						<select 
+							formControlName="role"
+							class="form-control role-selector"
+							name="role"
+							id="role" >
+							<option value="" disabled selected >Select</option>
+							<option value="Student" >Student</option>
+							<option value="Parent" >Parent</option>
+							<option value="Teacher" >Teacher</option>
+							<option value="Recruiter" >Recruiter</option>
+						</select>
+						
+						<app-field-error-display 
+							[displayError]="isFieldInvalid('role')"
+							errorMsg="Please Select Role" >
+						</app-field-error-display>
+
+					</div>
+
+					<div class="form-group" >
+
+						<label class="control-label " for="first_name" >
+							Email Address
+						</label>
+						<input
+							id="email"
+							name="email"
+							type="email"
+							formControlName="email"
+							(keyup)="onKeyup($event.target.value)"
+							class="form-control height-text email-input" />
+
+						<app-field-error-display
+							*ngIf="f.email.errors && f.email.errors.required"
+							[displayError]="isFieldInvalid('email')"
+							errorMsg="Please provide email" >
+						</app-field-error-display>
+
+						<app-field-error-display
+							*ngIf="f.email.errors && f.email.errors.email"
+							[displayError]="isFieldInvalid('email')"
+							errorMsg="Please provide a valid email" >
+						</app-field-error-display>
+
+						<app-field-error-display
+							*ngIf="ErrorAlert"
+							[displayError]="ErrorAlert"
+							errorMsg="A user with that email address already exists" >
+						</app-field-error-display>
+
+					</div>
+
+					<div class="form-group" >
+						
+						<label class="control-label" for="promo" >
+							Promo Code
+						</label>
+						<input
+							id="promo_code"
+							name="promo_code"
+							type="text"
+							class="form-control height-text email-input"
+							formControlName="promo_code"
+							placeholder="promo code" />
+
+					</div>
+
+					<div class="form-group align-items-center" >
+
+						<button
+							appDisableDoubleClick
+							type="submit"
+							(click)="signUp()"
+							class="btn get-started" >
+
+							<span 
+								*ngIf="loading"
+								class="spinner-border spinner-border-sm"
+								role="status"
+								aria-hidden="true" ></span>
+							{{ loading 
+								? "Saving..." 
+								: !requestSuccess 
+									? "Continue" 
+									: "Done" }}
+						</button>
+
+					</div>
+
+				</form>
+
+			</div>
+
+		</div>
+
+		<br>&nbsp;
+		<sub>STUDENT = Performing Arts student between 6th - 12th grade</sub><br />
+		<sub>PARENT = Parents of Performing Arts students between 6th - 12th grade</sub><br />
+		<sub>TEACHER = Music directors, counselors, teachers of students between 6th - 12th grade</sub><br />
+		<sub>HIGHER ED = Collegiate faculties or recruiters looking to fill program ensemble needs</sub>
+
+	</ng-container>
+
+	<ng-container *ngIf="role" >
+
+		<h3>
+			You are registering as a {{ role }}.
+		</h3>
+
+		<div class="row" >
+
+			<div class="col-md-8 offset-md-2" >
+
+				<form novalidate="novalidate" autocomplete="false" [formGroup]="form" >
+
+					<input type="hidden" name="role" formControlName="role" />
+
+					<br />
+
+					<div *ngIf="showRole === 'Parent'" >
+						
+						<p>Parents, sign your students up for a FREE account to:</p>
+						
+						<ul>
+							<li style="text-align: left;" >Search over 1500 colleges, universities, and conservatories with music programs</li>
+							<li style="text-align: left;" >Find the perfect performing arts scholarship in our growing database of more than 16,000 opportunities</li>
+							<li style="text-align: left;" >Discover the premier college programs for scores of performing arts disciplines</li>
+							<li style="text-align: left;" >Use valuable resources to learn more about becoming a successful collegiate performing artist</li>
+						</ul>
+
+						<br />Accoladi.com allows you to keep a digital record of your students’
+						achievements and performances and you only pay when you are ready to have your student
+						recruited!
+
+						<app-personal-info
+							*ngIf="ShowPersonalInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="selectedRole"
+							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
+
+						<app-account-info
+							*ngIf="ShowAccountInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[childData]="childData"
+							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
+
+						<app-location-info
+							*ngIf="ShowLocationInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
+
+						<app-talent-info
+							*ngIf="ShowTalentInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							[childData]="childData"
+							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
+
+						<app-school-info
+							*ngIf="ShowSchoolInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
+
+					</div>
+
+					<div *ngIf="showRole === 'Student'" >
+
+						<app-personal-info
+							*ngIf="ShowPersonalInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="selectedRole"
+							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
+
+						<app-account-info
+							*ngIf="ShowAccountInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[childData]="childData"
+							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
+
+						<app-location-info
+							*ngIf="ShowLocationInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
+
+						<app-talent-info
+							*ngIf="ShowTalentInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
+
+						<app-school-info
+							*ngIf="ShowSchoolInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
+
+						<app-parent-info
+							*ngIf="ShowParentInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-parent-info>
+
+					</div>
+
+
+					<div *ngIf="showRole === 'Teacher'" >
+
+						<app-personal-info
+							*ngIf="ShowPersonalInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
+
+						<app-account-info
+							*ngIf="ShowAccountInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[childData]="childData"
+							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
+
+						<app-location-info
+							*ngIf="ShowLocationInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
+
+						<app-talent-info
+							*ngIf="ShowTalentInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
+
+						<app-school-info
+							*ngIf="ShowSchoolInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
+
+						<app-parent-info
+							*ngIf="ShowParentInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-parent-info>
+
+					</div>
+
+					<div *ngIf="showRole === 'Recruiter'" >
+						
+						<app-personal-info
+							*ngIf="ShowPersonalInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
+
+						<app-account-info
+							*ngIf="ShowAccountInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[childData]="childData"
+							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
+
+						<app-location-info
+							*ngIf="ShowLocationInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
+
+						<app-talent-info
+							*ngIf="ShowTalentInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
+
+						<app-school-info
+							*ngIf="ShowSchoolInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							[student_Id]="studentId"
+							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
+
+						<app-parent-info
+							*ngIf="ShowParentInfo"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-parent-info>
+
+						<app-coupon-code
+							*ngIf="ShowCouponCode"
+							[user_id]="userId"
+							[type]="type"
+							[role]="role"
+							(saveEmitter)="onSaveWizard($event)" ></app-coupon-code>
+
+					</div>
+
+					<!--// FORM -->
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</ng-container>
+	
+	<app-footer></app-footer>
+
+</div>

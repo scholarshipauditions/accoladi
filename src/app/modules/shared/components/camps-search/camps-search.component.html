@@ -1,0 +1,152 @@
+<div class="px-4 py-5" >
+
+	<div class="row mb-3 d-flex align-items-center" >
+
+		<div class="col-md-6" >
+
+			<nav aria-label="breadcrumb" >
+
+				<ol class="breadcrumb" >
+
+					<li class="breadcrumb-item active" aria-current="page" >
+						Summer Camps
+					</li>
+
+				</ol>
+
+			</nav>
+
+		</div>
+
+	</div>
+
+	<section class="module" >
+
+		<header>
+			<h2>Camp Search</h2>
+		</header>
+
+		<div class="general-table" >
+
+			<table class="table" >
+
+				<tbody>
+
+					<tr>
+						<td class="align-top" >
+
+							<p *ngIf="data?.length" >
+								Search for Music Camps that offer repertoire building opportunities.
+							</p>
+
+							<p *ngIf="!data?.length" style="text-align:center;" >
+
+							</p>
+
+						</td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+
+
+			<form [formGroup]="profileForm" >
+
+				<div class="row margin-off" >
+
+					<div class="col-2 form-group" >
+						
+						<label for="state" >State:</label>
+						<input class="form-control" placeholder="state" kendoTextBox formControlName="state" />
+
+					</div>
+
+					<div class="col-3 form-group" >
+						
+						<label>Price Per Session:</label>
+						<kendo-dropdownlist class="form-control" placeholder="Your favorite sports"
+							formControlName="price" [data]="priceList"
+							[textField]="'text'" [valueField]="'value'" >
+						</kendo-dropdownlist>
+
+					</div>
+
+					<div class="col-2 form-group" >
+
+						<label>Age Group:</label>
+						<kendo-multiselect class="form-control" placeholder="Age Group" formControlName="ageGroup"
+							(valueChange)="ageGroupChange($event)" [data]="ageGroupList" [textField]="'text'"
+							[valueField]="'value'" >
+						</kendo-multiselect>
+
+					</div>
+
+					<div class="col-2 form-group" >
+
+						<label>Discipline:</label>
+						<kendo-multiselect class="form-control" placeholder="Discipline" formControlName="discipline"
+							(valueChange)="disciplineChange($event)" [data]="disciplineList" [textField]="'text'"
+							[valueField]="'value'" >
+						</kendo-multiselect>
+
+					</div>
+
+					<div class="col-3 form-group" >
+
+						<label>Length of Session:</label>
+						<kendo-dropdownlist class="form-control" formControlName="length"
+						 [data]="SessionList" [textField]="'text'"
+							[valueField]="'value'" >
+						</kendo-dropdownlist>
+
+					</div>
+
+				</div>
+
+			</form>
+
+			<div class=" mt-4 mb-4 text-center" >
+				
+				<button type="submit" class="btn " (click)="onSearch()" >
+					<!-- <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span> -->
+					Search
+				</button>
+
+				&nbsp;
+
+				<button type="button" class="btn recruiter-search-reset-btn btn-default" (click)="resetForm()" >
+					Reset
+				</button>
+
+				&nbsp;
+
+				<span>&nbsp; &nbsp;</span>
+
+			</div>
+
+			<div>
+
+				<kendo-grid [pageable]="true" [filterable]="false" [skip]="gridState.skip" [data]="view | async"
+					[pageSize]="gridState.take" [sortable]="true" [navigable]="true" [sort]="gridState.sort"
+					style="height:auto" (dataStateChange)="dataStateChange($event)" (pageChange)="pageChange($event)" >
+
+					<kendo-grid-column field="name" title="Name" width="200" ></kendo-grid-column>
+					<kendo-grid-column field="email" title="Email" width="100" ></kendo-grid-column>
+					<kendo-grid-column field="website" title="Website" width="100" ></kendo-grid-column>
+					<kendo-grid-column field="cost_per_session" title="Cost Per Session" width="100" ></kendo-grid-column>
+					<kendo-grid-column field="middle_school" title="Middle School" width="100" ></kendo-grid-column>
+					<kendo-grid-column field="high_school" title="High School" width="100" ></kendo-grid-column>
+					<kendo-grid-column field="over_18" title="Adult" width="100" ></kendo-grid-column>
+					<kendo-grid-column field="weeks" title="Weeks" width="100" ></kendo-grid-column>
+					<kendo-grid-column field="address.state" title="State" width="100" ></kendo-grid-column>
+				</kendo-grid>
+
+			</div>
+
+		</div>
+
+	</section>
+
+</div>

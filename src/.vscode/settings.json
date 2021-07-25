@@ -1,0 +1,7 @@
+{
+	"editor.detectIndentation": false,
+	"editor.wordWrapColumn": 255,
+	"editor.autoIndent": false,
+	"editor.renderFinalNewline": false,
+	"editor.minimap.maxColumn": 150
+}

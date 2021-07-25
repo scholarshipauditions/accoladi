@@ -1,0 +1,120 @@
+<ng-container *ngIf="showScholarship" >
+
+	<div class="container">
+		<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+			<div class="col-md-12 px-0">
+				<h1>{{ scholarship.name }}</h1>
+				<h2 class="font-italic" [ngSwitch]="scholarship.type" >
+				Type: 
+					<span *ngSwitchCase="M">Music</span>
+					<span *ngSwitchCase="D">Dance</span>
+					<span *ngSwitchCase="T">Theater</span>
+					<span *ngSwitchDefault>General</span>
+				 </h2>
+			</div>
+		</div>
+	</div>
+
+	<main role="main" class="container">
+		<div class="row">
+			
+			<aside class="col-md-4 blog-sidebar">
+				
+				<div class="p-3 mb-3 bg-light rounded">
+					<h4 class="font-italic">Awarded</h4>
+					<p class="mb-0">Amount Awarded: {{ scholarship.award_amount }}</p>
+					<p class="mb-0">Number Of Awards: {{ scholarship.award_number_of }}</p>
+					<p class="mb-0">Period: {{ scholarship.award_period }}</p>
+				</div>
+				
+				<div class="p-3 bg-light rounded">
+					<h4 class="font-italic">Requirements</h4>
+					<p class="mb-0">Must Attend In: {{ scholarship.must_attend_in }}</p>
+					<p class="mb-0">Nat'l Applications: {{ scholarship.regional_restricted }}</p>
+					<p class="mb-0">Application Deadline: {{ scholarship.deadline }}</p>
+					<p class="mb-0">Application Fee: {{ scholarship.fee }}</p>
+				</div>
+
+				<div class="p-3 bg-light rounded">
+					<h4 class="font-italic">Applies To</h4>
+					<p class="mb-0">Ages: {{ scholarship.ages }}</p>
+					<p class="mb-0">Discipline: {{ scholarship.discipline }}</p>
+					<p class="mb-0">Must Be Used For: {{ scholarship.applies_to }}</p>
+				</div>
+			</aside> 
+			
+			<div class="col-md-8 blog-main">
+
+				<h2 class="pb-3 mb-4 border-bottom">
+					<a href="{{ scholarship.org_url }}" target="_new">{{ scholarship.org_name }}</a>
+				</h2>
+				
+				<p>
+					{{ scholarship.org_address_city }}<br>
+					{{ scholarship.org_address_state }}<br>
+					{{ scholarship.org_address_postal_code }}
+				</p>
+
+				<h3 class="pb-3 mb-4 font-italic" *ngIf="scholarship.applies_to" >
+					Used For: <span *ngIf="">{{ scholarship.applies_to }}</span>
+				</h3>
+
+				<div class="blog-post">
+					<h3 class="blog-post-title" style="border-bottom: thin black solid;" >Notes</h3>
+
+					<div style="padding-left:10px;">
+						<div>{{ scholarship.notes }}</div>
+					</div>
+					<hr>
+				</div>
+				
+				<nav class="blog-pagination">
+					<button class="btn btn-outline-primary" routerLink="/scholarships/{{ state }}/">Return to {{ state }}</button>&nbsp;
+					<a class="btn btn-outline-secondary" href="https://www.Accoladi.com/find_scholarships.html">Return to "Find"</a>
+				</nav>
+
+			</div>
+
+		</div>
+
+	</main>
+
+	<footer class="blog-footer">
+		<p style="padding: 0 30px;">
+			Information is maintained to the best of Accoladi.com's ability.
+			Data may have changed since our last update. Students and Parents are responsible
+			to make sure infromation is relevant to them by checking with the scholarship directly.
+		</p>
+	</footer>
+
+</ng-container>
+
+
+<ng-container *ngIf="showScholarshipList" >
+	
+	<div class="table-responsive" >
+
+		<table id="scholarshipStateList" class="table table-striped mx-auto w-auto" style="width:70%; text-align:center;" >
+			<thead class="thead-dark" style="cursor: pointer;" >
+				<tr>
+					<!-- <th>Row</th> -->
+					<th (click)="sortTable(0)" class="align-top" >Scholarship Name</th>
+					<th (click)="sortTable(1)" class="align-top" >Use In State</th>
+					<th (click)="sortTable(2)" class="align-top" >Amounts</th>
+					<!-- <th (click)="sortTable(3)" class="align-top" >Org City, State</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let scholarship of scholarshipList; let i=index" >
+					<!-- <td>{{ i+1 }}</td> -->
+					<td routerLink="/scholarships/{{ state }}/{{ scholarship.name | replace : ' ' : '_' }}" style="cursor: pointer;" class="text-left">{{ scholarship.name }}</td>
+					<td>{{ scholarship.must_attend_in }}</td>
+					<td>{{ scholarship.award_amount }}</td>
+					<!-- <td>{{ scholarship.organization_address_city }} {{ scholarship.organization_address_state }}</td> -->
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</ng-container>
