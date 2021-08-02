@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -8,12 +8,27 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['./public.component.css']
 })
 
-export class PublicComponent {
+export class PublicComponent implements OnInit  {
+
+	@ViewChild('notice') modalContent: TemplateRef<any>;
 
 	constructor(
 		private modalService: NgbModal
-	) { }
+	) {
+	}
 
+	ngOnInit() {
+		this.openNotice(this.modalContent);
+	}
+
+	openNotice(notice) {
+		if (typeof Storage !== 'undefined') {
+			if (!localStorage.getItem('notice')) {
+				this.modalService.open(notice, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true });
+			}
+			localStorage.setItem('notice', 'true');
+		}
+	}
 
 	openFeaturedStudent1(student) {
 		this.modalService.open(student, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true });
