@@ -15,13 +15,15 @@ export class GetConnectedComponent {
 
 
 	openCommitmentStudent(content1) {
-		this.modalService.open(content1, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true })
+		this.modalService.open(content1, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true });
 	}
+
 	openCommitmentTeacher(content2) {
-		this.modalService.open(content2, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true })
+		this.modalService.open(content2, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true });
 	}
+
 	openCommitmentRecruiter(content3) {
-		this.modalService.open(content3, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true })
+		this.modalService.open(content3, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true });
 	}
-	
+
 }

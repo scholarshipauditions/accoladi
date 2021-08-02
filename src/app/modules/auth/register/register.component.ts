@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { Observable, of } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, tap, switchMap } from 'rxjs/operators';
 
 import { RegisterModel } from '../models/register.model';
-import { UserService } from '../../shared/shared.module';
+import { UserService, CollegeService, ValidateEmailNotTaken, CustomValidators } from '../../shared/shared.module';
 import { AuthService } from '../auth.service';
+import { SaveStripeCardComponent } from '../../shared/components/billing/save-stripe-card/save-stripe-card.component';
+import { PaymentService } from './../../shared/services/payment.service';
 
 @Component({
 	selector: 'app-register',
@@ -16,113 +21,64 @@ import { AuthService } from '../auth.service';
 
 export class RegisterComponent implements OnInit {
 
-	model = new RegisterModel();
-
 	form: FormGroup;
+	model = new RegisterModel();
+	submitAttempted = false;
+	loading = false;
+	registerSuccess = false;
+	registerFailed = false;
+	feedback: string;
 	roles: string[];
+	role: string;
 	agent: string;
-	errorMessage: string;
 	invite = '';
-	selectedRole = '';
-	promo_code = '';
-	type: any = 'Parent';
-	email: any;
-	showRole: any;
-	queryRole: any;
-	queryEmail: any;
-	childData: any;
-	studentId: any;
-	role: any;
-	userId: any;
-	agreed: boolean = true;
-	ShowPersonalInfo: boolean = true;
-	submitAttempted: boolean = false;
-	loading: boolean = false;
-	registerSuccess: boolean = false;
-	registerFailed: boolean = false;
-	searchingColleges: boolean = false;
-	searchFailed: boolean = false;
+	searchingColleges = false;
+	searchFailed = false;
+	agreed = true;
 	requireCCforSignup = false;
-	emailChanged: boolean = false;
-	ErrorAlert: boolean = false;
-	ShowAccountInfo: boolean = false;
-	ShowLocationInfo: boolean = false;
-	ShowTalentInfo: boolean = false;
-	ShowParentInfo: boolean = false;
-	ShowSchoolInfo: boolean = false;
-	ShowCouponCode: boolean = false;
 
 	constructor(
-		private authService: AuthService,
-		private router: Router,
 		private userService: UserService,
-		public activatedRoute: ActivatedRoute,
+		private authService: AuthService,
+		private collegeService: CollegeService,
+		private router: Router,
+		private activatedRoute: ActivatedRoute,
+		private paymentService: PaymentService,
+		private modalService: NgbModal,
 		public activeModal: NgbActiveModal,
 	) {
 		this.form = new FormGroup(
 			{
-				email: new FormControl( '', [Validators.required, Validators.email] ),
-				role: new FormControl( '', [Validators.required] ),
-				agree: new FormControl( '' ),
-				agent: new FormControl( '' ),
-				promo_code: new FormControl( '' ),
-				school_id: new FormControl( '' ),
-				soar_id: new FormControl( '' )
+				first_name: new FormControl('', [Validators.required]),
+				middle_name: new FormControl(''),
+				last_name: new FormControl('', [Validators.required]),
+				role: new FormControl('', [Validators.required]),
+				username: new FormControl('', [Validators.required]),
+				email: new FormControl('', [Validators.required, Validators.email], ValidateEmailNotTaken.createValidator(this.userService)),
+				password: new FormControl('', [Validators.required]),
+				confirm_password: new FormControl('', [Validators.required]),
+				zip_code: new FormControl('', [Validators.required]),
+				promo_code: new FormControl(''),
+				college: new FormControl(''),
+				college_id: new FormControl(''),
+				title: new FormControl(''),
+				discipline: new FormControl(''),
+				faculty_url: new FormControl(''),
+				agree: new FormControl(''),
+				agent: new FormControl(''),
+				soar_id: new FormControl('')
+			},
+			{
+				validators: CustomValidators.checkPasswords
 			}
 		);
 
 		this.roles = ['Parent', 'Student', 'Teacher', 'Recruiter'];
 	}
 
-	ngOnInit() { console.log('onInit...');
-
-		this.activatedRoute
-			.queryParams
-			.subscribe(
-				params => {
-					this.queryRole = params['role'];
-					this.queryEmail = params['email'];
-				}
-			);
-
-		if (this.queryRole != undefined && this.queryEmail != undefined) {
-			this.form.get('email').setValue(this.queryEmail);
-			this.form.get('role').setValue(this.queryRole)
-			this.selectedRole = this.queryRole;
-			this.userService
-				.checkEmailNotTaken(
-					this.queryEmail
-				)
-				.subscribe(
-					(data: any) => {
-						if (data.message == 'User found') {
-							this.ErrorAlert = true;
-							this.errorMessage = 'A user with that email address already exists'
-							this.emailChanged = false;
-						} else if (data.message == 'No such email exists in system') {
-							localStorage.setItem('mailaddress', this.queryEmail);
-							this.register()
-							this.ErrorAlert = false;
-							this.emailChanged = true;
-						}
-					},
-					err => { }
-				);
-		}
-
-		this.activatedRoute
-			.params
-			.subscribe(
-				params => {
-					this.userId = localStorage.getItem('userId');
-					this.role = params['role'];
-					this.showRole = this.role
-				}
-			);
-
+	ngOnInit() {
 		this.form.get('role').valueChanges.subscribe(val => {
-			//this.role = val;
-			this.selectedRole = val;
+			this.role = val;
 			if (val !== 'Recruiter') {
 				this.agreed = true;
 			}
@@ -138,33 +94,26 @@ export class RegisterComponent implements OnInit {
 			}
 		});
 
-		this.activatedRoute
-			.queryParams
-			.subscribe(
-				(params: Params) => {
-					if (params.inv) {
-						this.invite = params['inv'];
-					}
+		this.activatedRoute.queryParams.subscribe((params: Params) => {
+			if (params.inv) {
+				this.invite = params['inv'];
+			}
 
-					if (params.agent) {
-						this.form.get('agent').setValue(params['agent']);
-						this.form.get('agent').disable();
-					}
+			if (params.agent) {
+				this.form.get('agent').setValue(params['agent']);
+				this.form.get('agent').disable();
+			}
 
-					if (params.p) {
-						this.form.get('promo_code').setValue(params['p']);
-						this.form.get('promo_code').disable();
-					}
+			// SOAR info - coming from a SOAR landing page... passing form data to back end
+			if (params.p) {
+				this.form.get('promo_code').setValue(params['p']);
+				this.form.get('promo_code').disable();
+			}
 
-					if (params.s) {
-						this.form.get('school_id').setValue(params['s']);
-					}
-
-					if (params.soar) {
-						this.form.get('soar_id').setValue(params['soar']);
-					}
-				}
-			);
+			if (params.s) {
+				this.form.get('soar_id').setValue(params['s']);
+			}
+		});
 
 		if (this.authService.isLoggedIn()) {
 			this.router.navigate([
@@ -172,99 +121,180 @@ export class RegisterComponent implements OnInit {
 			]);
 		}
 
-		this.activatedRoute
-			.params
-			.subscribe(
-				(params: Params) => {
-					if (params['promo']) {
-						this.form.get('promo_code').setValue(params['promo']);
-						this.form.get('promo_code').disable();
-					}
+		this.activatedRoute.params.subscribe((params: Params) => {
+			if (params['promo']) {
+				this.form.get('promo_code').setValue(params['promo']);
+				this.form.get('promo_code').disable();
+			}
 
-					if (
-						params['role'] &&
-						this.roles
-							.map(role => role.toLowerCase())
-							.includes(params['role'].toLowerCase())
-					) {
-						let role = params['role'];
-						role = role[0].toUpperCase() + role.slice(1);
-						this.form.get('role').setValue(role);
-						this.form.get('role').disable();
-					}
-				}
-			);
-
+			if (
+				params['role'] &&
+				this.roles
+					.map(role => role.toLowerCase())
+					.includes(params['role'].toLowerCase())
+			) {
+				let role = params['role'];
+				role = role[0].toUpperCase() + role.slice(1);
+				this.form.get('role').setValue(role);
+				this.form.get('role').disable();
+			}
+		});
 	}
 
-	get f() { console.log('get f...');
-		return this.form.controls;
+	selectRole(role) {
+		console.log(role);
+		this.form.get('role').setValue(role);
 	}
 
-	get basicInfoModel() { console.log('get basicInfoModel...');
-		let mail = localStorage.getItem('mailaddress')
+	searchColleges = (text$: Observable<string>) => {
+		return text$.pipe(
+			debounceTime(300),
+			distinctUntilChanged(),
+			filter(term => term.length > 2),
+			tap(() => (this.searchingColleges = true)),
+			switchMap(term =>
+				this.collegeService.getCollegeListByKeyword(term).pipe(
+					map((res: any) => res.data),
+					tap(() => (this.searchFailed = false)),
+					catchError(() => {
+						this.searchFailed = true;
+						return of([]);
+					})
+				)
+			),
+			tap(() => {
+				this.searchingColleges = false;
+			})
+		);
+	}
+
+	selectedCollege = (e: any) => {
+		const item = e.item;
+		this.form.get('college').setValue(item.name);
+		this.form.get('college_id').setValue(item._id);
+	}
+
+	formatMatches = (item: any) => {
+		if (!item) {
+			return '';
+		}
+		return item.name;
+	}
+
+	get formModel() {
 		let register: any = {
-			username: mail.substring(0, mail.indexOf('@')),
-			email: mail,
-			role: this.selectedRole,
+			first_name: this.form.get('first_name').value,
+			middle_name: this.form.get('middle_name').value,
+			last_name: this.form.get('last_name').value,
+			role: this.form.get('role').value,
+			username: this.form.get('username').value,
+			email: this.form.get('email').value,
+			password: this.form.get('password').value,
+			confirm_password: this.form.get('confirm_password').value,
+			zip_code: this.form.get('zip_code').value,
 			promo_code: this.form.get('promo_code').value,
+			agent: this.form.get('agent').value,
+			soar_id: this.form.get('soar_id').value
 		};
+
+		const recruiter_fields: any = {
+			college: this.form.get('college').value
+				? this.form.get('college').value.name
+				: '',
+			college_id: this.form.get('college_id').value,
+			title: this.form.get('title').value,
+			discipline: this.form.get('discipline').value,
+			faculty_url: this.form.get('faculty_url').value,
+			agree: this.form.get('agree').value
+		};
+
+		if (this.form.get('role').value === 'Recruiter') {
+			register = {
+				...register,
+				...recruiter_fields
+			};
+		}
+
+		if (this.invite) {
+			register.invite = this.invite;
+		}
+
 		return register;
 	}
 
-	selectRole(role) { console.log('selectRole...',role);
-		this.selectedRole = role;
-		this.ErrorAlert = false;
+	resetForm() {
+		this.form.reset();
+		this.submitAttempted = false;
 	}
 
-	signUp() { console.log('signup...');
-		if (this.form.valid) {
-			this.onEmailChange(this.form.get('email').value)
-		} else {
-			this.validateAllFormFields(this.form);
-			this.loading = false;
-			this.submitAttempted = false;
-		}
+	displayFieldCss(field: string) {
+		return {
+			'has-error': this.isFieldInvalid(field),
+			'has-feedback': this.isFieldInvalid(field)
+		};
 	}
 
-	register() { console.log('register...');
+	// convenience getter for easy access to form fields
+	get f() {
+		return this.form.controls;
+	}
+
+	submitForm() {
 		if (!this.loading) {
 			this.loading = true;
-			if (this.form.valid) {
+			this.submitAttempted = true;
+			this.registerFailed = false;
+			this.registerSuccess = false;
 
-				this.authService
-					.register(
-						this.basicInfoModel
-					)
-					.subscribe( 
-						(data: any) => {
-							if (data.message == 'Registration Succeeded') {
-								this.userId = data.data.userId;
-								localStorage.setItem('userId', this.userId);
-								this.loading = false;
-								this.registerSuccess = true;
-								return this.router.navigate(['/register/' + this.selectedRole]);
-							}
-						},
-						err => {
-							if (err.error.message.includes('duplicate key')) {
-								this.ErrorAlert = true;
-								this.errorMessage = 'This email is already taken'
-							}
-							this.loading = false;
-							this.registerFailed = true;
+			if (this.form.valid) {
+				this.authService.register(this.formModel).subscribe(
+					(data: any) => {
+						if (this.formModel.role.toLowerCase() === 'recruiter') {
+							return this.router.navigate(['/welcome/recruiter']);
 						}
-					);
+						this.loading = false;
+						this.registerSuccess = true;
+						this.feedback = 'Successful registration.';
+						this.authService
+							.login(this.formModel)
+							.subscribe((response: any) => {
+								if (
+									response &&
+									response.data &&
+									response.data.token
+								) {
+									this.authService.saveToStorage(response.data);
+									if (this.requireCCforSignup && this.formModel.role.toLowerCase() === 'student') {
+										localStorage.setItem('welcome_seen', 'no');
+										this.router.navigate(['/premium']);
+									} else if (this.requireCCforSignup && this.formModel.role.toLowerCase() === 'parent') {
+										localStorage.setItem('welcome_seen', 'no');
+										this.openSaveCardModal();
+									} else {
+										this.router.navigate(['/welcome/' + this.formModel.role.toLowerCase()]);
+									}
+								}
+							});
+					},
+					err => {
+						this.loading = false;
+						this.registerFailed = true;
+						if (err.error.status === 'failed') {
+							this.feedback = err.error.message;
+						} else {
+							this.feedback = 'Unable to process this request';
+						}
+					}
+				);
 			} else {
 				this.validateAllFormFields(this.form);
 				this.loading = false;
 				this.submitAttempted = false;
 			}
 		}
-
 	}
 
-	validateAllFormFields(formGroup: FormGroup) { console.log('validateAllFormFields...',formGroup);
+	validateAllFormFields(formGroup: FormGroup) {
 		Object.keys(formGroup.controls).forEach(field => {
 			const control = formGroup.get(field);
 			if (control instanceof FormControl) {
@@ -275,166 +305,31 @@ export class RegisterComponent implements OnInit {
 		});
 	}
 
-	isFieldInvalid(fieldName: string) { console.log('isFieldInvalid...',fieldName);
+	isFieldInvalid(fieldName: string) {
 		const field = this.form.get(fieldName);
-		if (field == null) {
-		}
 		return field.invalid && (field.touched || this.submitAttempted);
 	}
 
-	onKeyup(mail) { console.log('onKeyup...',mail);
-		this.form.get('email').setValue(mail)
-		this.ErrorAlert = false;
-	}
+	openSaveCardModal() {
+		const modalRef = this.modalService.open(SaveStripeCardComponent, {
+			size: 'lg',
+			backdrop: 'static',
+			keyboard: false
+		});
 
-	onEmailChange(mailAddress: string): void { console.log('onEmailChange...',mailAddress);
-		if (this.selectedRole != null && this.selectedRole != undefined) {
-			this.userService
-				.checkEmailNotTaken(
-					mailAddress
-				)
-				.subscribe(
-					(data: any) => {
-						if (data.message == 'User found') {
-							this.ErrorAlert = true;
-							this.errorMessage = 'A user with that email address already exists'
-							this.emailChanged = false;
-						} else if (data.message == 'No such email exists in system') {
-							localStorage.setItem('mailaddress', mailAddress);
-							this.register()
-							this.ErrorAlert = false;
-							this.emailChanged = true;
-						}
-					},
-					err => { }
-				);
-		} else {
-			this.ErrorAlert = true;
-			this.errorMessage = 'Please select a role of student or parent, etc.'
-		}
-
-	}
-
-	onSaveWizard(event) { console.log('onSaveWizard...',event.btnType,event.role,event.message);
-		this.userId = event.user_Id;
-		if (event.btnType == 'Continue') {
-
-			if (event.message == 'PersonalInfoSuccess') {
-			
-				if (event.role == 'Student' || event.role == 'Teacher' || event.role == 'Recruiter') {
-					this.ShowPersonalInfo = false;
-					this.ShowAccountInfo = true;
-				} else if (event.role == 'Parent' && event.type == 'Parent') {
-					this.ShowPersonalInfo = false;
-					this.ShowAccountInfo = true;
-				} else if (event.role == 'Parent' && event.type == 'Child') {
-					this.childData = event.childData;
-					this.ShowPersonalInfo = false;
-					this.ShowAccountInfo = true;
-				}
-			
-			} else if (event.message == 'AccountInfoSuccess') {
-			
-				if (event.role == 'Student' || event.role == 'Teacher' || event.role == 'Recruiter') {
-					this.ShowAccountInfo = false;
-					this.ShowLocationInfo = true;
-				} else if (event.role == 'Parent' && event.type == 'Parent') {
-					this.ShowAccountInfo = false;
-					this.ShowLocationInfo = true;
-				} else if (event.role == 'Parent' && event.type == 'Child') {
-					this.childData = event.childData;
-					this.userId = event.student_id;
-					this.ShowAccountInfo = false;
-					this.ShowTalentInfo = true;
-				}
-			
-			} else if (event.message == 'LocationInfoSuccess') {
-			
-				if (event.role == 'Teacher' || event.role == 'Recruiter') {
-					this.ShowLocationInfo = false;
-					this.ShowSchoolInfo = true;
-				} else if (event.role == 'Student') {
-					this.ShowLocationInfo = false;
-					this.ShowTalentInfo = true;
-				} else if (event.role == 'Parent' && event.type == 'Parent') {
-					this.type = 'Child'
-					this.ShowLocationInfo = false;
-					this.ShowPersonalInfo = true;
-				}
-			
-			} else if (event.message == 'TalentInfoSuccess') {
-			
-				this.ShowTalentInfo = false;
-				this.ShowSchoolInfo = true;
-			
-			} else if (event.message == 'SchoolInfoSuccess') {
-			
-				if (event.role == 'Teacher' || event.role == 'Parent') {
-					this.redirectLogin()
-				} else if (event.role == 'Recruiter') {
-					this.redirectLogin()
-				} else {
-					this.ShowSchoolInfo = false;
-					this.ShowParentInfo = true;
-				}
-			
-			} else if (event.message == 'ParentInfoSuccess') {
-			
-				this.redirectLogin()
-			
-			} else if (event.message == 'CouponCodeSuccess') {
-			
-				this.redirectLogin()
-			}
-
-		} else if (event.btnType == 'Back') {
-			
-			if (event.message == 'BackAccountInfor') {
-				this.ShowPersonalInfo = true;
-				this.ShowAccountInfo = false;
-			} else if (event.message == 'BackLocationInfor') {
-				this.ShowAccountInfo = true;
-				this.ShowLocationInfo = false;
-			} else if (event.message == 'BackTalentInfor') {
-				if (event.role == 'Parent') {
-					this.childData = event.childData;
-					this.ShowTalentInfo = false;
-					this.ShowAccountInfo = true;
-				} else {
-					this.ShowTalentInfo = false;
-					this.ShowLocationInfo = true;
-				}
-			} else if (event.message == 'BackSchoolInfor') {
-				if (event.role == 'Student') {
-					this.ShowTalentInfo = true;
-					this.ShowSchoolInfo = false;
-				} else if (event.role == 'Teacher') {
-					this.ShowSchoolInfo = false;
-					this.ShowLocationInfo = true;
-				} else if (event.role == 'Recruiter') {
-					this.ShowSchoolInfo = false;
-					this.ShowLocationInfo = true;
-				} else if (event.role == 'Parent') {
-					this.ShowSchoolInfo = false;
-					this.ShowTalentInfo = true;
-				}
-			} else if (event.message == 'BackParentInfor') {
-				if (event.role == 'Student') {
-					this.ShowParentInfo = false;
-					this.ShowSchoolInfo = true;
-				}
-			} else if (event.message == 'BackPersonalInfor') {
-				this.type = event.type;
-				this.ShowPersonalInfo = false;
-				this.ShowLocationInfo = true;
-			}
-
-		}
-	}
-
-	redirectLogin() { console.log('redirectLogin...');
-		localStorage.clear();
-		return this.router.navigate(['/login']);
+		modalRef.result.then(
+			(token: any) => { // save default card
+				this.paymentService.saveDefaultCard(this.userService.currentUser._id, token).subscribe((customer: any) => {
+					if (localStorage.getItem('welcome_seen') === 'no') {
+						localStorage.removeItem('welcome_seen');
+						this.router.navigate(['/welcome/' + this.userService.currentUser.role.toLowerCase()]);
+					} else {
+						this.router.navigate(['/' + this.userService.currentUser.role.toLowerCase() + '/settings']);
+					}
+				});
+			},
+			reason => { }
+		);
 	}
 
 }

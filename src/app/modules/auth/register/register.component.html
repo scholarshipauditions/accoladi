@@ -1,361 +1,240 @@
-<div class="wrapper gold-page" >
+<div class="gold-page" >
 
-	<ng-container *ngIf="!role" >
+	<div class="row justify-content-center align-items-center h-450" >
 
-		<h1>Colleges Are Looking For You</h1>
-		<p>Build your student profile, find schools that are a fit and connect with colleges.</p>
+		<div class="col col-sm-8 col-md-8 col-lg-6 col-xl-6" >
 
-		<div class="row justify-content-center align-items-center h-100" >
-			
-			<div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3" >
+			<ng-container *ngIf="!role" >
 
-				<form [formGroup]="form" class="justify-content-center" >
+				<h2 class="text-center">
+					<b>Welcome to Accoladi.com!</b>
+				</h2>
 
-					<div class="form-group" >
-						
-						<label class="control-label " for="role" >
-							Role
-						</label>
-						<select 
-							formControlName="role"
-							class="form-control role-selector"
-							name="role"
-							id="role" >
-							<option value="" disabled selected >Select</option>
-							<option value="Student" >Student</option>
-							<option value="Parent" >Parent</option>
-							<option value="Teacher" >Teacher</option>
-							<option value="Recruiter" >Recruiter</option>
-						</select>
-						
-						<app-field-error-display 
-							[displayError]="isFieldInvalid('role')"
-							errorMsg="Please Select Role" >
-						</app-field-error-display>
+				<h3 class="text-center">
+					We are your premier collegiate recruitment platform for the performing fine arts.
+					<br /><b>Select your role below to begin!!</b>
+				</h3>
+
+				<div class="flex-container">
+
+					<div (click)="selectRole('Student')">
+						<div class="tab ">
+							<p class="tabTitle text-center">STUDENT</p>
+						</div>
+					</div>
+
+					<div (click)="selectRole('Teacher')">
+						<div class="tab ">
+							<p class="tabTitle text-center">TEACHER</p>
+						</div>
+					</div>
+
+					<div (click)="selectRole('Recruiter')">
+						<div class="tab ">
+							<p class="tabTitle text-center">HIGHER ED</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="text-center">
+					<sub><b>STUDENT</b> = Performing Arts student between 6th - 12th grade</sub><br />
+					<sub><b>TEACHER</b> = Music directors, counselors, private instructor, teachers of students between 6th - 12th grade</sub><br />
+					<sub><b>HIGHER ED</b> = Collegiate faculties or recruiters looking to fill program ensemble needs</sub>
+				</div>
+
+			</ng-container>
+
+			<ng-container *ngIf="role" >
+
+				<h3 class="text-center">
+					You are registering as a {{ role }}.
+				</h3>
+
+				<form novalidate="novalidate" autocomplete="false" [formGroup]="form">
+
+					<div class="form-row">
+
+						<div class="offset-md-3 col-md-3 form-group required" [ngClass]="displayFieldCss('first_name')">
+							<label for="first_name" class="control-label ">First Name</label>
+							<input id="first_name" name="first_name" type="text" class="form-control" formControlName="first_name" [class.state-error]="isFieldInvalid('first_name')" />
+							<app-field-error-display [displayError]="isFieldInvalid('first_name')" errorMsg="Please provide first name"> </app-field-error-display>
+						</div>
+
+						<div class="col-md-3 form-group required" [ngClass]="displayFieldCss('last_name')">
+							<label for="last_name" class="control-label ">Last Name</label>
+							<input id="last_name" name="last_name" type="text" class="form-control" formControlName="last_name"[class.state-error]="isFieldInvalid('last_name')" />
+							<app-field-error-display [displayError]="isFieldInvalid('last_name')"errorMsg="Please provide last name"></app-field-error-display>
+						</div>
 
 					</div>
 
-					<div class="form-group" >
+					<div class="form-row">
 
-						<label class="control-label " for="first_name" >
-							Email Address
-						</label>
-						<input
-							id="email"
-							name="email"
-							type="email"
-							formControlName="email"
-							(keyup)="onKeyup($event.target.value)"
-							class="form-control height-text email-input" />
+						<div class="offset-md-3 col-md-3 form-group required" [ngClass]="displayFieldCss('email')">
+							<label for="email" class="control-label ">Email</label>
+							<input id="email" name="email" type="email" class="form-control" autocomplete="username" formControlName="email" [class.is-valid]="f.email.status === 'VALID'" [class.state-error]="isFieldInvalid('email')" />
+							<app-field-error-display [displayError]="isFieldInvalid('email')" *ngIf="f.email.errors && f.email.errors.required" errorMsg="Please provide an email"></app-field-error-display>
+							<app-field-error-display [displayError]="isFieldInvalid('email')" *ngIf="f.email.errors && f.email.errors.email" errorMsg="Please provide a valid email"></app-field-error-display>
+							<app-field-error-display [displayError]="isFieldInvalid('email')" *ngIf="f.email.errors && f.email.errors.emailTaken" errorMsg="This email is already taken"></app-field-error-display>
+						</div>
 
-						<app-field-error-display
-							*ngIf="f.email.errors && f.email.errors.required"
-							[displayError]="isFieldInvalid('email')"
-							errorMsg="Please provide email" >
-						</app-field-error-display>
+						<input type="hidden" name="role" formControlName="role" />
 
-						<app-field-error-display
-							*ngIf="f.email.errors && f.email.errors.email"
-							[displayError]="isFieldInvalid('email')"
-							errorMsg="Please provide a valid email" >
-						</app-field-error-display>
-
-						<app-field-error-display
-							*ngIf="ErrorAlert"
-							[displayError]="ErrorAlert"
-							errorMsg="A user with that email address already exists" >
-						</app-field-error-display>
+						<div class="col-md-3 form-group required" [ngClass]="displayFieldCss('username')">
+							<label for="username" class="control-label ">Username</label>
+							<input id="username" name="username" type="text" class="form-control" autocomplete="false" formControlName="username" [class.state-error]="isFieldInvalid('username')" />
+							<app-field-error-display [displayError]="isFieldInvalid('username')" errorMsg="Please provide username"></app-field-error-display>
+						</div>
 
 					</div>
 
-					<div class="form-group" >
-						
-						<label class="control-label" for="promo" >
-							Promo Code
-						</label>
-						<input
-							id="promo_code"
-							name="promo_code"
-							type="text"
-							class="form-control height-text email-input"
-							formControlName="promo_code"
-							placeholder="promo code" />
+					<div class="form-row">
+
+						<div class="offset-md-3 col-md-3 form-group required" [ngClass]="displayFieldCss('password')">
+							<label for="password" class="control-label ">Password</label>
+							<input id="password" name="password1" type="password" class="form-control" autocomplete="false" formControlName="password" [class.state-error]="isFieldInvalid('password')" />
+							<app-field-error-display [displayError]="isFieldInvalid('password')" errorMsg="Please provide a password"></app-field-error-display>
+						</div>
+
+						<div class="col-md-3 form-group required" [ngClass]="displayFieldCss('confirm_password')">
+							<label for="confirm_password" class="control-label ">Confirm password</label>
+							<input id="confirm_password" name="confirm_password" type="password" class="form-control" formControlName="confirm_password" [class.state-error]="isFieldInvalid('confirm_password')" />
+							<app-field-error-display [displayError]="isFieldInvalid('confirm_password')" errorMsg="Please confirm password"></app-field-error-display>
+							<app-field-error-display [displayError]="!isFieldInvalid('confirm_password') && form.errors && form.errors.mismatch" errorMsg="Password mismatch"></app-field-error-display>
+						</div>
 
 					</div>
 
-					<div class="form-group align-items-center" >
+					<div class="form-row">
 
-						<button
-							appDisableDoubleClick
-							type="submit"
-							(click)="signUp()"
-							class="btn get-started" >
-
-							<span 
-								*ngIf="loading"
-								class="spinner-border spinner-border-sm"
-								role="status"
-								aria-hidden="true" ></span>
-							{{ loading 
-								? "Saving..." 
-								: !requestSuccess 
-									? "Continue" 
-									: "Done" }}
-						</button>
+						<div class="offset-md-3 col-md-3 form-group required" [ngClass]="displayFieldCss('zip_code')">
+							<label for="zip_code" class="control-label ">Zip Code</label>
+							<input id="zip_code" name="zip_code" type="text" class="form-control" formControlName="zip_code" [class.state-error]="isFieldInvalid('zip_code')" />
+							<app-field-error-display [displayError]="isFieldInvalid('zip_code')" errorMsg="Please provide Zip code"></app-field-error-display>
+						</div>
 
 					</div>
+
+					<div class="form-row">
+						<div class="offset-md-5 col-md-2 form-group">
+							<label for="promo_code" class="control-label">Promo Code</label>
+							<input id="promo_code" name="promo_code" type="text" class="form-control" formControlName="promo_code" />
+						</div>
+					</div>
+
+					<div *ngIf="role === 'Recruiter'">
+
+						<div class="form-row">
+
+							<div class="offset-md-3 col-md-3 form-group">
+								<label class="control-label " for="college">College</label>
+								<input id="college" name="college" type="text" class="form-control" placeholder="Search colleges ..." formControlName="college" [ngbTypeahead]="searchColleges" [inputFormatter]="formatMatches" [resultTemplate]="rt" (selectItem)="selectedCollege($event)" />
+								<span *ngIf="searchingColleges">searching...</span>
+								<div *ngIf="searchFailed" class="invalid-feedback">Sorry, suggestions could not be loaded.</div>
+
+								<input type="hidden" name="college_id" formControlName="college_id" value="" />
+
+								<ng-template #rt let-r="result" let-t="term">
+									<span class="device">
+										<span class="grayout">{{ r?.name }}</span>
+										<br />
+										<small class="grayout">{{ r?.state }}</small>
+									</span>
+								</ng-template>
+							</div>
+
+							<div class="col-md-3 form-group">
+								<label for="title" class="control-label ">Title</label>
+								<input id="title" name="title" type="text" class="form-control" formControlName="title" />
+							</div>
+
+						</div>
+
+						<div class="form-row">
+
+							<div class="offset-md-3 col-md-3 form-group">
+								<label for="discipline" class="control-label ">Discipline</label>
+								<input id="discipline" name="discipline" type="text" class="form-control" formControlName="discipline" />
+							</div>
+
+							<div class="col-md-3 form-group">
+								<label for="faculty_url" class="control-label ">Faculty URL</label>
+								<input id="faculty_url" name="faculty_url" type="text" class="form-control" formControlName="faculty_url" />
+							</div>
+
+						</div>
+
+						<div class="form-row">
+
+							<div class="offset-md-3 col-md-6 form-group">
+								<p>
+									By submitting this form I confirm that I am the
+									person whom I claim to be, and that I have the
+									authority to recruit for the school identified
+									above. I understand that Accoladi.com
+									will confirm these claim and take appropriate
+									action if they find them to be false - I also
+									understand my account will NOT be active until
+									such confirmation.
+								</p>
+								<br />
+
+								<div class="checkbox">
+									<label for="agree" class="control-label">
+										<input id="agree" name="agree" type="checkbox" formControlName="agree" />
+										I agree
+									</label>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="form-row">
+
+						<div class="offset-md-3 col-md-6">
+
+							<br />
+
+							<div *ngIf="registerFailed" class="alert alert-danger" role="alert">
+								{{ feedback }}
+							</div>
+
+							<br />
+
+							<div class="d-flex justify-content-center">
+								<button appDisableDoubleClick (click)="submitForm()" class="btn" [disabled]="!agreed">
+									<span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+									{{ loading ? "Processing..." : "Register" }} {{aagreed}}
+								</button>
+							</div>
+
+						</div>
+
+					</div>
+
 
 				</form>
 
+			</ng-container>
+
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-lg-12">
+						<h2 class="mb-4">Already have an account?</h2>
+						<a [routerLink]="['/login']" class="btn">Log In</a>
+					</div>
+				</div>
 			</div>
 
 		</div>
 
-		<br>&nbsp;
-		<sub>STUDENT = Performing Arts student between 6th - 12th grade</sub><br />
-		<sub>PARENT = Parents of Performing Arts students between 6th - 12th grade</sub><br />
-		<sub>TEACHER = Music directors, counselors, teachers of students between 6th - 12th grade</sub><br />
-		<sub>HIGHER ED = Collegiate faculties or recruiters looking to fill program ensemble needs</sub>
-
-	</ng-container>
-
-	<ng-container *ngIf="role" >
-
-		<h3>
-			You are registering as a {{ role }}.
-		</h3>
-
-		<div class="row" >
-
-			<div class="col-md-8 offset-md-2" >
-
-				<form novalidate="novalidate" autocomplete="false" [formGroup]="form" >
-
-					<input type="hidden" name="role" formControlName="role" />
-
-					<br />
-
-					<div *ngIf="showRole === 'Parent'" >
-						
-						<p>Parents, sign your students up for a FREE account to:</p>
-						
-						<ul>
-							<li style="text-align: left;" >Search over 1500 colleges, universities, and conservatories with music programs</li>
-							<li style="text-align: left;" >Find the perfect performing arts scholarship in our growing database of more than 16,000 opportunities</li>
-							<li style="text-align: left;" >Discover the premier college programs for scores of performing arts disciplines</li>
-							<li style="text-align: left;" >Use valuable resources to learn more about becoming a successful collegiate performing artist</li>
-						</ul>
-
-						<br />Accoladi.com allows you to keep a digital record of your students’
-						achievements and performances and you only pay when you are ready to have your student
-						recruited!
-
-						<app-personal-info
-							*ngIf="ShowPersonalInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="selectedRole"
-							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
-
-						<app-account-info
-							*ngIf="ShowAccountInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[childData]="childData"
-							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
-
-						<app-location-info
-							*ngIf="ShowLocationInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
-
-						<app-talent-info
-							*ngIf="ShowTalentInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							[childData]="childData"
-							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
-
-						<app-school-info
-							*ngIf="ShowSchoolInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
-
-					</div>
-
-					<div *ngIf="showRole === 'Student'" >
-
-						<app-personal-info
-							*ngIf="ShowPersonalInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="selectedRole"
-							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
-
-						<app-account-info
-							*ngIf="ShowAccountInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[childData]="childData"
-							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
-
-						<app-location-info
-							*ngIf="ShowLocationInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
-
-						<app-talent-info
-							*ngIf="ShowTalentInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
-
-						<app-school-info
-							*ngIf="ShowSchoolInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
-
-						<app-parent-info
-							*ngIf="ShowParentInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-parent-info>
-
-					</div>
+	</div>
 
 
-					<div *ngIf="showRole === 'Teacher'" >
-
-						<app-personal-info
-							*ngIf="ShowPersonalInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
-
-						<app-account-info
-							*ngIf="ShowAccountInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[childData]="childData"
-							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
-
-						<app-location-info
-							*ngIf="ShowLocationInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
-
-						<app-talent-info
-							*ngIf="ShowTalentInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
-
-						<app-school-info
-							*ngIf="ShowSchoolInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
-
-						<app-parent-info
-							*ngIf="ShowParentInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-parent-info>
-
-					</div>
-
-					<div *ngIf="showRole === 'Recruiter'" >
-						
-						<app-personal-info
-							*ngIf="ShowPersonalInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-personal-info>
-
-						<app-account-info
-							*ngIf="ShowAccountInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[childData]="childData"
-							(saveEmitter)="onSaveWizard($event)" ></app-account-info>
-
-						<app-location-info
-							*ngIf="ShowLocationInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-location-info>
-
-						<app-talent-info
-							*ngIf="ShowTalentInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							(saveEmitter)="onSaveWizard($event)" ></app-talent-info>
-
-						<app-school-info
-							*ngIf="ShowSchoolInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							[student_Id]="studentId"
-							(saveEmitter)="onSaveWizard($event)" ></app-school-info>
-
-						<app-parent-info
-							*ngIf="ShowParentInfo"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-parent-info>
-
-						<app-coupon-code
-							*ngIf="ShowCouponCode"
-							[user_id]="userId"
-							[type]="type"
-							[role]="role"
-							(saveEmitter)="onSaveWizard($event)" ></app-coupon-code>
-
-					</div>
-
-					<!--// FORM -->
-
-				</form>
-
-			</div>
-
-		</div>
-
-	</ng-container>
-	
 	<app-footer></app-footer>
 
 </div>
