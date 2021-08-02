@@ -73,72 +73,95 @@ export class RegisterComponent implements OnInit {
 			}
 		);
 
-		this.roles = ['Parent', 'Student', 'Teacher', 'Recruiter'];
+		this.roles = ['Student', 'Teacher', 'Recruiter'];
 	}
 
 	ngOnInit() {
-		this.form.get('role').valueChanges.subscribe(val => {
-			this.role = val;
-			if (val !== 'Recruiter') {
-				this.agreed = true;
-			}
-		});
+		this.form
+			.get('role')
+			.valueChanges
+			.subscribe(val => {
+				this.role = val;
+				if (val !== 'Recruiter') {
+					this.agreed = true;
+				}
+			});
 
 		this.agreed = this.form.get('role').value === 'Recruiter' && this.form.get('agree').value;
 
-		this.form.get('agree').valueChanges.subscribe(val => {
-			if (val) {
-				this.agreed = this.form.get('role').value === 'Recruiter';
-			} else {
-				this.agreed = false;
-			}
-		});
+		this.form
+			.get('agree')
+			.valueChanges
+			.subscribe(val => {
+				if (val) {
+					this.agreed = this.form.get('role').value === 'Recruiter';
+				} else {
+					this.agreed = false;
+				}
+			});
 
-		this.activatedRoute.queryParams.subscribe((params: Params) => {
-			if (params.inv) {
-				this.invite = params['inv'];
-			}
+		this.activatedRoute
+			.queryParams
+			.subscribe((params: Params) => { console.log('query params:', params);
+				if (params.inv) {
+					this.invite = params['inv'];
+				}
 
-			if (params.agent) {
-				this.form.get('agent').setValue(params['agent']);
-				this.form.get('agent').disable();
-			}
+				if (params.agent) {
+					this.form.get('agent').setValue(params['agent']);
+					this.form.get('agent').disable();
+				}
 
-			// SOAR info - coming from a SOAR landing page... passing form data to back end
-			if (params.p) {
-				this.form.get('promo_code').setValue(params['p']);
-				this.form.get('promo_code').disable();
-			}
+				// SOAR info - coming from a SOAR landing page... passing form data to back end
+				if (params.p) {
+					this.form.get('promo_code').setValue(params['p']);
+					this.form.get('promo_code').disable();
+				}
 
-			if (params.s) {
-				this.form.get('soar_id').setValue(params['s']);
-			}
-		});
+				if (params.s) {
+					this.form.get('soar_id').setValue(params['s']);
+				}
+
+				if ( 
+					params['role'] &&
+					this.roles
+						.map(role => role.toLowerCase())
+						.includes(params['role'].toLowerCase())
+				) {
+					this.role = params['role'];
+					this.role = this.role[0].toUpperCase() + this.role.slice(1);
+					this.form.get('role').setValue(this.role);
+					this.form.get('role').disable();
+				}
+			});
 
 		if (this.authService.isLoggedIn()) {
-			this.router.navigate([
-				this.userService.currentUser.role.toLowerCase()
-			]);
+			this.router
+				.navigate([
+					this.userService.currentUser.role.toLowerCase()
+				]);
 		}
 
-		this.activatedRoute.params.subscribe((params: Params) => {
-			if (params['promo']) {
-				this.form.get('promo_code').setValue(params['promo']);
-				this.form.get('promo_code').disable();
-			}
+		this.activatedRoute
+			.params
+			.subscribe((params: Params) => { console.log('params:', params);
+				if (params['promo']) {
+					this.form.get('promo_code').setValue(params['promo']);
+					this.form.get('promo_code').disable();
+				}
 
-			if (
-				params['role'] &&
-				this.roles
-					.map(role => role.toLowerCase())
-					.includes(params['role'].toLowerCase())
-			) {
-				let role = params['role'];
-				role = role[0].toUpperCase() + role.slice(1);
-				this.form.get('role').setValue(role);
-				this.form.get('role').disable();
-			}
-		});
+				if (
+					params['role'] &&
+					this.roles
+						.map(role => role.toLowerCase())
+						.includes(params['role'].toLowerCase())
+				) {
+					let role = params['role'];
+					role = role[0].toUpperCase() + role.slice(1);
+					this.form.get('role').setValue(role);
+					this.form.get('role').disable();
+				}
+			});
 	}
 
 	selectRole(role) {
