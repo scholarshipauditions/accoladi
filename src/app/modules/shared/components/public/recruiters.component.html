@@ -92,9 +92,11 @@
 
 							<h3 class="text-center">Discover</h3>
 
-							<p> - Search our nationwide database of thousands of profiles to find performers who fit your needs.</p>
-							<p> - View Student profiles featuring performance and academic information.</p>
-							<p> - Stay up to date on prospective student activity and track favorites from 6th through 12th grades.</p>
+							<ul>
+								<li>Search our nationwide database of thousands of profiles to find performers who fit your needs.</li>
+								<li>View Student profiles featuring performance and academic information.</li>
+								<li>Stay up to date on prospective student activity and track favorites from 6th through 12th grades.</li>
+							</ul>
 
 						</div>
 
@@ -114,9 +116,11 @@
 
 							<h3 class="text-center">Evaluate</h3>
 
-							<p> - Review performance videos, showcasing student talents.</p>
-							<p> - Rate students based on your program criteria.</p>
-							<p> - Share student profiles with your colleagues</p>
+							<ul>
+								<li>Review performance videos, showcasing student talents.</li>
+								<li>Rate students based on your program criteria.</li>
+								<li>Share student profiles with your colleagues</li>
+							</ul>
 
 						</div>
 
@@ -136,9 +140,11 @@
 
 							<h3 class="text-center">Contact</h3>
 
-							<p> - Keep correspondence in one place.</p>
-							<p> - Receive email notifications from interested students.</p>
-							<p> - Message students and their parents in our secure portal.</p>
+							<ul>
+								<li>Keep correspondence in one place.</li>
+								<li>Receive email notifications from interested students.</li>
+								<li>Message students and their parents in our secure portal.</li>
+							</ul>
 
 						</div>
 
@@ -162,9 +168,11 @@
 
 	<div class="tm-free mb-5">
 
-		<h3>always <br>
-		<span>FREE</span> to the <br>
-		higher education community</h3>
+		<h3>
+			Always <br>
+			FREE to the <br>
+			higher education community
+		</h3>
 
 		<div class="tm-free-btns d-flex justify-content-between">
 			<button [routerLink]="['/public/get-connected']" class="btn text-dark">GET CONNECTED</button>
@@ -181,18 +189,22 @@
 <!-- Fast Track Guides Section End -->
 
 <ng-template #content3 let-modal>
+	
 	<h3 class="model-heading">Our Commitment to Recruiters</h3>
+	
 	<div class="model-body">
 		We will connect you to:
 		<ul>
 			<li>A searchable database of prospective students, including their educational information, performance history, honors, references, and solo performance videos</li>
 			<li>A secure portal to review teacher references</li>
-			<li>A secure messaging portal for direct contact with students, parents, and teachers  </li>
+			<li>A secure messaging portal for direct contact with students, parents, and teachers</li>
 			<li>A national directory of non-institutional scholarships</li>
 			<li>An opportunity for your school and music program to be featured on our front page</li>
 		</ul>
 	</div>
+
 	<div class="modal-footer">
 		<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
 	</div>
+
 </ng-template>
