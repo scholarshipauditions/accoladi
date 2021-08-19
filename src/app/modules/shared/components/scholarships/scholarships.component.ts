@@ -75,6 +75,7 @@ export class ScholarshipsComponent implements OnInit {
 						}
 					);
 				}
+				
 			});
 	}
 

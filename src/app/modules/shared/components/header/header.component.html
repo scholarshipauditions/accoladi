@@ -27,13 +27,13 @@
 				<li class="nav-item">
 					<a class="nav-link" [routerLink]="['/public/students']" (click)="isShown=false" >Student</a>
 				</li>
+				-->
 				<li class="nav-item">
 					<a class="nav-link" [routerLink]="['/public/teachers']" (click)="isShown=false" >Teacher</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" [routerLink]="['/public/higher-ed']" (click)="isShown=false" >Higher Ed</a>
 				</li>
-				-->
 				<li class="nav-item" *ngIf="loggedIn">
 					<a class="nav-link" (click)="onAccountClick()" *ngIf="loggedIn" >My Account</a>
 				</li>

@@ -33,6 +33,7 @@ import {
 	NonInstitutionalScholarshipsComponent,
 	InstitutionalScholarshipsComponent,
 	FastTrackComponent,
+	SoarComponent
 } from './modules/shared/shared.module';
 
 import { ScholarshipsComponent } from './modules/shared/components/scholarships/scholarships.component';
@@ -96,6 +97,10 @@ const appRoutes: Routes = [
 	{
 		path: 'premium',
 		component: PremiumComponent
+	},
+	{
+		path: 'scholarships',
+		component: ScholarshipsComponent
 	},
 	{
 		path: 'scholarships/:state',
@@ -194,7 +199,10 @@ const appRoutes: Routes = [
 		path: 'public/repertoire_search',
 		component: RepertoireSearchComponent
 	},
-	
+	{
+		path: 'public/soar',
+		component: SoarComponent
+	},		
 	{
 		path: 'public/premier-programs',
 		component: PremierProgramsComponent

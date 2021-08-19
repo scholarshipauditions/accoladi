@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -9,6 +10,12 @@ import { Component } from '@angular/core';
 
 export class RecruitersComponent {
 
-	constructor() { }
+	constructor(
+		private modalService: NgbModal
+	) { }
+
+	openCommitmentRecruiter(content3) {
+		this.modalService.open(content3, { size: 'lg', ariaLabelledBy: 'modal-basic-title', centered: true });
+	}
 
 }

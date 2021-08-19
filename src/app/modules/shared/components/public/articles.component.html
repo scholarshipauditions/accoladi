@@ -7,8 +7,14 @@
 <div id="article-page" class="article-page" >
 	
 	<ng-container *ngIf="htmlData" >
+
+		<a [routerLink]="['/public/articles/']" style="margin: 50px 100px;" >&lt;&lt; Return To Articles</a>
+
 		<!-- article -->
-		<div [innerHtml]="htmlData" class="d-flex p-2 justify-content-between" style="margin-top: 50px;"></div>
+		<div [innerHtml]="htmlData" class="d-flex p-2 justify-content-between" style="margin: 50px 100px;"></div>
+
+		<a [routerLink]="['/public/articles/']" style="margin: 10px 100px;" >&lt;&lt; Return To Articles</a>
+		
 	</ng-container>
 
 	<ng-container *ngIf="!htmlData" >
@@ -39,7 +45,7 @@
 								<img src="assets/images/articles/Cello_Player_-_White_Female_in.png" alt="">
 								<div class="main-img-bottom">
 									<h1>It's Your Choice</h1>
-									<h3>Finding the School That's your right fit</h3>
+									<h3>Finding the School That's Your Right Fit</h3>
 								</div>
 							</a>
 							
@@ -124,7 +130,7 @@
 					<div class="col-md-4 col-sm-6 money-item">
 						
 						<div class="money-item-body">
-							<a [routerLink]="['/public/articles/']" >
+							<a [routerLink]="['/public/articles/the_money_hunt']" >
 								<img src="assets/images/articles/bank_vault_with_open_door.png" alt="">
 								<div class="money-item-bottom">
 									<h5>The Money Hunt</h5>
@@ -156,7 +162,7 @@
 								<img src="assets/images/articles/daddaughtermoney.png" alt="">
 								<div class="money-item-bottom">
 									<h5>It All Adds Up</h5>
-									<p>Unexpected Cost In Performing Arts</p>
+									<p>Unexpected Costs In Performing Arts</p>
 								</div>
 							</a>
 						</div>
@@ -229,7 +235,7 @@
 							<img src="assets/images/articles/Three_cello_Players_in_Switzer.png" alt="">
 							<div class="money-item-bottom">
 								<a [routerLink]="['/public/articles/a_cost-effective_option-studying_music_in_a_foreign_country']" >
-									<h2>A Cost Effective Option</h2>
+									<h2>A Cost-Effective Option</h2>
 									<p>Studying Music In a Foreign Country</p>
 								</a>
 							</div>
@@ -373,9 +379,9 @@
 					</div>
 
 					<div class="col-md-4 col-sm-6 list-col-bd2">
-												
+
 						<h1 class="text-center">Repertoire</h1>
-						<div class="row list-item">							
+						<div class="row list-item">
 							<div class="col-6">
 								<a [routerLink]="['/public/articles/your_solo_repertoire_list_what_should_you_include']" >
 									<img src="assets/images/articles/Violinist_in_Black_Background.png">
@@ -577,9 +583,9 @@
 
 				<hr class="article-hr" />
 
-				<div class="row degree-small-boxes">
+				<div class="row justify-content-md-center degree-small-boxes">
 					
-					<div class="col-md-4 col-sm-6 degree-item">
+					<div class="col-md-3 col-sm-6 degree-item">
 						
 						<div class="degree-item-body">
 							<a [routerLink]="['/public/articles/what_difference_does_it_make_differences_in_higher_ed_options']" >
@@ -593,11 +599,11 @@
 
 					</div>
 
-					<div class="col-md-4 col-sm-6 degree-item">
+					<div class="col-md-3 col-sm-6 degree-item">
 						
 						<div class="degree-item-body">
 							<a [routerLink]="['/public/articles/types_of_degrees']" >
-								<img src="assets/images/articles/Difference_Between_Degrees_1.png" alt="">
+								<img src="assets/images/articles/a_matter_of_degrees.jpg" alt="">
 								<div class="degree-item-bottom">
 									<h5>A Matter of Degrees</h5>
 									<p>Understanding Undergraduate and Musical Degrees</p>
@@ -607,7 +613,7 @@
 
 					</div>
 
-					<div class="col-md-4 col-sm-6 degree-item">
+					<div class="col-md-3 col-sm-6 degree-item">
 						
 						<div class="degree-item-body">
 							<a [routerLink]="['/public/articles/differences_between_degrees_and_majors']" >
@@ -629,25 +635,24 @@
 
 				<div class="row degree-small-boxes">
 					
-					<div class="offset-md-2 col-md-4 col-sm-6 degree-item">
+					<div class="offset-md-3 col-md-3 col-sm-6 degree-item">
 						
 						<div class="degree-item-body">
-							<img src="assets/images/articles/College.png" alt="">
+							<img src="assets/images/articles/Choir_-_College_Choir.png" alt="">
 							<div class="degree-item-bottom">
-								<a [routerLink]="['/public/articles/']" >
-									<h5>Why Ensembles</h5>
-									<p>Matter?</p>
+								<a [routerLink]="['/public/articles/why_ensembles_matter_even_if_you_are_not_a_music_major']" >
+									<h5>Why Ensembles Matter?</h5>
 								</a>
 							</div>
 						</div>
 
 					</div>
 
-					<div class="col-md-4 col-sm-6 degree-item">
+					<div class="col-md-3 col-sm-6 degree-item">
 						
 						<div class="degree-item-body">
 							<a [routerLink]="['/public/articles/relationship_between_music_theory_and_college_tuition']" >
-								<img src="assets/images/articles/Difference_Between_Degrees_1.png" alt="">
+								<img src="assets/images/articles/MG_3597.png" alt="">
 								<div class="degree-item-bottom">
 									<h5>The Direct Relationship</h5>
 									<p>Music Theory & College Tuition</p>
