@@ -131,6 +131,7 @@ import { WhoComponent } from './components/public/who.component';
 import { WhyComponent } from './components/public/why.component';
 import { FastTrackComponent } from './components/public/fasttrack.component';
 import { SoarComponent } from './components/public/soar.component';
+import { ZzzComponent } from './components/public/zzz.component';
 
 @NgModule({
 	imports: [
@@ -249,6 +250,7 @@ import { SoarComponent } from './components/public/soar.component';
 		InstitutionalScholarshipsComponent,
 		FastTrackComponent,
 		SoarComponent,
+		ZzzComponent,
 	],
 	providers: [
 		CatalogService,
@@ -337,6 +339,7 @@ import { SoarComponent } from './components/public/soar.component';
 		InstitutionalScholarshipsComponent,
 		FastTrackComponent,
 		SoarComponent,
+		ZzzComponent,
 	],
 	entryComponents: [
 		AddCompositionInformationComponent,
@@ -447,4 +450,5 @@ export {
 	InstitutionalScholarshipsComponent,
 	FastTrackComponent,
 	SoarComponent,
+	ZzzComponent,
 };

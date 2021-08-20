@@ -165,19 +165,19 @@
 
 				<div class="row">
 
-					<div class="col-lg-8 position-relative mt-4" > <!--(click)="openFeaturedStudent1(featureStudent1)"-->
+					<div class="col-lg-8 position-relative mt-4" (click)="openFeaturedStudent1(featureStudent1)" >
 						<img src="assets/images/featured/student1.png" alt="img" class="w-100" />
 						<div class="student-name">Odessa, TX</div>
 					</div>
 
 					<div class="col-lg-4 mt-4">
 
-						<div class="position-relative" > <!--(click)="openFeaturedStudent2(featureStudent2)"-->
+						<div class="position-relative" (click)="openFeaturedStudent2(featureStudent2)" >
 							<img src="assets/images/featured/student2.png" alt="img" class="w-100" />
 							<div class="student-name">Dallas, TX</div>
 						</div>
 
-						<div class="position-relative mt-4" > <!--(click)="openFeaturedStudent3(featureStudent3)"-->
+						<div class="position-relative mt-4" (click)="openFeaturedStudent3(featureStudent3)" >
 							<img src="assets/images/featured/student3.png" alt="img" class="w-100" />
 							<div class="student-name">Cooksville, MD</div>
 						</div>
@@ -315,95 +315,95 @@
 
 <!-- Feature Student 1 -->
 <ng-template #featureStudent1 let-modal>
-	<h3 class="model-heading">Feature Student</h3>
-	<div class="model-body text-center">
-		<div class="video-container" >
-			<iframe 
-				src="https://www.youtube.com/embed/Bjk-ruThQmU?rel=0"
-				width="500"
-				height="270"
-				frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
+	<div class="modal-content" >
+		<h3 class="model-heading">Feature Student</h3>
+		<div class="model-body text-center">
+			<div class="video-container" >
+				<iframe 
+					src="https://www.youtube.com/embed/sr8Rpjw-06A?rel=0"
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					></iframe>
+			</div>
 		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
-	</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
+		</div>
+</div>
 </ng-template>
 
 <!-- Feature Student 2 -->
 <ng-template #featureStudent2 let-modal>
-	<h3 class="model-heading">Feature Student</h3>
-	<div class="model-body text-center">
-		<div class="video-container" >
-			<iframe
-				src="https://www.youtube.com/embed/ZqkaRp7BLyE?rel=0"
-				width="560" 
-				height="315"
-				frameborder="0" 
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
+	<div class="modal-content" >
+		<h3 class="model-heading">Feature Student</h3>
+		<div class="model-body text-center">
+			<div class="video-container" >
+				<iframe
+					src="https://www.youtube.com/embed/ZqkaRp7BLyE?rel=0"
+					frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					></iframe>
+			</div>
 		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
-	</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
+		</div>
+</div>
 </ng-template>
 
 <!-- Feature Student 3 -->
 <ng-template #featureStudent3 let-modal>
-	<h3 class="model-heading">Feature Student</h3>
-	<div class="model-body text-center">
-		<div class="video-container" >
-			<iframe
-				src="https://www.youtube.com/embed/sr8Rpjw-06A?rel=0"
-				width="500"
-				height="270"
-				frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
+	<div class="modal-content" >
+		<h3 class="model-heading">Feature Student</h3>
+		<div class="model-body text-center">
+			<div class="video-container" >
+				<iframe
+					src="https://www.youtube.com/embed/Bjk-ruThQmU?rel=0"
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					></iframe>
+			</div>
 		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
-	</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
+		</div>
+</div>
 </ng-template>
 
 <!-- Feature School -->
 <ng-template #featureSchool let-modal>
-	<h3 class="model-heading">Feature School</h3>
-	<div class="model-body text-center">
-		<div class="video-container" >
-			<iframe
-				src="https://www.youtube.com/embed/I3uWy_J1LPQ?rel=0"
-				width="500"
-				height="270"
-				frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
+	<div class="modal-content" >
+		<h3 class="model-heading">Feature School</h3>
+		<div class="model-body text-center">
+			<div class="video-container" >
+				<iframe
+					src="https://www.youtube.com/embed/I3uWy_J1LPQ?rel=0"
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					></iframe>
+			</div>
 		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
-	</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
+		</div>
+</div>
 </ng-template>
 
 <!-- Feature Program -->
 <ng-template #featureProgram let-modal>
-	<h3 class="model-heading">Feature Program</h3>
-	<div class="model-body text-center">
-		<div class="video-container" >
-			<iframe
-				src="https://www.youtube.com/embed/L_dZhVw_F6o?rel=0"
-				width="500"
-				height="270"
-				frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
+	<div class="modal-content" >
+		<h3 class="model-heading">Feature Program</h3>
+		<div class="model-body text-center">
+			<div class="video-container" >
+				<iframe
+					src="https://www.youtube.com/embed/L_dZhVw_F6o?rel=0"
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					></iframe>
+			</div>
 		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
-	</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
+		</div>
+</div>
 </ng-template>

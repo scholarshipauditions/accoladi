@@ -33,7 +33,8 @@ import {
 	NonInstitutionalScholarshipsComponent,
 	InstitutionalScholarshipsComponent,
 	FastTrackComponent,
-	SoarComponent
+	SoarComponent,
+	ZzzComponent
 } from './modules/shared/shared.module';
 
 import { ScholarshipsComponent } from './modules/shared/components/scholarships/scholarships.component';
@@ -214,6 +215,10 @@ const appRoutes: Routes = [
 	{
 		path: 'public/institutional-scholarships',
 		component: InstitutionalScholarshipsComponent
+	},
+	{
+		path: 'public/zzz',
+		component: ZzzComponent
 	},
 
 	{
