@@ -33,6 +33,7 @@ import {
 	NonInstitutionalScholarshipsComponent,
 	InstitutionalScholarshipsComponent,
 	FastTrackComponent,
+	AuditionRequirementsComponent,
 	SoarComponent,
 	ZzzComponent
 } from './modules/shared/shared.module';
@@ -127,6 +128,14 @@ const appRoutes: Routes = [
 	{
 		path: 'public/articles/:articleTitle',
 		component: ArticlesComponent
+	},
+	{
+		path: 'public/audition-requirements',
+		component: AuditionRequirementsComponent
+	},
+	{
+		path: 'public/audition-requirements/:auditionTitle',
+		component: AuditionRequirementsComponent
 	},
 	{
 		path: 'public/resources',

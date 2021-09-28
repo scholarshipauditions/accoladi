@@ -130,6 +130,7 @@ import { WhatComponent } from './components/public/what.component';
 import { WhoComponent } from './components/public/who.component';
 import { WhyComponent } from './components/public/why.component';
 import { FastTrackComponent } from './components/public/fasttrack.component';
+import { AuditionRequirementsComponent } from './components/public/audition-requirements.component';
 import { SoarComponent } from './components/public/soar.component';
 import { ZzzComponent } from './components/public/zzz.component';
 
@@ -249,6 +250,7 @@ import { ZzzComponent } from './components/public/zzz.component';
 		NonInstitutionalScholarshipsComponent,
 		InstitutionalScholarshipsComponent,
 		FastTrackComponent,
+		AuditionRequirementsComponent,
 		SoarComponent,
 		ZzzComponent,
 	],
@@ -338,6 +340,7 @@ import { ZzzComponent } from './components/public/zzz.component';
 		NonInstitutionalScholarshipsComponent,
 		InstitutionalScholarshipsComponent,
 		FastTrackComponent,
+		AuditionRequirementsComponent,
 		SoarComponent,
 		ZzzComponent,
 	],
@@ -449,6 +452,7 @@ export {
 	NonInstitutionalScholarshipsComponent,
 	InstitutionalScholarshipsComponent,
 	FastTrackComponent,
+	AuditionRequirementsComponent,
 	SoarComponent,
 	ZzzComponent,
 };

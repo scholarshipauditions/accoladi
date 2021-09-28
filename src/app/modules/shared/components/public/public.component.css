@@ -209,19 +209,24 @@ a.dropdown-item {
 	font-weight: 900;
 	font-size: 40px;
 }
+
 .hero-subtext h4.right {
 	margin-left: 90px;
 }
+
 .hero-maintext h1 {
+	margin-top: 350px;
 	margin-left: 130px;
-	margin-bottom: 30px;
+	/*margin-bottom: 30px;*/
 	color: #e2a90a;
 	font-weight: 900;
-	font-size: 110px;
+	font-size: 90px;
 }
+
 .hero-maintext h1.right {
 	margin-left: 180px;
 }
+
 .hero-button {
 	font-size: 35px;
 	font-weight: 700;
@@ -229,6 +234,7 @@ a.dropdown-item {
 	border-width: 2px;
 	border-radius: 5px;
 }
+
 .hero-dropdown {
 	border: none;
 	border-radius: 0;
@@ -238,14 +244,17 @@ a.dropdown-item {
 	z-index: 99999;
 	animation-name: slideIn;
 }
+
 .hero-section .dropdown-menu {
 	right: 0;
 	left: unset !important;
 	top: 75px !important;
 }
+
 .hero-section .dropdown-toggle::after {
 	display: none !important;
 }
+
 /* Hero Section Large Devices*/
 @media (max-width: 930px) {
 	.hero-subtext h4 {
@@ -319,11 +328,13 @@ a.dropdown-item {
 		top: 53px !important;
 	}
 }
+
 @media (max-width: 500px) {
 	.hero-section {
 		margin-top: 64px;
 	}
 }
+
 @media (max-width: 440px) {
 	.hero-section {
 		padding: 50px 30px;
@@ -354,6 +365,7 @@ a.dropdown-item {
 		padding: 0;
 	}
 }
+
 @media (max-width: 320px) {
 	.hero-subtext h4 {
 		font-size: 18px;
@@ -372,6 +384,43 @@ a.dropdown-item {
 	}
 }
 
+
+.index-hero-video {
+	position: relative;
+	background: none;
+}
+
+.index-hero-video iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+.jumbotron {
+	position: relative;
+	overflow: hidden;
+	background-color:black;
+  }
+
+  .jumbotron video {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	width:100%;
+	height:100%;
+	object-fit: cover;
+	opacity:0.5;
+  }
+
+  .jumbotron .container {
+	z-index: 2;
+	position: relative;
+  }
+  
 /*-------------------------------------------
 	Explore Section Start
 -------------------------------------------*/
@@ -963,12 +1012,12 @@ a.dropdown-item {
 }
 .accoladi-sponsors .sponsor-item {
 	padding: 10px 20px;
-	width: 20%;
+	width: 33%;
 	float: left;
 }
 .accoladi-sponsors .sponsor-item img {
-	width: 120px;
-	height: 120px;
+	width: 250px;
+	/*height: 120px;*/
 }
 
 @media (max-width: 1440px) {
@@ -1046,7 +1095,7 @@ a.dropdown-item {
 
 	.accoladi-sponsors .sponsor-item img {
 		height: 100px;
-		width: 100px;
+		/*width: 100px;*/
 	}
 	.mission-logo {
 		width: 545px;
@@ -1077,7 +1126,7 @@ a.dropdown-item {
 	}
 	.accoladi-sponsors .sponsor-item img {
 		height: 80px;
-		width: 80px;
+		/*width: 80px;*/
 	}
 
 	.mission-logo {
@@ -1090,7 +1139,7 @@ a.dropdown-item {
 	}
 	.accoladi-sponsors .sponsor-item img {
 		height: 70px;
-		width: 70px;
+		/*width: 70px;*/
 	}
 }
 
@@ -3269,6 +3318,27 @@ a.dropdown-item {
 /*-------------------------------------------
 	Right-School Section Start
 -------------------------------------------*/
+
+#advantage-header {
+	margin-top: 76px;
+	background: url(/assets/images/advantage-header.png) no-repeat center;
+	background-size: cover;
+	height: 99vh;
+	max-height: 600px;
+	padding: 15px 30px;
+	display: flex;
+	align-items: flex-end;
+}
+
+#advantage-header h1 {
+	font-family: 'Quattrocento Sans', sans-serif;
+	width: 100%;
+	font-size: 140px;
+	color: #fff;	
+	text-shadow: 4px 1px 0px #3499cc;
+	font-weight: 900;
+}
+
 #right-school {
 	padding: 25px 10px;
 	background-image: url(/assets/images/articles/wave-gradient-blue.png);
@@ -3277,6 +3347,12 @@ a.dropdown-item {
 
 #right-school h1 {
 	margin: 0;
+}
+
+.advantage-subheader {
+	padding: 25px 10px;
+	background-image: url(/assets/images/articles/wave-gradient-blue.png);
+	background-size: 100% 100%;
 }
 
 @media (max-width: 926.98px) {
@@ -5424,4 +5500,858 @@ modal-content {
 div.high-ed-footer {
 	background: url(/assets/images/articles/yellow-background-footer.png) no-repeat center !important;
 	background-size: cover;
+}
+
+
+/*-------------------------------------------
+	Music Exam Question Page> Header Section
+--------------------------------------------*/
+#meq-header {
+	background: url(/assets/images/group_532.png) no-repeat top;
+	background-size: cover;
+}
+
+#meq-header .meq-title h1 {
+	font-size: 7.8vw;
+}
+
+#meq-header .meq-title h2 {
+	font-size: 6vw;
+	font-weight: 500;
+}
+
+#meq-header img.meq-logo {
+	width: 30vw;
+}
+
+#meq-header .meq-subtitle {
+	padding: 30px 0;
+	font-size: 3vw;
+	/* background-color:rgba(255, 243, 204, .5);
+	box-shadow: 0 0 50px #FBEFCA; */
+}
+
+/*-------------------------------------------
+	Music Exam Question Page> Question Section
+--------------------------------------------*/
+#meq-question {
+	padding: 20px 0;
+}
+
+#meq-question .question-title {
+	font-size: 7vw;
+}
+
+#meq-question .question-text {
+	font-size: 3vw;
+	text-align: center;
+	padding: 0 2vw;
+}
+
+#meq-question .question-options {
+	padding: 40px 0;
+	font-size: 2.7vw;
+}
+
+#meq-footer {
+	background: url(/assets/images/rectangle_258.png) no-repeat top;
+	background-size: cover;
+	padding: 50px 0 20px;
+}
+
+#meq-footer img {
+	width: 60%;
+}
+
+/*-------------------------------------------
+	Keyboard-6th Grade Page> Header Section
+--------------------------------------------*/
+#grade-by-grade-body {
+	background: url(/assets/images/grade-by-grade/blue-background-footer.png) no-repeat center;
+}
+
+#grade-by-grade-body .keyboard-6th-header {
+	padding: 10px 0;
+	background: url(/assets/images/grade-by-grade/wavytop-blue.png) no-repeat bottom;
+	background-size: cover;
+}
+
+.keyboard-6th-header .directory-path {
+	font-size: 14px;
+	color: #f2c033;
+	font-weight: bold;
+}
+
+.keyboard-6th-header .directory-path .text-black { 
+	color: #333;
+	font-weight: bold;
+}
+
+#grade-by-grade-body .dir-buttons {
+	padding: 5vw 0 6vw;
+}
+
+.dir-buttons .grade-dir-btn {
+	background-color: #ffbf10;
+	color: #fff;
+	font-size: 1.8vw;
+	font-weight: 700;
+	padding: 6px;
+	width: 19vw;
+	margin: 10px 1.5vw 0;
+	border: 2px solid #fff;
+	border-radius: 20px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	#grade-by-grade-body .dir-buttons {
+		padding: 8vw 0 18vw;
+	}
+
+	#grade-by-grade-body .dir-buttons .grade-dir-btn {
+		width: 170px;
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 450.98px) {
+	.keyboard-6th-header .directory-path {
+		font-size: 12px;
+	}
+
+	#grade-by-grade-body .dir-buttons .grade-dir-btn {
+		width: 120px;
+		font-size: 13px;
+		margin: 5px .5vw;
+	}
+}
+
+/*-------------------------------------------
+	Keyboard-6th Grade Page> Deails Section
+--------------------------------------------*/
+.keyboard-6th-details .k6d-text {
+	padding: 50px 0;
+}
+
+.keyboard-6th-details .k6d-text p span {
+	color: #f2c033;
+}
+
+.k6d-text .k6d-text-btn {
+	background-color: #ffbf10;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	padding: 6px 30px;
+	border: 2px solid #fff;
+	border-radius: 8px;
+	margin: 0 0 10px;
+}
+
+.k6d-text .k6d-text-btn div {
+	font-size: 16px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 575.98px) {
+	.keyboard-6th-details .k6d-text h1 {
+		font-size: 30px;
+	}
+
+	.keyboard-6th-details .k6d-text h3 {
+		font-size: 20px;
+	}
+
+	.keyboard-6th-details .k6d-text p {
+		font-size: 14px;
+	}
+
+	.k6d-text .k6d-text-btn {
+		font-size: 20px;
+		padding: 6px 25px;
+	}
+
+	.k6d-text .k6d-text-btn div {
+		font-size: 14px;
+	}
+}
+
+/*-------------------------------------------
+	Keyboard-6th Grade Page> Footer Section
+--------------------------------------------*/
+#grade-by-grade-footer {
+	position: relative;
+}
+
+#grade-by-grade-footer .gbg-footer {
+	position: relative;
+	z-index: 10;
+}
+
+#grade-by-grade-footer .gbg-footer-img {
+	position: absolute;
+	bottom: 0;
+	z-index: 0;
+}
+
+
+/*-------------------------------------------
+	Audition Requirement Page> Clarinet Premier 
+--------------------------------------------*/
+#audition-requirement-header {
+	background: url(/assets/images/asset-2.png) no-repeat top;
+	background-size: cover;
+	padding: 10px 0;
+}
+
+#audition-requirement-header .directory-path {
+	font-size: 14px;
+	color: #32a5df;
+	font-weight: bold;
+}
+
+#audition-requirement-header .directory-path span {
+	color: #333;
+	font-weight: bold;
+}
+
+#audition-requirement-header .arh-context {
+	padding: 4vw 0;
+}
+
+#audition-requirement-header .arh-context h3 {
+	font-size: 5vw;
+}
+
+#audition-requirement-header .arh-context h1 {
+	font-size: 13vw;
+	margin-top: 1.2vw;
+	text-shadow: 5px 1px 0 #32a5df;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	#audition-requirement-header .directory-path {
+		font-size: 12px;
+	}
+}
+
+/*-------------------------------------------
+	Audition Requirement Page > details 
+--------------------------------------------*/
+#ar-details {
+	padding: 70px 10px;
+	background: url(/assets/images/dimondgraphicplain-01.png) no-repeat bottom;
+	background-size: cover;
+}
+
+.gradient-bg {
+	background: url(/assets/images/yellow-background-footer.png) no-repeat center; /*linear-gradient(130deg, #fff, #e7e5e0, #ead8ae);*/
+	background-size: cover;
+}
+
+/*-------------------------------------------
+	Audition Requirement Page> Footer 
+--------------------------------------------*/
+#audition-requirement-footer {
+	background: url(/assets/images/yellow-background-footer.png) no-repeat center;
+	background-size: cover;
+}
+
+/*-------------------------------------------
+	Instrumental Page> header 
+--------------------------------------------*/
+.instrumental-dir-path {
+	padding: 15px 10px 7px;
+	font-size: 14px;
+	color: #ffbf10;
+	font-weight: bold;
+}
+
+.instrumental-dir-path span {
+	color: #333;
+	font-weight: bold;
+}
+
+#instrumental-header {
+	background: url(/assets/images/grade-by-grade/instrumental/AdobeStock_3936425.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#instrumental-header .ih-context {
+	padding: 50px;
+	color: #fff;
+}
+
+#instrumental-header .ih-context h1 {
+	font-size: 8vw;
+	text-shadow: 5px 1px 0 #f2c033;
+}
+
+#instrumental-header .ih-context h3 {
+	font-size: 4.5vw;
+}
+
+#instrumental-header .ih-context p {
+	font-size: 2vw;
+	padding-top: 20px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	#instrumental-header .ih-context {
+		padding: 30px 20px;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.instrumental-dir-path {
+		font-size: 13px;
+		padding: 20px 10px 5px;
+	}
+
+	#instrumental-header .ih-context {
+		padding: 20px 10px;
+	}
+
+	#instrumental-header .ih-context h1 {
+		font-size: 10vw;
+	}
+
+	#instrumental-header .ih-context h3 {
+		font-size: 5vw;
+	}
+
+	#instrumental-header .ih-context p {
+		font-size: 3vw;
+	}
+}
+
+@media (max-width: 440.98px) {
+	.instrumental-dir-path {
+		font-size: 12px;
+		padding: 8px 10px 5px;
+	}
+
+	#instrumental-header .ih-context h1 {
+		font-size: 11vw;
+	}
+
+	#instrumental-header .ih-context h3 {
+		font-size: 6vw;
+	}
+
+	#instrumental-header .ih-context p {
+		font-size: 4vw;
+		padding: 0;
+	}
+}
+
+/*-------------------------------------------
+	Instrumental Page> Gallery 
+--------------------------------------------*/
+#gbg-instrumental-bg {
+	background: url(/assets/images/grade-by-grade/instrumental/instrumental-bg.png) no-repeat bottom;
+	background-size: cover;
+}
+
+#gbg-instrumental-bg .instrumental-gallery {
+	padding-top: 70px;
+	padding-bottom: 100px;
+}
+
+.instrumental-gallery .ig-item {
+	margin: 20px 0;
+}
+
+.instrumental-gallery .ig-item .ig-item-overlay {
+	background-color: #ffcb33;
+	border: 2px solid #fff;
+	border-radius: 20px;
+	color: #fff;
+	padding: 10px 15px;
+	position: absolute;
+	bottom: 10px;
+	width: 80%;
+	left: 10%;
+}
+
+.instrumental-gallery .ig-item .ig-item-overlay h4 {
+	margin: 0;
+	font-size: 20px;
+}
+
+/*-------------------------------------------
+	Keyboard Page> header 
+--------------------------------------------*/
+section.inst-keyboard {
+	background-image: url(/assets/images/grade-by-grade/keyboard/pexels-photo-6647419.jpg) !important;
+}
+
+/*-------------------------------------------
+	Voice Page> header 
+--------------------------------------------*/
+section.inst-voice {
+	background-image: url(/assets/images/grade-by-grade/voice/Rectangle\ 12.jpg) !important;
+}
+
+/* ################# 8/27/2021 ################### */
+/*-------------------------------------------
+	My Music Future Page> tm-header Section
+--------------------------------------------*/
+.tm-bt-padding {
+	padding-bottom: 40px;
+}
+
+.hero-section.tm-header {
+	background-image: url(/assets/images/teacher-header.png);
+}
+
+.tm-header {
+	height: 70vw;
+	max-height: 600px;
+	min-height: 400px;
+}
+
+.tm-header .tm-header-content {
+	background-color: rgba(255, 255, 255, 0.6);
+	position: absolute;
+	top: 0;
+	right: 0;
+	max-width: 350px;
+	height: 100%;
+	padding: 15px;
+}
+
+.tm-header .tm-header-content p {
+	font-size: 16px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	.tm-header .tm-header-content {
+		max-width: 70%;
+	}
+
+	.tm-header .tm-header-content p {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.tm-header .tm-header-content {
+		max-width: 100%;
+	}
+
+	.tm-header .tm-header-content p {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 410.98px) {
+	.tm-header .tm-header-content {
+		padding: 8px;
+		overflow: hidden;
+	}
+
+	.tm-header .tm-header-content p {
+		font-size: 13px;
+		margin-bottom: 7px;
+	}
+}
+
+/* Guide Nav section */
+.tm-as-bg {
+	background: url(/assets/images/section-1-bg.png) no-repeat top;
+	background-size: cover;
+}
+
+.tm-guide-nav .money-item-body .money-item-bottom {
+	width: 75% !important;
+	border-radius: 8px !important;
+}
+
+/*-------------------------------------------
+	My Music Future Page> music future Section
+--------------------------------------------*/
+.music-future {
+	background: url(/assets/images/image-5.jpg) no-repeat center;
+	background-size: cover;
+}
+
+.music-future .mf-content {
+	width: 350px;
+	height: 100%;
+	background-color: rgba(226, 169, 10, .4);
+	padding: 50px 8px;
+	color: #fff;
+}
+
+.music-future .mf-content h1 {
+	font-size: 100px;
+}
+
+.music-future .mf-content h1 span {
+	font-weight: 700;
+	text-shadow: 4px 1px 0 #e2a90a;
+}
+
+.music-future .mf-content p {
+	font-size: 14px;
+}
+
+.music-future .mf-content button.btn {
+	font-size: 35px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	border: 2px solid #fff;
+	background-color: transparent;
+	color: #fff;
+	font-weight: 700;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	.music-future .mf-content {
+		padding: 20px 8px;
+		width: 300px;
+	}
+
+	.music-future .mf-content h1 {
+		font-size: 70px;
+	}
+
+	.music-future .mf-content button.btn {
+		font-size: 26px;
+		margin-top: 15px;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.music-future .mf-content {
+		padding: 10px 8px;
+		width: 280px;
+	}
+
+	.music-future .mf-content h1 {
+		font-size: 50px;
+	}
+
+	.music-future .mf-content button.btn {
+		font-size: 20px;
+		margin-top: 10px;
+	}
+}
+
+/*-------------------------------------------
+	My Music Future Page> Form Section
+--------------------------------------------*/
+.tm-form-section .tm-form-img {
+	height: 100%;
+	width: 100%;
+	border-radius: 20px 0 0 20px;
+}
+
+.tm-form-section form.tm-form {
+	padding: 0 !important;
+	margin-bottom: 50px;
+}
+
+.tm-form-section form.tm-form h2 {
+	color: #fff;
+	text-align: center;
+}
+
+.tm-form-section .tm-form .btn {
+	margin-top: 10px !important;
+	border: 2px solid #fff;
+	font-weight: 700;
+	color: #fff;
+	background-color: transparent;
+	font-size: 20px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 575.98px) {
+	.tm-form-section form.tm-form h2 {
+		font-size: 24px;
+	}
+}
+
+.tm-gallery .tm-gallery-item-bt {
+	width: 75% !important;
+	border-radius: 8px !important;
+}
+
+/*-------------------------------------------
+	My Music Future Page> TM Free Footer section
+--------------------------------------------*/
+#tm-free-footer .music-future-footer {
+	background: url(/assets/images/0001.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#tm-free-footer .tm-free {
+	background: url(/assets/images/image9.jpg) no-repeat center;
+	background-size: cover;
+	padding: 20px;
+}
+
+#tm-free-footer .tm-free h3 {
+	font-size: 58px;
+	color: #fff;
+}
+
+#tm-free-footer .tm-free h3 span {
+	font-size: 140px;
+	font-weight: 700;
+	text-shadow: 4px 1px 0 #e2a90a;
+}
+
+#tm-free-footer .tm-free .tm-free-btns {
+	margin-top: 20px;
+}
+
+#tm-free-footer .tm-free .tm-free-btns .btn{
+	color: #fff;
+	font-size: 30px;
+	font-weight: 700;
+	padding: 8px 20px;
+	border: 2px solid #fff;
+	background-color: #e2a90a;
+	line-height: 32px;
+}
+
+#tm-free-footer .tm-free .tm-free-btns .btn span {
+	font-size: 24px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 850.98px) {
+	#tm-free-footer .tm-free h3 {
+		font-size: 40px;
+	}
+
+	#tm-free-footer .tm-free h3 span {
+		font-size: 100px;
+	}
+
+	#tm-free-footer .tm-free .tm-free-btns .btn {
+		font-size: 20px;
+		line-height: 22px;
+	}
+
+	#tm-free-footer .tm-free .tm-free-btns .btn span {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 575.98px) {
+	#tm-free-footer .tm-free {
+		padding: 15px 8px;
+	}
+
+	#tm-free-footer .tm-free h3 {
+		font-size: 36px;
+	}
+
+	#tm-free-footer .tm-free h3 span {
+		font-size: 90px;
+	}
+
+	#tm-free-footer .tm-free .tm-free-btns .btn {
+		font-size: 18px;
+		line-height: 20px;
+		padding: 7px 8px;
+	}
+
+	#tm-free-footer .tm-free .tm-free-btns .btn span {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 400.98px) {
+	#tm-free-footer .tm-free h3 {
+		font-size: 30px;
+	}
+
+	#tm-free-footer .tm-free h3 span {
+		font-size: 70px;
+	}
+
+	#tm-free-footer .tm-free .tm-free-btns .btn {
+		font-size: 14px;
+		line-height: 16px;
+		padding: 6px;
+	}
+
+	#tm-free-footer .tm-free .tm-free-btns .btn span {
+		font-size: 13px;
+	}
+}
+
+/*-------------------------------------------
+	Accoladi FAQ Page> All section
+--------------------------------------------*/
+#accodali-faq {
+	background: url(/assets/images/faq-background.png) no-repeat center;
+	background-size: cover;
+}
+
+#accodali-faq .faq-header {
+	background: url(/assets/images/wavytop.png) no-repeat bottom;
+	background-size: cover;
+	padding: 50px 10px 80px;
+}
+
+#accodali-faq .faq-header h3 {
+	font-size: 4vw;
+}
+
+#accodali-faq .faq-header h1 {
+	font-size: 12vw;
+	text-shadow: 5px 1px 0 #36A0D3;
+}
+
+#accodali-faq .faq-centext h5 {
+	margin: 30px 0;
+}
+
+#accodali-faq .faq-centext p {
+	padding-bottom: 50px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 575.98px) {
+	#accodali-faq .faq-centext h5 {
+		font-size: 16px;
+		margin: 15px;
+	}
+
+	#accodali-faq .faq-centext p {
+		font-size: 13px;
+		padding-bottom: 25px;
+	}
+}
+
+/*-------------------------------------------
+	Entrance Exam Questions Page> Teacher
+--------------------------------------------*/
+#fastTrack-actionPlan.exam-question-teacher .context-text {
+	padding: 80px 10px;
+}
+
+#fastTrack-actionPlan.exam-question-teacher .context-text h1 {
+	font-family: arial;
+	font-size: 14vw;
+	height: auto;
+}
+
+#fastTrack-actionPlan.exam-question-teacher .context-text h2 {
+	font-family: arial;
+	font-size: 5vw;
+	margin: 0;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	#fastTrack-actionPlan.exam-question-teacher .context-text {
+		padding: 7vw 10px;
+	}
+}
+
+/* Detail Context Section */
+#exam-question-teacher {
+	padding: 70px 0 40px;
+	background: url(/assets/images/yellow-background-footer.png) no-repeat bottom;
+	background-size: cover;
+}
+
+#exam-question-teacher .eq-context p {
+	font-size: 2vw;
+}
+
+#exam-question-teacher .eq-context img {
+	width: 45%;
+	padding: 0 10px 10px 10px;
+}
+
+#exam-question-teacher .eq-context p>.btn {
+	border: 2px solid #fff;
+	border-radius: 7px;
+	font-weight: bold;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	#exam-question-teacher .eq-context p {
+		font-size: 14px;
+	}
+
+	#exam-question-teacher .eq-context h1 {
+		font-size: 24px;
+	}
+}
+
+@media (max-width: 575.98px) {
+	#exam-question-teacher .eq-context img {
+		width: 100%;
+		padding: 10px 0;
+	}
+
+	#exam-question-teacher .eq-context p>.btn {
+		font-size: 13px;
+		padding: 0 5px;
+		font-weight: normal;
+	}
+
+	#exam-question-teacher .eq-context h1 {
+		font-size: 20px;
+	}
+}
+
+/* Get connected & Get More Section */
+#exam-question-get-more {
+	position: relative;
+	background: url(/assets/images/image-1.jpg) no-repeat center;
+	background-size: cover;
+	height: 40vw;
+}
+
+#exam-question-get-more .get-more-btns {
+	position: absolute;
+	bottom: 20px;
+}
+
+#exam-question-get-more .get-more-btns .btn {
+	padding: 0px 20px;
+	font-size: 28px;
+	font-weight: 700;
+	border: 2px solid #fff;
+	background-color: #ffbf10;
+}
+
+#exam-question-get-more .get-more-btns .btn div {
+	font-size: 18px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	#exam-question-get-more .get-more-btns .btn {
+		font-size: 18px;
+		padding: 0 10px;
+	}
+}
+
+@media (max-width: 575.98px) {
+	#exam-question-get-more {
+		height: 300px;
+	}
+
+	#exam-question-get-more .get-more-btns .btn {
+		font-size: 18px;
+		padding: 10px;
+		margin: 10px 20px;
+	}
 }

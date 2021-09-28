@@ -19,6 +19,7 @@
 						"assets": [
 							"src/assets",
 							"src/articles",
+							"src/auditions",
 							"src/templates",
 							"src/favicon.ico"
 						],
@@ -134,6 +135,9 @@
 						"assets": [
 							"src/assets",
 							"src/public",
+							"src/articles",
+							"src/auditions",
+							"src/templates",
 							"src/favicon.ico"
 						]
 					}
@@ -183,6 +187,6 @@
 		}
 	},
 	"cli": {
-		"analytics": false
+		
 	}
 }

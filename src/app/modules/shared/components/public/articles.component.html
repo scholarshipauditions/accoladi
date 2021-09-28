@@ -8,24 +8,19 @@
 	
 	<ng-container *ngIf="htmlData" >
 
-		<a [routerLink]="['/public/articles/']" style="margin: 50px 100px;" >&lt;&lt; Return To Articles</a>
+		<h1 [routerLink]="['/public/articles/']" style="margin: 20px 100px;" >Advice</h1>
 
 		<!-- article -->
-		<div [innerHtml]="htmlData" class="d-flex p-2 justify-content-between" style="margin: 50px 100px;"></div>
+		<div [innerHtml]="htmlData" class="d-flex p-2 justify-content-between" style="margin: 0px 100px;"></div>
 
-		<a [routerLink]="['/public/articles/']" style="margin: 10px 100px;" >&lt;&lt; Return To Articles</a>
+		<a [routerLink]="['/public/articles/']" style="margin: 10px 100px;" >&lt;&lt; Return To Advice</a>
 		
 	</ng-container>
 
 	<ng-container *ngIf="!htmlData" >
-		<!--
-		<a [routerLink]="['/public/articles/video']" >
-			video
-		</a>
-		-->
 
 		<div class="article-header-title text-center">
-			<h1>ARTICLES</h1>
+			<h1>Advice</h1>
 			<hr class="article-hr">
 			<h3>Choosing A School</h3>
 		</div>

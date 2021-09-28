@@ -1,4 +1,4 @@
-	<!-- Hero Section -->
+	<!-- Hero Section 
 	<div class="hero-section">
 
 		<div class="hero-subtext">
@@ -21,24 +21,73 @@
 				aria-expanded="false">GET CONNECTED</button>
 		</div>
 
+	</div>-->
+	<!-- Hero Section End -->
+
+	<!-- Hero Section -->
+	<div class="hero-section index-hero-video">
+		<iframe src="https://www.youtube.com/embed/mD7Z8faovgM?playlist=mD7Z8faovgM&autoplay=1&mute=1&showinfo=0&controls=0&loop=1&modestbranding=1"></iframe>
+		<div class="hero-subtext">
+			<h4>When you make the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right connection,</h4>
+		</div>
+		<div class="hero-maintext">
+			<h1>anything is<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possible.</h1>
+		</div>
+		<div class="text-right">
+			<button
+				[routerLink]="['/public/get-connected']"
+				class="btn btn-outline-light hero-button dropdown-toggle"
+				id="navbarDropdown"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false">GET CONNECTED</button>
+		</div>
 	</div>
 	<!-- Hero Section End -->
+
+	<!-- <div class="jumbotron jumbotron-fluid">
+
+		<video autoplay muted loop >
+			<source src="/assets/videos/HeroVideo.mp4" type="video/mp4">
+		</video>
+		
+		<div class="hero-section index-hero-video">		
+		<div class="hero-subtext">
+			<h4>When you make the</h4>
+			<h4 class="right">right connection,</h4>
+		</div>
+		<div class="hero-maintext" style="vertical-align: baseline;border:thin red solid;margin-top:70px;">
+			<h1>anything is</h1>
+			<h1 class="right">possible.</h1>
+		</div>
+		<div class="text-right">
+			<button
+				[routerLink]="['/public/get-connected']"
+				class="btn btn-outline-light hero-button dropdown-toggle"
+				id="navbarDropdown"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false">GET CONNECTED</button>
+		</div>
+		</div>
+	</div>
+	/.jumbotron -->
 
 	<!-- Explore Section -->
 	<div class="explore-section">
 
 		<div class="row">
 
-			<div class="col-sm-4 text-center">
-				<h3 class="right-border">music scholarships</h3>
+			<div class="col-sm-4 text-center" [routerLink]="['/public/articles/music_scholarships']" >
+				<h3 class="right-border">Music Scholarships</h3>
 			</div>
 
-			<div class="col-sm-4 text-center">
-				<h3 class="right-border">audition advice</h3>
+			<div class="col-sm-4 text-center" [routerLink]="['/public/articles/audition_advice']" >
+				<h3 class="right-border">Audition Advice</h3>
 			</div>
 
-			<div class="col-sm-4 text-center">
-				<h3>collegiate connections</h3>
+			<div class="col-sm-4 text-center" [routerLink]="['/public/articles/collegiate_connections']" >
+				<h3>Collegiate Connections</h3>
 			</div>
 
 		</div>
@@ -92,7 +141,7 @@
 				<h2 class="heading text-center">RESOURCES</h2>
 
 				<p class="text">
-					We’ve done the application, audition, and scholarship research for you. We have the directories, articles, and guides you need to be successful.
+					We’ve done the application, audition, and scholarship research for you. We have the directories, advice, and guides you need to be successful.
 				</p>
 
 			</div>
@@ -121,7 +170,7 @@
 							From colleges, universities, and conservatories for every discipline
 						</p>
 
-						<!-- <button class="btn button">Find Your Requirements</button> -->
+						<button [routerLink]="['/public/audition-requirements/']"  class="btn button">Find Your Requirements</button>
 
 					</div>
 
@@ -199,7 +248,7 @@
 		<div class="row align-items-center">
 
 			<div class="col-lg-6 position-relative px-0 order-0 order-lg-0" (click)="openFeaturedSchool(featureSchool)" >
-				<img src="assets/images/featured/school.png" alt="img" class="w-100 featured-img" />
+				<img src="assets/images/featured/school.jpg" alt="img" class="w-100 featured-img" />
 				<div class="feature-label right">Featured School</div>
 			</div>
 
@@ -214,7 +263,7 @@
 			</div>
 
 			<div class="col-lg-6 position-relative px-0 order-2 order-lg-3" (click)="openFeaturedProgram(featureProgram)" >
-				<img src="assets/images/featured/program.png" alt="img" class="w-100 featured-img" />
+				<img src="assets/images/featured/program.jpg" alt="img" class="w-100 featured-img" />
 				<div class="feature-label left">Featured Program</div>
 			</div>
 
@@ -266,7 +315,7 @@
 
 			<div class="container-fluid">
 
-				<div class="sponsor-item">
+				<!-- <div class="sponsor-item">
 					<img src="assets/images/spon1.png" alt="">
 				</div>
 
@@ -284,8 +333,118 @@
 
 				<div class="sponsor-item">
 					<img src="assets/images/spon5.png" alt="">
+				</div> -->
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/ASN.png">
 				</div>
-
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/ASTA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/BMC.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/CBDNA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/CMS.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/FMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/FoTMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/FW.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/GMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/ICFA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/IMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/IMEA1.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/JEN.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/KMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/KMEA1.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/LOAO.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/MAR.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/MFA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/MMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/MTEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/MTNA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/MWC.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NAFME.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NASM.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NATSinc.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NBA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NCMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NEMFA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NFHS.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/NYSMTA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/OkMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/OMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/SCMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/TMAC.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/TMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/WMEA.png">
+				</div>
+				<div class="sponsor-item">
+					<img src="assets/images/organization-logos/WMEA1.png">
+				</div>
 			</div>
 
 		</div>
