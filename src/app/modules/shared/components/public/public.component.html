@@ -79,15 +79,15 @@
 		<div class="row">
 
 			<div class="col-sm-4 text-center" [routerLink]="['/public/articles/music_scholarships']" >
-				<h3 class="right-border">Music Scholarships</h3>
+				<h3 class="right-border text-uppercase">Music Scholarships</h3>
 			</div>
 
 			<div class="col-sm-4 text-center" [routerLink]="['/public/articles/audition_advice']" >
-				<h3 class="right-border">Audition Advice</h3>
+				<h3 class="right-border text-uppercase">Audition Advice</h3>
 			</div>
 
 			<div class="col-sm-4 text-center" [routerLink]="['/public/articles/collegiate_connections']" >
-				<h3>Collegiate Connections</h3>
+				<h3 class="text-uppercase">Collegiate Connections</h3>
 			</div>
 
 		</div>
@@ -118,20 +118,20 @@
 					</div>
 
 					<div class="col-lg-4 text-center mt-3">
-						<h3 class="title">$7500</h3>
-						<p class="text">average award per year for performing arts students in the U.S</p>
+						<h3 class="title">170,000+</h3>
+						<p class="text">music scholarships awarded annually in the U.S.</p>
 					</div>
 
 				</div>
 
 				<div class="text-2 text-center">
-					*In-house research derived from the National Center for Education Statistics
+					*In-house research derived from the National Center for Education Statistics	
 				</div>
 
-				<!-- <div class="text-center">
-					<button class="btn button">View over 16,000 Scholarships</button>
-				</div> -->
-
+				<div class="text-center">
+					<button [routerLink]="['/scholarships']" class="btn button">View Scholarship Directory</button>
+				</div>
+				
 			</div>
 			<!-- Scholarship Section End -->
 
@@ -216,19 +216,19 @@
 
 					<div class="col-lg-8 position-relative mt-4" (click)="openFeaturedStudent1(featureStudent1)" >
 						<img src="assets/images/featured/student1.png" alt="img" class="w-100" />
-						<div class="student-name">Odessa, TX</div>
+						<div class="student-name">Percussion<br><span class="student-location">Odessa, TX</span></div>
 					</div>
 
 					<div class="col-lg-4 mt-4">
 
 						<div class="position-relative" (click)="openFeaturedStudent2(featureStudent2)" >
 							<img src="assets/images/featured/student2.png" alt="img" class="w-100" />
-							<div class="student-name">Dallas, TX</div>
+							<div class="student-name">Musical Theater<br><span class="student-location">Dallas, TX</span></div>
 						</div>
 
 						<div class="position-relative mt-4" (click)="openFeaturedStudent3(featureStudent3)" >
 							<img src="assets/images/featured/student3.png" alt="img" class="w-100" />
-							<div class="student-name">Cooksville, MD</div>
+							<div class="student-name">Vocal<br><span class="student-location">Cooksville, MD</span></div>
 						</div>
 
 					</div>
@@ -275,7 +275,7 @@
 	<!-- Mission -->
 	<div class="mission">
 
-		<h2 class="heading text-center">OUR MISSION</h2>
+		<!-- <h2 class="heading text-center">OUR MISSION</h2> -->
 
 		<p class="text text-center">
 			We empower student performers to recognize, afford, and achieve their collegiate dreams.

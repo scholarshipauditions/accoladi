@@ -53,7 +53,7 @@
 						<span>Associate Dean, Undergraduate Studies</span>
 						<h6>Frost School of Music</h6>
 						<h6>University of Miami</h6>
-						<button class="btn ed-btn">Endorsement Video</button>
+						<button class="btn ed-btn" (click)="openCommitmentRecruiter(content4)">Endorsement Video</button>
 					</div>
 
 				</div>
@@ -201,6 +201,28 @@
 			<li>A national directory of non-institutional scholarships</li>
 			<li>An opportunity for your school and music program to be featured on our front page</li>
 		</ul>
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark ml-3 mt-4" (click)="modal.close()">Close</button>
+	</div>
+
+</ng-template>
+
+
+<ng-template #content4 let-modal>
+	
+	<h3 class="model-heading">Dr. Steven Moore</h3>
+	
+	<div class="model-body text-center">
+		<iframe 
+			width="560" 
+			height="315" 
+			src="https://www.youtube.com/embed/ng18-GMGzDI?playlist=ng18-GMGzDI&rel=0&loop=0" 
+			title="YouTube video player" 
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+			allowfullscreen></iframe>
 	</div>
 
 	<div class="modal-footer">

@@ -1,122 +1,197 @@
-<div class="getConnected-page">
+<div class="getConnected-page">	
 	
-	<h2 class="heading text-center">Get Connected</h2>
-	
-	<div class="container-fluid">
-		
-		<div class="row mt-5">
-			
-			<div class="col-lg-4 mt-4 text-center connection">
-				
-				<div class="wrapper">
-					<h4 class="title">Student</h4>
-					<a [routerLink]="['/register']" [queryParams]="{role: 'Student'}" class="button-1">*10-Day Free Trial</a>
-					<img src="assets/images/student.png" alt="student-img" class="img-fluid d-block mx-auto" />
-					<a (click)="openCommitmentStudent(content1)" style="cursor:pointer;" class="button-2">Our Commitment to Students</a>
-				</div>
-
-			</div>
-			
-			<div class="col-lg-4 mt-4 text-center connection">
-				
-				<div class="wrapper">
-					<h4 class="title">Teacher</h4>
-					<a [routerLink]="['/register']" [queryParams]="{role: 'Teacher'}" class="button-1">Create Free Account</a>
-					<img src="assets/images/teacher.png" alt="student-img" class="img-fluid d-block mx-auto" />
-					<a (click)="openCommitmentTeacher(content2)" style="cursor:pointer;" class="button-2">Our Commitment to Teachers</a>
-				</div>
-
-			</div>
-			
-			<div class="col-lg-4 mt-4 text-center connection">
-				
-				<div class="wrapper">
-					<h4 class="title">Recruiter</h4>
-					<a [routerLink]="['/register']" [queryParams]="{role: 'Recruiter'}" class="button-1">Create Free Account</a>
-					<img src="assets/images/recruiter.png" alt="student-img" class="img-fluid d-block mx-auto" />
-					<a (click)="openCommitmentRecruiter(content3)" style="cursor:pointer;" class="button-2">Our Commitment to Recruiters</a>
-				</div>
-
-			</div>
-			
-		</div>
-
-		<!-- tmp video
-		<div class="row mt-5">
-			<div class="col-lg-10 mt-10 text-center connection">
-			<iframe
-				width="900"
-				height="600"
-				src="https://www.youtube.com/embed/ng18-GMGzDI?rel=0"
-				frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
-			</div>
-		</div> -->
-		
+	<div class="article-header-title text-center">
+		<h1>Get<br>Connected</h1>
 	</div>
-			
-	<!--
-	<div class="container-fluid quote-section">	 <div class="row">
-			<div class="col-lg-8 position-relative mt-5">
-				<img src="assets/images/parker-journey-img.png" alt="img" class="w-100" />
-				<div class="img-label">Parker’s Journey</div>
-			</div>
-			
-			<div class="col-lg-4 mt-5">
-				
-				<div class="d-flex align-items-center">
-					<div class="col-6 text-center">
-						<img src="assets/images/quote-1-img.png" alt="img" class="img-fluid" />
-					</div>
-					<div class="col-6 quote-text text-center">Quote</div>
-				</div>
-				
-				<div class="d-flex align-items-center my-5 sec-y-margin">
-					<div class="col-6 text-center">
-						<img src="assets/images/quote-2-img.png" alt="img" class="img-fluid" />
-					</div>
-					<div class="col-6 quote-text text-center">Quote</div>
-				</div>
-				
-				<div class="d-flex align-items-center">
-					<div class="col-6 text-center">
-						<img src="assets/images/quote-3-img.png" alt="img" class="img-fluid" />
-					</div>
-					<div class="col-6 quote-text text-center">Quote</div>
-				</div>
-				
-			</div>
-			
-		</div>
 
-	</div> -->
-	
-	<div class="pricing">
-	
-		<h2 class="heading text-center">Student Pricing</h2>
+	<section id="gc-category">
+		
 		<div class="container-fluid">
+			
 			<div class="row">
-				<div class="col-6">3 Month</div>
-				<div class="col-6">$30</div>
-				<div class="col-6">6 Month</div>
-				<div class="col-6">$55</div>
-				<div class="col-6">1 Year</div>
-				<div class="col-6">$100</div>
-				<div class="col-6">Lifetime	<small>(per student)</small></div>
-				<div class="col-6">$199</div>
+				
+				<div class="col-md-4">
+					
+					<div class="gcc-column text-center">
+						
+						<h1>STUDENT</h1>
+						
+						<button [routerLink]="['/register']" [queryParams]="{role: 'Student'}" class="btn btn-outline-dark">10 Days Free Trial*</button>
+						
+						<div>
+							<button (click)="openCommitmentStudent(content1)" class="btn btn-outline-dark btn-commitment">Our Pricing and Commitment to Students</button>
+						</div>
+
+						<img src="/assets/images/get-connected/asset1.png" alt="" class="img-fluid">
+					
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+					
+					<div class="gcc-column text-center">
+					
+						<h1>TEACHER</h1>
+						
+						<button [routerLink]="['/register']" [queryParams]="{role: 'Teacher'}" class="btn btn-outline-dark">Create Free Account</button>
+						
+						<div>
+							<button (click)="openCommitmentTeacher(content2)" class="btn btn-outline-dark btn-commitment">Our Commitment to Teachers</button>
+						</div>
+						
+						<img src="assets/images/get-connected/asset3.png" alt="" class="img-fluid">
+					
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+					
+					<div class="gcc-column text-center">
+						
+						<h1 class="gccc-recruiter">RECRUITERS</h1>
+						
+						<button [routerLink]="['/register']" [queryParams]="{role: 'Recruiter'}" class="btn btn-outline-dark">Create Free Account</button>
+						
+						<div>
+							<button (click)="openCommitmentRecruiter(content3)" class="btn btn-outline-dark btn-commitment">Our Commitment Recruiters</button>
+						</div>
+						
+						<img src="assets/images/get-connected/asset4.png" alt="" class="img-fluid">
+					
+					</div>
+
+				</div>
+
 			</div>
+
 		</div>
+
+	</section>
+
+	<section id="student-pricing-banner">
+		
+		<div class="spb-content text-right">
+
+			<h2>Student</h2>
+			<h1>Pricing</h1>
+
+		</div>
+
+	</section>
+
+	<div id="gc-pricing-details">
+
+		<!-- <div class="text-center mb-5">
+		
+			<button class="btn btn-gcpd">SIGN UP</button>
+		
+		</div> -->
+
+		<div class="container-fluid gcpd-body pt-5">
+			
+			<div class="row">
+				
+				<div class="col-md-4">
+					
+					<div class="gcpd-column text-center">
+						<h1>10 Days Trial</h1>
+						<h2>Free</h2>
+						<div class="offer-policies text-left">
+							<i>-</i><p>Limited search results of directories</p>
+							<i>-</i><p>Limited access to resources</p>
+							<i>-</i><p>Online profile not searchable to recruiters</p>
+						</div>
+						<h2>The 10-days free trial includes limited search results and resources. Your profile is not searchable to recruiters during the trial period.</h2>
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+					
+					<div class="gcpd-column text-center">
+						<h1>Full Access</h1>
+						<h2>3 months $30</h2>
+						<h2>6 months $55</h2>
+						<h2>12 months $100</h2>
+						<div class="offer-policies text-left">
+							<i>-</i><p>Online profile searchable to recuiters from colleges, universities, conservatories and summer enrichment</p>
+							<i>-</i><p>See colleges that viewed you</p>
+							<i>-</i><p>Receive messages from recruiters in a secure portal</p>
+							<i>-</i><p>Invite Teachers</p>
+							<i>-</i><p>College Directory</p>
+							<i>-</i><p>Premier Program</p>
+							<i>-</i><p>Request Reference</p>
+							<i>-</i><p>Music Career Directory</p>
+							<i>-</i><p>Summer Camp Directory</p>
+							<i>-</i><p>Competition & Festival Directory</p>
+							<i>-</i><p>Repertoire Directory</p>
+							<i>-</i><p>Excerpt Directory</p>
+							<i>-</i><p>Mock Audition Requirements</p>
+							<i>-</i><p>Entrance Exam Questions</p>
+							<i>-</i><p>500 Musical Terms</p>
+							<i>-</i><p>Music History Guides</p>
+							<i>-</i><p>American Music Timeline</p>
+							<i>-</i><p>Directory of 16,500+ Non- Institutional Scholarships</p>
+							<i>-</i><p>Articles & Blogs</p>
+							<i>-</i><p>Grade by Grade Guide for Audition Preparation</p>
+							<i>-</i><p>Music Theory Guides</p>
+							<i>-</i><p>Guide to Paying for Colleges</p>
+							<i>-</i><p>Notify colleges & summer enrichment preferences</p>
+							<i>-</i><p>Opportunity to be a featured student of Accoladi's home page</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+					
+					<div class="gcpd-column text-center">
+						<h1>Lifetime</h1>
+						<h2>Full Access</h2>
+						<h2>$199</h2>
+						<div class="offer-policies text-left">
+							<i>-</i><p>Online profile searchable to recuiters from colleges, universities, conservatories and summer enrichment</p>
+							<i>-</i><p>See colleges that viewed you</p>
+							<i>-</i><p>Receive messages from recruiters in a secure portal</p>
+							<i>-</i><p>Invite Teachers</p>
+							<i>-</i><p>College Directory</p>
+							<i>-</i><p>Premier Program</p>
+							<i>-</i><p>Request Reference</p>
+							<i>-</i><p>Music Career Directory</p>
+							<i>-</i><p>Summer Camp Directory</p>
+							<i>-</i><p>Competition & Festival Directory</p>
+							<i>-</i><p>Repertoire Directory</p>
+							<i>-</i><p>Excerpt Directory</p>
+							<i>-</i><p>Mock Audition Requirements</p>
+							<i>-</i><p>Entrance Exam Questions</p>
+							<i>-</i><p>500 Musical Terms</p>
+							<i>-</i><p>Music History Guides</p>
+							<i>-</i><p>American Music Timeline</p>
+							<i>-</i><p>Directory of 16,500+ Non- Institutional Scholarships</p>
+							<i>-</i><p>Articles & Blogs</p>
+							<i>-</i><p>Grade by Grade Guide for Audition Preparation</p>
+							<i>-</i><p>Music Theory Guides</p>
+							<i>-</i><p>Guide to Paying for Colleges</p>
+							<i>-</i><p>Notify colleges & summer enrichment preferences</p>
+							<i>-</i><p>Opportunity to be a featured student of Accoladi's home page</p>
+							<h3>Plus:</h3>
+							<i>-</i><p>Unlimited notification to college and summer enrichment preferences</p>
+							<i>-</i><p>Priority to become a featured student on Accoladi's homepage (Contigent on complete profile)</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<app-footer></app-footer>
 
 	</div>
 	
-	<div class="text-center note-text">
-		*The 10-day free trial includes limited search results and resources.
-		Your profile is not searchable to recruiters during the trial period.
-	</div>
-
-	<app-footer></app-footer>
-
 </div>
 
 <ng-template #content1 let-modal>

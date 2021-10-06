@@ -827,10 +827,10 @@ a.dropdown-item {
 .student-name {
 	position: absolute;
 	background-color: #e2a90a;
+	color: #e6e2e2;
 	padding: 0.4rem 1rem;
 	border-radius: 6px;
-	color: #e6e2e2;
-	font-size: 38px;
+	font-size: 30px;
 	bottom: 1rem;
 	right: 1.5rem;
 }
@@ -845,7 +845,12 @@ a.dropdown-item {
 	}
 
 	.student-name {
-		font-size: 34px;
+		font-size: 30px;
+	}
+	
+	.student-location {
+		font-size: 20px;
+		text-align: center;
 	}
 }
 
@@ -859,7 +864,12 @@ a.dropdown-item {
 	}
 
 	.student-name {
-		font-size: 28px;
+		font-size: 25px;
+	}
+	
+	.student-location {
+		font-size: 18px;
+		text-align: center;
 	}
 }
 
@@ -874,6 +884,11 @@ a.dropdown-item {
 
 	.student-name {
 		font-size: 20px;
+	}
+	
+	.student-location {
+		font-size: 15px;
+		text-align: center;
 	}
 }
 
@@ -971,14 +986,19 @@ a.dropdown-item {
 }
 
 .mission-buttons {
-	padding-bottom: 80px;
+	padding-bottom: 40px;
 }
+
 
 .mission-buttons .btn-mission {
 	background-color: #e2a90a;
-	padding: 17px 35px;
-	font-size: 32px;
-}
+	border-radius: 6px;
+	padding: 27px 35px;
+	font-size: 5vw;
+	width: 100%;
+	height: 20vw;
+	min-height: 200px;
+} 
 
 .mission-logo {
 	display: block;
@@ -996,6 +1016,7 @@ a.dropdown-item {
 	font-size: 20px;
 	margin-top: 1rem;
 }
+
 .btn-sponsor {
 	background-color: #e2a90a;
 	font-weight: 700;
@@ -1007,14 +1028,17 @@ a.dropdown-item {
 	background-color: #e8e4e4;
 	overflow: hidden;
 }
+
 .accoladi-sponsors h4 {
 	margin-bottom: 50px;
 }
+
 .accoladi-sponsors .sponsor-item {
 	padding: 10px 20px;
 	width: 33%;
 	float: left;
 }
+
 .accoladi-sponsors .sponsor-item img {
 	width: 250px;
 	/*height: 120px;*/
@@ -1065,11 +1089,13 @@ a.dropdown-item {
 		font-size: 16px;
 	}
 }
+
 @media (max-width: 991.98px) {
 	.accoladi-sponsors {
 		padding: 50px 30px;
 	}
 }
+
 @media (max-width: 767.98px) {
 	.mission .heading {
 		font-size: 70px;
@@ -1082,7 +1108,7 @@ a.dropdown-item {
 
 	.mission-buttons .btn-mission {
 		font-size: 25px;
-		padding: 13px 27px;
+		padding: 23px 37px;
 	}
 
 	.accoladi-sponsors {
@@ -1122,8 +1148,9 @@ a.dropdown-item {
 
 	.mission-buttons .btn-mission {
 		margin: 10px 0;
-		width: 164px;
+		width: 264px;
 	}
+
 	.accoladi-sponsors .sponsor-item img {
 		height: 80px;
 		/*width: 80px;*/
@@ -1133,6 +1160,7 @@ a.dropdown-item {
 		width: 300px;
 	}
 }
+
 @media (max-width: 380.98px) {
 	.accoladi-sponsors .sponsor-item {
 		padding: 5px 15px;
@@ -4724,7 +4752,7 @@ modal-content {
 	Teacher Main Page> music future Section
 --------------------------------------------*/
 .music-future {
-	background: url(/assets/images/fastTrack/Copy_of_AdobeStock_338589391.png) no-repeat center;
+	background: url(/assets/images/image-5.jpg) no-repeat center;
 	background-size: cover;
 }
 
@@ -6338,13 +6366,16 @@ section.inst-voice {
 
 /* Responsive Media Query */
 @media (max-width: 767.98px) {
+
 	#exam-question-get-more .get-more-btns .btn {
 		font-size: 18px;
 		padding: 0 10px;
 	}
+
 }
 
 @media (max-width: 575.98px) {
+
 	#exam-question-get-more {
 		height: 300px;
 	}
@@ -6353,5 +6384,205 @@ section.inst-voice {
 		font-size: 18px;
 		padding: 10px;
 		margin: 10px 20px;
+	}
+
+}
+
+/* ################# 9/29/2021 ################### */
+/*-------------------------------------------
+	Get Connected Page> Header Section
+--------------------------------------------
+#gc-header {
+	background: url(/assets/images/get-connected/asset1.png) no-repeat center;
+	background-size: cover;
+}
+
+#gc-header .gch-content {
+	padding: 40px 0 100px;
+	color: white;
+}
+
+#gc-header .gch-content h1 {
+	font-size: 13vw;
+	height: 13vw;
+	text-shadow: 6px 0px 0 #eda507;
+	margin: 0;
+}
+
+#gc-header .gch-content h2 {
+	font-size: 9vw;
+	height: 9vw;
+	margin: 0;
+}
+
+@media (max-width: 600.98px) {
+
+	#gc-header .gch-content {
+		padding: 50px 0 80px;
+	}
+
+	#gc-header .gch-content h1 {
+		font-size: 16vw;
+		text-shadow: 4px 0px 0 #eda507;
+	}
+
+	#gc-header .gch-content h2 {
+		font-size: 11vw;
+	}
+
+}*/
+
+/*-------------------------------------------
+	Get Connected Page> Category Section
+--------------------------------------------*/
+#gc-category {
+	padding: 70px 0;
+	background: url(/assets/images/get-connected/asset2.png) no-repeat bottom;
+	background-size: cover;
+}
+
+#gc-category .gcc-column h1 {
+	font-size: 4vw;
+	font-weight: 500;
+	border-right: 3px solid #222;
+	margin-bottom: 30px;
+}
+
+#gc-category .gcc-column h1.gccc-recruiter{
+    border-right: none;
+}
+
+#gc-category .gcc-column .btn {
+	font-size: 2.3vw;
+	color: #222;
+	border: 2px solid #222;
+	margin-bottom: 30px;
+}
+
+#gc-category .gcc-column .btn-commitment {
+	height: 12vw;
+}
+
+#gc-category .gcc-column .btn:hover {
+	color: #fff; 
+	background-color: #222;
+}
+
+#gc-category .gcc-column img {
+	padding: 10px;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+
+	#gc-category .gcc-column {
+		margin-bottom: 50px;
+	}
+
+	#gc-category .gcc-column h1 {
+		font-size: 9vw;
+		border: none;
+	}
+
+	#gc-category .gcc-column .btn {
+		font-size: 5.5vw;
+	}
+
+	#gc-category .gcc-column .btn-commitment {
+		height: auto;
+	}
+
+}
+
+/*-------------------------------------------
+	Get Connected Page> Student Pricing Banner
+--------------------------------------------*/
+#student-pricing-banner {
+	padding: 5vw 15px 8vw 0;
+	background: url(/assets/images/get-connected/asset7.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#student-pricing-banner h1 {
+	color: #fff;
+	font-size: 16vw;
+	text-shadow: 5px 0 0 #eda507;
+	margin: 0;
+}
+
+#student-pricing-banner h2 {
+	color: #fff;
+	font-size: 9vw;
+	margin: 0;
+}
+
+/* Responsive Media Query */
+@media (max-width: 575.98px) {
+
+	#student-pricing-banner h1 {
+		font-size: 18vw;
+	}
+
+	#student-pricing-banner h2 {
+		font-size: 11vw;
+	}
+
+}
+
+/*-------------------------------------------
+	Get Connected Page> Pricing Details
+--------------------------------------------*/
+#gc-pricing-details {
+	padding: 50px 0 0;
+	/* background: url(/assets/images/get-connected/asset7.jpg) no-repeat bottom;
+	background-size: cover; */
+}
+
+#gc-pricing-details .btn-gcpd {
+	font-size: 26px;
+	font-weight: bold;
+	color: #555;
+	padding: 5px 20px;
+	background-color: #efb525;
+	border: 1px solid #fff;
+}
+
+#gc-pricing-details .gcpd-body {
+	margin-bottom: 60px;
+}
+
+#gc-pricing-details .gcpd-column {
+	border: 10px solid #e2a90a;
+	border-radius: 8px;
+	padding: 30px 8px;
+	background-color: #84d2fe;
+}
+
+#gc-pricing-details .gcpd-column h2 {
+	color: #555;
+}
+
+#gc-pricing-details .gcpd-column .offer-policies {
+	padding: 30px 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#gc-pricing-details .gcpd-column .offer-policies i {
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#gc-pricing-details .gcpd-column .offer-policies p {
+	margin-left: 20px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/* Responsive Media Query */
+@media (max-width: 767.98px) {
+	#gc-pricing-details .gcpd-column {
+		margin-bottom: 50px;
 	}
 }
