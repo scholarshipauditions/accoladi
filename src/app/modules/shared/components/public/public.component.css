@@ -175,6 +175,16 @@ a.dropdown-item {
 	.nav-connected {
 		display: none;
 	}
+
+	.navbar-brand {
+		flex: none;
+		display: inline-block;
+		max-width: 160px;
+	}
+
+	.navbar-brand img {
+		max-width: 160px;
+	}
 }
 
 @media (max-width: 400px) {
@@ -207,7 +217,8 @@ a.dropdown-item {
 .hero-subtext h4 {
 	color: #fff;
 	font-weight: 900;
-	font-size: 40px;
+	font-size: 50px;
+	margin-top: 6vw;
 }
 
 .hero-subtext h4.right {
@@ -215,7 +226,7 @@ a.dropdown-item {
 }
 
 .hero-maintext h1 {
-	margin-top: 350px;
+	margin-top: 9vw;
 	margin-left: 130px;
 	/*margin-bottom: 30px;*/
 	color: #e2a90a;
@@ -420,7 +431,7 @@ a.dropdown-item {
 	z-index: 2;
 	position: relative;
   }
-  
+
 /*-------------------------------------------
 	Explore Section Start
 -------------------------------------------*/
@@ -847,7 +858,7 @@ a.dropdown-item {
 	.student-name {
 		font-size: 30px;
 	}
-	
+
 	.student-location {
 		font-size: 20px;
 		text-align: center;
@@ -866,7 +877,7 @@ a.dropdown-item {
 	.student-name {
 		font-size: 25px;
 	}
-	
+
 	.student-location {
 		font-size: 18px;
 		text-align: center;
@@ -885,7 +896,7 @@ a.dropdown-item {
 	.student-name {
 		font-size: 20px;
 	}
-	
+
 	.student-location {
 		font-size: 15px;
 		text-align: center;
@@ -989,7 +1000,6 @@ a.dropdown-item {
 	padding-bottom: 40px;
 }
 
-
 .mission-buttons .btn-mission {
 	background-color: #e2a90a;
 	border-radius: 6px;
@@ -998,7 +1008,11 @@ a.dropdown-item {
 	width: 100%;
 	height: 20vw;
 	min-height: 200px;
-} 
+}
+
+.mission-buttons .btn-mission strong {
+	font-weight: bold;
+}
 
 .mission-logo {
 	display: block;
@@ -1092,7 +1106,11 @@ a.dropdown-item {
 
 @media (max-width: 991.98px) {
 	.accoladi-sponsors {
-		padding: 50px 30px;
+		padding: 50px 10px;
+	}
+	.accoladi-sponsors .sponsor-item img {
+		height: 100px;
+		width: 200px;
 	}
 }
 
@@ -1111,17 +1129,8 @@ a.dropdown-item {
 		padding: 23px 37px;
 	}
 
-	.accoladi-sponsors {
-		padding: 50px 10px;
-	}
-
 	.accoladi-sponsors .sponsor-item {
-		width: 33.33%;
-	}
-
-	.accoladi-sponsors .sponsor-item img {
-		height: 100px;
-		/*width: 100px;*/
+		width: 50%;
 	}
 	.mission-logo {
 		width: 545px;
@@ -1149,6 +1158,10 @@ a.dropdown-item {
 	.mission-buttons .btn-mission {
 		margin: 10px 0;
 		width: 264px;
+	}
+
+	.accoladi-sponsors .sponsor-item {
+		width: 100%;
 	}
 
 	.accoladi-sponsors .sponsor-item img {
@@ -3362,7 +3375,7 @@ a.dropdown-item {
 	font-family: 'Quattrocento Sans', sans-serif;
 	width: 100%;
 	font-size: 140px;
-	color: #fff;	
+	color: #fff;
 	text-shadow: 4px 1px 0px #3499cc;
 	font-weight: 900;
 }
@@ -4667,7 +4680,7 @@ a.dropdown-item {
 	margin: 10px auto;
 	text-align:center;
 }
-  
+
 .video-container iframe {
 	position: absolute;
 	top: 0;
@@ -5369,7 +5382,7 @@ modal-content {
 	.mi-banner h1 {
 		font-size: 32px;
 	}
-	
+
 	.mi-banner h2 {
 		font-size: 26px;
 	}
@@ -5610,7 +5623,7 @@ div.high-ed-footer {
 	font-weight: bold;
 }
 
-.keyboard-6th-header .directory-path .text-black { 
+.keyboard-6th-header .directory-path .text-black {
 	color: #333;
 	font-weight: bold;
 }
@@ -5725,7 +5738,7 @@ div.high-ed-footer {
 
 
 /*-------------------------------------------
-	Audition Requirement Page> Clarinet Premier 
+	Audition Requirement Page> Clarinet Premier
 --------------------------------------------*/
 #audition-requirement-header {
 	background: url(/assets/images/asset-2.png) no-repeat top;
@@ -5766,7 +5779,7 @@ div.high-ed-footer {
 }
 
 /*-------------------------------------------
-	Audition Requirement Page > details 
+	Audition Requirement Page > details
 --------------------------------------------*/
 #ar-details {
 	padding: 70px 10px;
@@ -5780,7 +5793,7 @@ div.high-ed-footer {
 }
 
 /*-------------------------------------------
-	Audition Requirement Page> Footer 
+	Audition Requirement Page> Footer
 --------------------------------------------*/
 #audition-requirement-footer {
 	background: url(/assets/images/yellow-background-footer.png) no-repeat center;
@@ -5788,7 +5801,7 @@ div.high-ed-footer {
 }
 
 /*-------------------------------------------
-	Instrumental Page> header 
+	Instrumental Page> header
 --------------------------------------------*/
 .instrumental-dir-path {
 	padding: 15px 10px 7px;
@@ -5877,7 +5890,7 @@ div.high-ed-footer {
 }
 
 /*-------------------------------------------
-	Instrumental Page> Gallery 
+	Instrumental Page> Gallery
 --------------------------------------------*/
 #gbg-instrumental-bg {
 	background: url(/assets/images/grade-by-grade/instrumental/instrumental-bg.png) no-repeat bottom;
@@ -5911,14 +5924,14 @@ div.high-ed-footer {
 }
 
 /*-------------------------------------------
-	Keyboard Page> header 
+	Keyboard Page> header
 --------------------------------------------*/
 section.inst-keyboard {
 	background-image: url(/assets/images/grade-by-grade/keyboard/pexels-photo-6647419.jpg) !important;
 }
 
 /*-------------------------------------------
-	Voice Page> header 
+	Voice Page> header
 --------------------------------------------*/
 section.inst-voice {
 	background-image: url(/assets/images/grade-by-grade/voice/Rectangle\ 12.jpg) !important;
@@ -6464,7 +6477,7 @@ section.inst-voice {
 }
 
 #gc-category .gcc-column .btn:hover {
-	color: #fff; 
+	color: #fff;
 	background-color: #222;
 }
 

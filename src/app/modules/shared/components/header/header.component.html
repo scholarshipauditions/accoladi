@@ -2,68 +2,64 @@
 	<a class="navbar-brand" [routerLink]="['/']">
 		<img class="img-fluid logo-main" src="assets/images/logo.png" alt="Cleffy, Accoladi's mascot and logo" />
 	</a>
-	<div class="container-fluid px-0">
-	  <div class="row w-100">
-		<div class="col-2">
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation" (click)="isShown = !isShown" >
+	<div class="group d-flex align-items-center">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+			aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
+			(click)="isShown = !isShown">
 			<span class="navbar-toggler-icon"></span>
-		  </button>
-		</div>
-  
-		<div class="col-10">
-		  <div class="collapse justify-content-end navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarTogglerDemo03">
-			<ul class="navbar-nav mt-2 mt-lg-0">
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/public/about']" (click)="isShown=false" >About Us</a>
-				</li>
-				
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/public/articles']" (click)="isShown=false" >Advice</a>
-				</li>	
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/public/resources']" (click)="isShown=false" >Resources</a>
-				</li>
-				<!--
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/public/students']" (click)="isShown=false" >Student</a>
-				</li>
-				-->
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/public/teachers']" (click)="isShown=false" >Teacher</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/public/higher-ed']" (click)="isShown=false" >Higher Ed</a>
-				</li>
-				<li class="nav-item" *ngIf="loggedIn">
-					<a class="nav-link" (click)="onAccountClick()" *ngIf="loggedIn" >My Account</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['/login']" (click)="isShown=false" *ngIf="!loggedIn" >Login</a>
-					<a class="nav-link" (click)="onLogoutClick()" *ngIf="loggedIn" >Logout</a>
-				</li>
-			</ul>
-		  </div>
-		</div>
-	  </div>
+		</button>
+	</div>
+
+	<div class="collapse justify-content-end navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarTogglerDemo03">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/public/about']" (click)="isShown=false">About Us</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/public/articles']" (click)="isShown=false">Advice</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/public/resources']" (click)="isShown=false">Resources</a>
+			</li>
+			<!--
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/public/students']" (click)="isShown=false" >Student</a>
+			</li>
+			-->
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/public/teachers']" (click)="isShown=false">Teacher</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/public/higher-ed']" (click)="isShown=false">Higher Ed</a>
+			</li>
+			<li class="nav-item" *ngIf="loggedIn">
+				<a class="nav-link" (click)="onAccountClick()" *ngIf="loggedIn">My Account</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['/login']" (click)="isShown=false" *ngIf="!loggedIn">Login</a>
+				<a class="nav-link" (click)="onLogoutClick()" *ngIf="loggedIn">Logout</a>
+			</li>
+		</ul>
 	</div>
 </nav>
 
 <!--
-	<nav *ngIf="!loggedIn" 
+	<nav *ngIf="!loggedIn"
 		class="navbar sticky-top bg-red flex-md-nowrap p-0" >
 
 		<a href="https://www.Accoladi.com" class="navbar-brand" >
 			<img src="assets/images/logo.png" />
 		</a>
 
-		<a [routerLink]="['/login']" 
+		<a [routerLink]="['/login']"
 			style="padding-right: 20px; color: #fff;" >
 			login
 		</a>
 
 	</nav>
 
-	<nav *ngIf="loggedIn" 
+	<nav *ngIf="loggedIn"
 		class="navbar sticky-top flex-md-nowrap p-0" >
 
 		<button type="button"
@@ -93,9 +89,9 @@
 							<label style="margin-bottom: 0px; text-transform: capitalize" >
 								{{fullname}}
 							</label>
-							
+
 							<br/>
-							
+
 							<label style="font-size:smaller; margin-bottom: 0px; font-style: oblique;" >
 								{{email}}
 							</label>
@@ -121,15 +117,15 @@
 							<i ngbDropdownToggle >▾</i>
 
 							<ul id="dropdown"
-								ngbDropdownMenu 
+								ngbDropdownMenu
 								style="left:27%" >
 
-								<li ngbDropdownItem 
+								<li ngbDropdownItem
 									(click)="onLogoutClick()" >
 									<img src="assets/img/logout-icon-35.png" /> Logout
 								</li>
 
-								<li ngbDropdownItem 
+								<li ngbDropdownItem
 									(click)="onAccountClick()" >
 									<img src="assets/img/settings-icon-39.png" /> Account
 								</li>
