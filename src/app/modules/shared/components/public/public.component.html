@@ -35,12 +35,12 @@
 		</div>
 		<div class="text-right">
 			<button
-				[routerLink]="['/public/get-connected']"
-				class="btn btn-outline-light hero-button dropdown-toggle"
-				id="navbarDropdown"
-				data-toggle="dropdown"
-				aria-haspopup="true"
-				aria-expanded="false">GET CONNECTED</button>
+			[routerLink]="['/public/get-connected']"
+			class="btn btn-outline-light hero-button dropdown-toggle"
+			id="navbarDropdown"
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false">GET CONNECTED</button>
 		</div>
 	</div>
 	<!-- Hero Section End -->
@@ -322,27 +322,45 @@
 			</h4>
 
 			<div class="container-fluid">
+				<ngb-carousel [showNavigationIndicators]=false >
+					<ng-template ngbSlide>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/ASN.png">
+						</div>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/ASTA.png">
+						</div>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/BMC.png">
+						</div>
+					</ng-template>
 
+					<ng-template ngbSlide>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/CBDNA.png">
+						</div>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/CMS.png">
+						</div>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/FMEA.png">
+						</div>
+					</ng-template>
+
+					<ng-template ngbSlide>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/FoTMEA.png">
+						</div>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/FW.png">
+						</div>
+						<div class="sponsor-item">
+							<img src="assets/images/organization-logos/GMEA.png">
+						</div>
+					</ng-template>
+
+				</ngb-carousel>
 				<!-- <div class="sponsor-item">
-					<img src="assets/images/spon1.png" alt="">
-				</div>
-
-				<div class="sponsor-item">
-					<img src="assets/images/spon2.png" alt="">
-				</div>
-
-				<div class="sponsor-item">
-					<img src="assets/images/spon3.png" alt="" >
-				</div>
-
-				<div class="sponsor-item">
-					<img src="assets/images/spon4.png" alt="">
-				</div>
-
-				<div class="sponsor-item">
-					<img src="assets/images/spon5.png" alt="">
-				</div> -->
-				<div class="sponsor-item">
 					<img src="assets/images/organization-logos/ASN.png">
 				</div>
 				<div class="sponsor-item">
@@ -452,7 +470,7 @@
 				</div>
 				<div class="sponsor-item">
 					<img src="assets/images/organization-logos/WMEA1.png">
-				</div>
+				</div> -->
 			</div>
 
 		</div>

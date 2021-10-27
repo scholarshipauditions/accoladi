@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -13,8 +13,11 @@ export class PublicComponent implements OnInit  {
 	@ViewChild('notice') modalContent: TemplateRef<any>;
 
 	constructor(
-		private modalService: NgbModal
+		private modalService: NgbModal,
+		private config: NgbCarouselConfig
 	) {
+		config.interval = 1500;
+		config.pauseOnHover= false;
 	}
 
 	ngOnInit() {
