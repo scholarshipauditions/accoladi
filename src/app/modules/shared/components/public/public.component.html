@@ -36,7 +36,7 @@
 		<div class="text-right">
 			<button
 			[routerLink]="['/public/get-connected']"
-			class="btn btn-outline-light hero-button dropdown-toggle"
+			class="btn btn-outline-light hero-button dropdown-toggle finger"
 			id="navbarDropdown"
 			data-toggle="dropdown"
 			aria-haspopup="true"
@@ -80,15 +80,15 @@
 
 			<div class="row">
 
-				<div class="col-sm-4 text-center" [routerLink]="['/public/articles/music_scholarships']" >
+				<div class="col-sm-4 text-center finger" [routerLink]="['/public/articles/music_scholarships']" >
 					<h3 class="right-border text-uppercase">Music Scholarships</h3>
 				</div>
 
-				<div class="col-sm-4 text-center" [routerLink]="['/public/articles/audition_advice']" >
+				<div class="col-sm-4 text-center finger" [routerLink]="['/public/articles/audition_advice']" >
 					<h3 class="right-border text-uppercase">Audition Advice</h3>
 				</div>
 
-				<div class="col-sm-4 text-center" [routerLink]="['/public/articles/collegiate_connections']" >
+				<div class="col-sm-4 text-center finger" [routerLink]="['/public/articles/collegiate_connections']" >
 					<h3 class="text-uppercase">Collegiate Connections</h3>
 				</div>
 
@@ -137,7 +137,7 @@
 				</div>
 
 				<div class="text-center">
-					<button [routerLink]="['/scholarships']" class="btn button">View Scholarship Directory</button>
+					<button [routerLink]="['/scholarships']" class="btn button finger">View Scholarship Directory</button>
 				</div>
 
 			</div>
@@ -178,7 +178,7 @@
 							From colleges, universities, and conservatories for every discipline
 						</p>
 
-						<button [routerLink]="['/public/audition-requirements/']"  class="btn button">Find Your Requirements</button>
+						<button [routerLink]="['/public/audition-requirements/']" class="btn button finger">Find Your Requirements</button>
 
 					</div>
 
@@ -198,7 +198,7 @@
 							Questions and answers from over 200 music programs
 						</p>
 
-						<!-- <button class="btn button">Start Studing</button> -->
+						<button [routerLink]="['/public/exam/']"  class="btn button finger">Start Studying</button>
 
 					</div>
 
@@ -207,7 +207,7 @@
 				<br/>
 
 				<div class="text-center my-5">
-					<button [routerLink]="['/public/resources']" class="btn more-resource-btn">Explore More Resources</button>
+					<button [routerLink]="['/public/resources']" class="btn more-resource-btn finger">Explore More Resources</button>
 				</div>
 
 				<br/>
@@ -294,19 +294,19 @@
 			<div class="row">
 
 				<div class="col-sm-4 text-center">
-					<button [routerLink]="['/public/what']" class="btn btn-mission">
+					<button [routerLink]="['/public/what']" class="btn btn-mission finger">
 						<strong>WHAT</strong><br>WE DO
 					</button>
 				</div>
 
 				<div class="col-sm-4 text-center">
-					<button [routerLink]="['/public/how']" class="btn btn-mission">
+					<button [routerLink]="['/public/how']" class="btn btn-mission finger">
 						<strong>HOW</strong><br>WE DO IT
 					</button>
 				</div>
 
 				<div class="col-sm-4 text-center">
-					<button [routerLink]="['/public/why']" class="btn btn-mission">
+					<button [routerLink]="['/public/why']" class="btn btn-mission finger">
 						<strong>WHY</strong><br>WE DO IT
 					</button>
 				</div>
@@ -465,9 +465,6 @@
 						<div class="sponsor-item">
 							<img src="assets/images/organization-logos/WMEA.png">
 						</div>
-					</ng-template>
-
-					<ng-template ngbSlide>
 						<div class="sponsor-item">
 							<img src="assets/images/organization-logos/WMEA1.png">
 						</div>

@@ -132,6 +132,8 @@ import { WhyComponent } from './components/public/why.component';
 import { FastTrackComponent } from './components/public/fasttrack.component';
 import { AuditionRequirementsComponent } from './components/public/audition-requirements.component';
 import { SoarComponent } from './components/public/soar.component';
+import { TeachingMomentsComponent } from './components/public/teaching-moments.component';
+import { SuccessComponent } from './components/public/success.component';
 import { ZzzComponent } from './components/public/zzz.component';
 
 @NgModule({
@@ -252,6 +254,8 @@ import { ZzzComponent } from './components/public/zzz.component';
 		FastTrackComponent,
 		AuditionRequirementsComponent,
 		SoarComponent,
+		TeachingMomentsComponent,
+		SuccessComponent,
 		ZzzComponent,
 	],
 	providers: [
@@ -342,6 +346,8 @@ import { ZzzComponent } from './components/public/zzz.component';
 		FastTrackComponent,
 		AuditionRequirementsComponent,
 		SoarComponent,
+		TeachingMomentsComponent,
+		SuccessComponent,
 		ZzzComponent,
 	],
 	entryComponents: [
@@ -454,5 +460,7 @@ export {
 	FastTrackComponent,
 	AuditionRequirementsComponent,
 	SoarComponent,
+	TeachingMomentsComponent,
+	SuccessComponent,
 	ZzzComponent,
 };

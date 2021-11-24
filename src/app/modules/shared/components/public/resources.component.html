@@ -17,13 +17,13 @@
 
 					<div class="col-lg-8 mt-4">
 
-						<div class="position-relative">
+						<div [routerLink]="['/public/premier-programs']" class="position-relative finger">
 
 							<img src="assets/images/img-resource-1.png" alt="img" class="img-fluid" />
 
 							<div class="content-wrapper">
 								<div class="title-1">PREMIER PROGRAMS</div>
-								<a [routerLink]="['/public/premier-programs']" class="button-1">EXPLORE</a>
+								<button class="button-1">EXPLORE</button>
 							</div>
 
 						</div>
@@ -69,13 +69,13 @@
 
 								<div class="col-md-6 col-lg-12 mt-4">
 
-									<div class="position-relative">
+									<div [routerLink]="['/public/articles/turning_over_every_rock_paying_for_college']" class="position-relative finger">
 
 										<img src="assets/images/img-resource-3.png" alt="img" class="img-fluid" />
 
 										<div class="content-wrapper-2">
 											<div class="title-2">PAYING FOR COLLEGE</div>
-											<a [routerLink]="['/public/articles/turning_over_every_rock_paying_for_college']" class="button-2">SEE HOW</a>
+											<button class="button-2">SEE HOW</button>
 										</div>
 
 									</div>
@@ -126,11 +126,11 @@
 				<!-- Process 2 -->
 				<div class="process row guide-item">
 
-					<div class="col-lg-7 p-5 text-center text-lg-start order-1">
+					<div [routerLink]="['/scholarships']" class="col-lg-7 p-5 text-center text-lg-start order-1 finger">
 
 						<h3 class="title">Non-Institutional Scholarships</h3>
 						<p class="text">Most schools don’t tell you about them</p>
-						<a [routerLink]="['/public/']" class="button">WE WILL</a>
+						<button class="button">WE WILL</button>
 
 					</div>
 
@@ -161,13 +161,13 @@
 				<!-- Process 3 End -->
 
 				<!-- Process 4 -->
-				<div class="process row guide-item">
+				<div [routerLink]="['/public/audition-requirements']" class="process row guide-item finger">
 
 					<div class="col-lg-7 p-5 text-center text-lg-start order-1">
 
 						<h3 class="title">Preparing for Auditions</h3>
 						<p class="text">Never too early</p>
-						<a [routerLink]="['/public/audition-requirements']"  class="button">START NOW</a>
+						<button class="button">START NOW</button>
 
 					</div>
 
@@ -239,14 +239,14 @@
 						<!-- <img src="assets/images/senior-year.png" alt="" class="img-fluid"> -->
 					</div>
 
-					<div class="col-lg-6 fast-track-senior-year">
+					<div  [routerLink]="['/public/fast-track']" class="col-lg-6 fast-track-senior-year finger">
 
 						<table style="height: 100%; width: 100%;">
 							<tr align="center">
 								<td>
 									<h4>Fast Track Action Plan</h4>
 									<h1>SENIOR YEAR</h1>
-									<button  [routerLink]="['/public/fast-track']" class="btn btn-op">GET STARTED</button>
+									<button class="btn btn-op">GET STARTED</button>
 								</td>
 							</tr>
 						</table>

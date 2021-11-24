@@ -8,12 +8,12 @@
 
 	<ng-container *ngIf="htmlData" >
 
-		<h1 [routerLink]="['/public/articles/']" style="margin: 20px 100px;" >Advice</h1>
+		<h1 [routerLink]="['/public/articles/']" class=" finger" style="margin: 20px 100px;" >Advice</h1>
 
 		<!-- article -->
 		<div [innerHtml]="htmlData" class="d-flex p-2 justify-content-between" style="margin: 0px 100px;"></div>
 
-		<a [routerLink]="['/public/articles/']" style="margin: 10px 100px;" >&lt;&lt; Return To Advice</a>
+		<a [routerLink]="['/public/articles/']" class=" finger" style="margin: 10px 100px;" >&lt;&lt; Return To Advice</a>
 
 	</ng-container>
 

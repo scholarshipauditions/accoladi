@@ -16,8 +16,8 @@ export class PublicComponent implements OnInit  {
 		private modalService: NgbModal,
 		private config: NgbCarouselConfig
 	) {
-		config.interval = 1500;
-		config.pauseOnHover= false;
+		config.interval = 0;
+		config.pauseOnHover= true;
 	}
 
 	ngOnInit() {

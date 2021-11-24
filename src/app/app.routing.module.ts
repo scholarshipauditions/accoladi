@@ -35,6 +35,8 @@ import {
 	FastTrackComponent,
 	AuditionRequirementsComponent,
 	SoarComponent,
+	TeachingMomentsComponent,
+	SuccessComponent,
 	ZzzComponent
 } from './modules/shared/shared.module';
 
@@ -176,6 +178,14 @@ const appRoutes: Routes = [
 	{
 		path: 'public/teachers',
 		component: TeachersComponent
+	},
+	{
+		path: 'public/success',
+		component: SuccessComponent
+	},
+	{
+		path: 'public/teaching-moments',
+		component: TeachingMomentsComponent
 	},
 	{
 		path: 'public/higher-ed',

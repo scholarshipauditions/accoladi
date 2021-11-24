@@ -3375,6 +3375,43 @@ a.dropdown-item {
 	}
 }
 
+
+
+
+/*-------------------------------------------
+	Right-School Section Start
+-------------------------------------------*/
+
+#success-header {
+	margin-top: 80px;
+	background: url(/assets/images/wave-gradient-blue.png) no-repeat center;
+	background-size: cover;
+	height: 45vh;
+	max-height: 350px;
+	padding: 30px 30px;
+	display: flex;
+	align-items: flex-end;
+}
+
+#success-header .such-content {
+	padding-top: 15px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+#success-header .such-content h1 {
+	color: #fff;
+	font-size: 10vw;
+	text-shadow: 5px 1px 0 #f2c033;
+}
+
+#success-header .such-content h4 {
+	color: #fff;
+	font-size: 20px;
+	margin: 0;
+}
+
+
 /*-------------------------------------------
 	Right-School Section Start
 -------------------------------------------*/
@@ -5621,6 +5658,35 @@ div.high-ed-footer {
 
 #meq-footer img {
 	width: 60%;
+}
+
+
+
+
+/*-------------------------------------------
+	Teaching Moments Page> Header section
+--------------------------------------------*/
+#teaching-moments-header {
+	background: url(/assets/images/teaching-moments-header.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#teaching-moments-header .tmh-content {
+	padding-top: 25vw;
+	padding-bottom: 3vw;
+}
+
+#teaching-moments-header .tmh-content h1 {
+	color: #fff;
+	font-size: 10vw;
+	text-shadow: 5px 1px 0 #f2c033;
+}
+
+#teaching-moments-header .tmh-content h4 {
+	color: #fff;
+	font-size: 2vw;
+	margin: 0;
+	text-align: right;
 }
 
 /*-------------------------------------------

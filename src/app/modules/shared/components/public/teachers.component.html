@@ -14,7 +14,7 @@
 
 			<button
 				[routerLink]="['/public/get-connected']"
-				class="btn btn-outline-light hero-button dropdown-toggle"
+				class="btn btn-outline-light hero-button dropdown-toggle finger"
 				id="navbarDropdown"
 				data-toggle="dropdown"
 				aria-haspopup="true"
@@ -35,7 +35,6 @@
 
 <!-- Explore Section -->
 <div class="explore-section">
-
 
 	<div class="container-fluid">
 
@@ -75,9 +74,9 @@
 
 			<div class="col-sm-6 money-item">
 
-				<div class="money-item-body">
+				<div [routerLink]="['/public/teaching-moments']" class="money-item-body finger">
 
-					<img src="assets/images/teaching-moments.jpg" alt="">
+					<img src="assets/images/teaching-moments2.jpg" alt="">
 
 					<div class="money-item-bottom">
 						<h5>TEACHING MOMENTS</h5>
@@ -90,9 +89,9 @@
 
 			<div class="col-sm-6 money-item">
 
-				<div [routerLink]="['/public/soar']" class="money-item-body">
+				<div [routerLink]="['/public/soar']" class="money-item-body finger">
 
-					<img src="assets/images/img-resource-3.png" alt="">
+					<img src="assets/images/soar3.jpg" alt="">
 
 					<div class="money-item-bottom">
 						<h5>SOAR PROGRAM</h5>
@@ -117,8 +116,10 @@
 
 		<h1>My Music Future</h1>
 
-		<div class="text-center">
-			<button class="btn mx-auto">EXPLORE</button>
+		<div class="text-center" >
+			<a href="https://mymusicfuture.com/" target="_new" class="finger" >
+				<button class="btn mx-auto">EXPLORE</button>
+			</a>
 			<p>Assessment tool for students considering majoring in music</p>
 		</div>
 
@@ -203,7 +204,7 @@
 
 							<div class="col-12 money-item">
 
-								<div class="money-item-body">
+								<div [routerLink]="['/public/exam/']" class="money-item-body finger">
 
 									<img src="assets/images/fastTrack/Copy_of_AdobeStock_105972983.png" alt="">
 
@@ -217,12 +218,12 @@
 
 							<div class="col-12 money-item">
 
-								<div class="money-item-body">
+								<div [routerLink]="['/public/success/']"  class="money-item-body finger">
 
 									<img src="assets/images/fastTrack/guitar-2422149.png" alt="">
 
 									<div class="money-item-bottom">
-										<h5 [routerLink]="['/public/articles/']" class="text-center">ADVICE <br> <span>WITH LESSON PLANS</span></h5>
+										<h5 class="text-center">ADVICE <br> <span>WITH LESSON PLANS</span></h5>
 									</div>
 
 								</div>
@@ -237,12 +238,12 @@
 
 				<div class="col-sm-6 money-item">
 
-					<div class="money-item-body">
+					<div [routerLink]="['/scholarships/']"  class="money-item-body finger">
 
 						<img src="assets/images/fastTrack/Copy_of_AdobeStock_117866612.png" alt="">
 
 						<div class="money-item-bottom tm-gallery-item-bt">
-							<h5 [routerLink]="['/scholarships/']" class="text-center"><!-- COLLEGE &  -->SCHOLARSHIPS <br> <span>DIRECTORY</span></h5>
+							<h5 class="text-center"><!-- COLLEGE &  -->SCHOLARSHIPS <br> <span>DIRECTORY</span></h5>
 						</div>
 
 					</div>
@@ -269,8 +270,8 @@
 
 		<div class="tm-free-btns d-flex justify-content-between">
 
-			<button [routerLink]="['/public/get-connected']" class="btn">GET CONNECTED</button>
-			<button (click)="openCommitmentTeacher(content2)" class="btn">COMMITMENT<br> <span>TO MUSIC TEACHER</span></button>
+			<button [routerLink]="['/public/get-connected']" class="btn finger">GET CONNECTED</button>
+			<button (click)="openCommitmentTeacher(content2)" class="btn finger">COMMITMENT<br> <span>TO MUSIC TEACHER</span></button>
 
 		</div>
 

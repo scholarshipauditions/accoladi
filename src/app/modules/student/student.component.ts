@@ -6,7 +6,8 @@ import { UserService } from '../shared/services/user.service';
 
 @Component({
 	selector: 'app-student',
-	templateUrl: './student.component.html'
+	templateUrl: './student.component.html',
+	styleUrls: ['../shared/components/public/public.component.css','./student.component.css']
 })
 
 export class StudentComponent implements OnInit {

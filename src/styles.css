@@ -2139,3 +2139,7 @@ th[sortable]::before {
 .text-danger {
 	color: #e2a90a !important;
 }
+
+.finger {
+	cursor: pointer;
+}
