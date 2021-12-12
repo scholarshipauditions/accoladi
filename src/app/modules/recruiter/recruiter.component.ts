@@ -9,7 +9,8 @@ import { RecruiterService } from './services/recruiter.service';
 
 @Component({
 	selector: 'app-recruiter',
-	templateUrl: './recruiter.component.html'
+	templateUrl: './recruiter.component.html',
+	styleUrls: ['../shared/components/public/public.component.css','./recruiter.component.css']
 })
 
 export class RecruiterComponent implements OnInit, AfterViewInit {

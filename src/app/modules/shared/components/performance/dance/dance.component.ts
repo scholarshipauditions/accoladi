@@ -4,10 +4,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserModel } from '../../../../shared/models/user.model';
 import { UserService } from '../../../../shared/services/user.service';
 
-import { DanceService } from '../../../../student/services/dance.service';
 import { AddDanceModelComponent } from './add-dance-model/add-dance-model.component';
 import { UpdateDanceModelComponent } from './update-dance-model/update-dance-model.component';
 import { DeleteDanceModelComponent } from './delete-dance-model/delete-dance-model.component';
+import { DanceService } from '../../../../student/services/dance.service';
 import { DanceModel } from '../../../../student/models/dance.model';
 import { VideoPlayerModalComponent } from '../../video-player/video-player.component';
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+	import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UpdateStudentAccountModalComponent } from './update-student-account-modal/update-student-account-modal.component';
@@ -15,7 +15,8 @@ export class StudentAccountComponent implements OnInit {
 	student: UserModel;
 	dob = '';
 	months: string[];
-role:string;
+	role:string;
+	
 	constructor(
 		private modalService: NgbModal,
 		private studentService: StudentService,

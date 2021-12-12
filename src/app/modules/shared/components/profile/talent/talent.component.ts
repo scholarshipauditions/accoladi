@@ -44,7 +44,6 @@ export class TalentComponent implements OnInit {
 			this.studentId = this.student._id;
 			this.talents = this.student.talents;
 		}
-	
 	}
 
 	addTalent() {

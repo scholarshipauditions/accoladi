@@ -134,6 +134,7 @@ import { AuditionRequirementsComponent } from './components/public/audition-requ
 import { SoarComponent } from './components/public/soar.component';
 import { TeachingMomentsComponent } from './components/public/teaching-moments.component';
 import { SuccessComponent } from './components/public/success.component';
+import { GradeByGradeGuideComponent } from './components/public/grade-by-grade-guide.component';
 import { ZzzComponent } from './components/public/zzz.component';
 
 @NgModule({
@@ -256,6 +257,7 @@ import { ZzzComponent } from './components/public/zzz.component';
 		SoarComponent,
 		TeachingMomentsComponent,
 		SuccessComponent,
+		GradeByGradeGuideComponent,
 		ZzzComponent,
 	],
 	providers: [
@@ -348,6 +350,7 @@ import { ZzzComponent } from './components/public/zzz.component';
 		SoarComponent,
 		TeachingMomentsComponent,
 		SuccessComponent,
+		GradeByGradeGuideComponent,
 		ZzzComponent,
 	],
 	entryComponents: [
@@ -462,5 +465,6 @@ export {
 	SoarComponent,
 	TeachingMomentsComponent,
 	SuccessComponent,
+	GradeByGradeGuideComponent,
 	ZzzComponent,
 };

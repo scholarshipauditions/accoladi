@@ -37,6 +37,7 @@ import {
 	SoarComponent,
 	TeachingMomentsComponent,
 	SuccessComponent,
+	GradeByGradeGuideComponent,
 	ZzzComponent
 } from './modules/shared/shared.module';
 
@@ -234,6 +235,10 @@ const appRoutes: Routes = [
 	{
 		path: 'public/institutional-scholarships',
 		component: InstitutionalScholarshipsComponent
+	},
+	{
+		path: 'public/grade-guide',
+		component: GradeByGradeGuideComponent
 	},
 	{
 		path: 'public/zzz',
