@@ -19,7 +19,9 @@ import { TalentModel } from "../../../student/models/talent.model";
 	templateUrl: "./profile.component.html",
 	styleUrls: ["./profile.component.css"]
 })
+
 export class ProfileComponent implements OnInit {
+
 	introJS = introJs();
 	student: UserModel;
 	closeResult: string;
@@ -34,6 +36,7 @@ export class ProfileComponent implements OnInit {
 	account: any;
 	talents: TalentModel;
 	role: string;
+
 	constructor(
 		private modalService: NgbModal,
 		private talentService: TalentService,
@@ -41,7 +44,7 @@ export class ProfileComponent implements OnInit {
 		private studentService: StudentService,
 		private route: ActivatedRoute,
 		private userService: UserService
-	) {
+	) {//console.log('PROFILE COMPONENT CONSTRUCTOR');
 		this.months = [
 			"January",
 			"February",
@@ -64,32 +67,27 @@ export class ProfileComponent implements OnInit {
 				},
 				{
 					element: "#accountstep",
-					intro:
-						"This where you can view your account information! Click `View Details` to edit your information.",
+					intro: "This where you can view your account information! Click `View Details` to edit your information.",
 					position: "left"
 				},
 				{
 					element: "#messagestep",
-					intro:
-						"Here you can see your latest messages! Click `View Details` to view all your messages.",
+					intro: "Here you can see your latest messages! Click `View Details` to view all your messages.",
 					position: "bottom"
 				},
 				{
 					element: "#viewerstep",
-					intro:
-						"Here you can see #no of viewers ! Click `View Details` to view all viewers.",
+					intro: "Here you can see #no of viewers ! Click `View Details` to view all viewers.",
 					position: "bottom"
 				},
 				{
 					element: "#talentstep",
-					intro:
-						"View your talents here! Click `View Details` to edit or add your talents.",
+					intro: "View your talents here! Click `View Details` to edit or add your talents.",
 					position: "right"
 				},
 				{
 					element: "#parentsponsorstep",
-					intro:
-						"In this section you can view the parents or sponsors linked to your account! Click `View Details` to edit or add the linked accounts.",
+					intro: "In this section you can view the parents or sponsors linked to your account! Click `View Details` to edit or add the linked accounts.",
 					position: "left"
 				},
 				{
@@ -100,6 +98,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		//console.log({'init current user = ':this.userService.currentUser});
 		this.getUserAccount();
 		this.getParents();
 		this.getSponsors();
@@ -111,7 +110,7 @@ export class ProfileComponent implements OnInit {
 		this.autoShowTour();
 
 		this.route.queryParams.subscribe((params: Params) => {
-			if (params["tour"] === "true") {
+			if (params['tour'] === 'true') {
 				this.showTour();
 			}
 		});
@@ -120,7 +119,7 @@ export class ProfileComponent implements OnInit {
 
 	autoShowTour() {
 		const doneTour =
-			localStorage.getItem("studentProfileTour") === "Completed";
+			localStorage.getItem('studentProfileTour') === 'Completed';
 
 		if (doneTour) {
 			return;
@@ -128,11 +127,11 @@ export class ProfileComponent implements OnInit {
 			this.introJS.start();
 
 			this.introJS.oncomplete(function () {
-				localStorage.setItem("studentProfileTour", "Completed");
+				localStorage.setItem('studentProfileTour', 'Completed');
 			});
 
 			this.introJS.onexit(function () {
-				localStorage.setItem("studentProfileTour", "Completed");
+				localStorage.setItem('studentProfileTour', 'Completed');
 			});
 		}
 	}
@@ -160,7 +159,7 @@ export class ProfileComponent implements OnInit {
 		modalRef.componentInstance.student_id = this.userService.currentUser._id;
 		modalRef.result.then(
 			data => {
-				console.log(data);
+				//console.log(data);
 			},
 			reason => { }
 		);
@@ -191,6 +190,7 @@ export class ProfileComponent implements OnInit {
 			.subscribe((result: any) => {
 				this.account = result.data;
 				this.setDOB();
+				//console.log( 'PROFILE.COMPONENT -> getUserAccount', {'account':this.account} );
 			});
 	}
 
@@ -201,7 +201,7 @@ export class ProfileComponent implements OnInit {
 			.subscribe((response: any) => {
 				this.loadingMessages = false;
 				this.latestMessages = response.data;
-				console.log(this.latestMessages);
+				//console.log( 'PROFILE.COMPONENT -> getLatestMessages', {'latestMessages':this.latestMessages} );
 			});
 	}
 
@@ -210,6 +210,7 @@ export class ProfileComponent implements OnInit {
 			.getStudentParents(this.userService.currentUser._id)
 			.subscribe((response: any) => {
 				this.studentParents = response.data;
+				//console.log( 'PROFILE.COMPONENT -> getParents', {'studentParents':this.studentParents} );
 			});
 	}
 
@@ -218,6 +219,7 @@ export class ProfileComponent implements OnInit {
 			.getStudentSponsors(this.userService.currentUser._id)
 			.subscribe((response: any) => {
 				this.studentSponsors = response.data;
+				//console.log( 'PROFILE.COMPONENT -> getSponsors', {'studentSponsors':this.studentSponsors} );
 			});
 	}
 
@@ -226,6 +228,7 @@ export class ProfileComponent implements OnInit {
 			.getAllStudentTalents(this.userService.currentUser._id)
 			.subscribe((result: any) => {
 				this.talents = result.data.talents;
+				//console.log( 'PROFILE.COMPONENT -> getStudentTalents', {'talents':this.talents} );
 			});
 	}
 
@@ -234,8 +237,7 @@ export class ProfileComponent implements OnInit {
 			.getCollagesViewCount(this.userService.currentUser._id)
 			.subscribe(res => {
 				this.viewers = res.data;
-				console.log(res);
-				console.log(this.viewers);
+				//console.log( 'PROFILE.COMPONENT -> getViewersCount', {'viewers':this.viewers} );
 			});
 	}
 
@@ -244,6 +246,7 @@ export class ProfileComponent implements OnInit {
 			.getStudentSearchCount(this.userService.currentUser._id)
 			.subscribe(res => {
 				this.searchs = res.data;
+				//console.log( 'PROFILE.COMPONENT -> getSearchCount', {'this.searchs':this.searchs} );
 			});
 	}
 

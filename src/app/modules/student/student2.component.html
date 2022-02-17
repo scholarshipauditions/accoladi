@@ -1,6 +1,9 @@
 <div id="search-student" class="avoid-navbar">
+
 	<div class="container-fluid">
+
 		<div class="row">
+
 			<!-- <div class="col-lg-3">
 				<div class="ss-sidenav py-2 px-3 text-left">
 					<b>Personal Information</b>
@@ -14,24 +17,23 @@
 					<br><b>College & Summer Enrichment Preferences</b>
 				</div>
 			</div> -->
+
 			<!-- <div class="col-lg-9"> -->
 			<div class="col-lg-12">
+
 				<div class="ss-greetings">
 					<div class="row">
 						<div class="col-lg-6 d-flex align-items-center justify-content-center">
 							<div class="pl-2 py-5 py-lg-0">
-								<h3>Hello {{ user.first_name }} {{ user.last_name }}!</h3>
-								<p>Keep you profile up to date by adding information throughout your acidemic career.</p>
+								<h3>Hello {{ user?.first_name }} {{ user?.last_name }}!</h3>
+								<p>Keep your profile up to date by adding information throughout your academic career.</p>
 							</div>
 						</div>
 						<div class="col-lg-6">
-							<img src="assets/images/search-student/Asset 1.png" class="w-100" alt="">
+							<img src="assets/images/search-student/asset_1.png" class="w-100" alt="">
 						</div>
 					</div>
 				</div>
-
-
-
 
 
 				<div class="talent-search student-profile">
@@ -42,8 +44,8 @@
 								<div class="ts-explaination pt-2 px-0 px-sm-3">
 									<p>
 										Your profile is the first step in connecting with collegiate recruiters and scholarships trustees. 
-										One of the first impression you will make is through the information shared in this profile. 
-										Complete all fields that apply to your musical discipline and keep them updates as you go through 
+										One of the first impressions you will make is through the information shared in this profile. 
+										Complete all fields that apply to your musical discipline and keep them updated as you go through 
 										middle and high school. You may add to and edit your profile as often as needed.
 									</p>
 									<p>
@@ -79,7 +81,7 @@
 										</div>
 									</div> -->
 
-									<h3 class="text-center">Check List By Grade</h3>
+									<h3 class="text-center">Checklist By Grade</h3>
 									<div class="container-fluid list-by-grade">
 										<div class="row">
 											<div class="col-xl-3 col-sm-6">
@@ -191,29 +193,29 @@
 
 													<td width="37%" style="vertical-align: top;" >
 														<span class="bumpup-txt" >
-															{{ talent.talent }} ( {{ talent.family }} )
-															<div *ngIf="talent.range" > {{ talent.range ? "(" + talent.range + ")" : ""  }} </div>
-															<div *ngIf="talent.year_started" > {{ talent.year_started }} </div>
+															{{ talent?.talent }} ( {{ talent?.family }} )
+															<div *ngIf="talent?.range" > {{ talent?.range ? "(" + talent?.range + ")" : ""  }} </div>
+															<div *ngIf="talent?.year_started" > {{ talent?.year_started }} </div>
 														</span>
 													</td>
 									
 													<td width="25%" style="vertical-align: top;" >
 														<span *ngIf="talent.styles" >
 															<b>Proficient Styles:</b>
-															<div *ngFor="let style of talent.styles" > {{ style }} </div>
+															<div *ngFor="let style of talent?.styles" > {{ style }} </div>
 														</span>
 													</td>
 										
 													<td width="25%" style="vertical-align: top;" >
 														<span *ngIf="talent.emphasis" >
 															<b>Emphasis:</b>
-															<div *ngFor="let e of talent.emphasis" > {{ e }} </div>
+															<div *ngFor="let e of talent?.emphasis" > {{ e }} </div>
 														</span>
 													</td>
 										
 													<td width="3%" style="vertical-align: top;" >
 														<a href="javascript:;"
-															(click)="updateTalent(talent._id)" >
+															(click)="updateTalent(talent?._id)" >
 															<img style="width:20px;"
 																src="assets/img/sa-edit.svg" />
 														</a>
@@ -222,7 +224,7 @@
 													<td width="3%" style="vertical-align: top;" >
 														<img style="width:13px;cursor: pointer;"
 															src="assets/img/close-x-22.png"
-															(click)="removeTalent(talent._id)" />
+															(click)="removeTalent(talent?._id)" />
 													</td>
 
 												</div>
@@ -240,9 +242,9 @@
 													
 													<td width="37%" style="vertical-align: top;" >
 														<span class="bumpup-txt" >
-															{{ talent.talent }} ( {{ talent.family }} )
-															<div *ngIf="talent.range" > {{ talent.range ? "(" + talent.range + ")" : ""  }} </div>
-															<div *ngIf="talent.year_started" > {{ talent.year_started }} </div>
+															{{ talent?.talent }} ( {{ talent?.family }} )
+															<div *ngIf="talent.range" > {{ talent?.range ? "(" + talent?.range + ")" : ""  }} </div>
+															<div *ngIf="talent.year_started" > {{ talent?.year_started }} </div>
 														</span>
 													</td>
 									
@@ -254,15 +256,15 @@
 													</td>
 										
 													<td width="25%" style="vertical-align: top;" >
-														<span *ngIf="talent.emphasis" >
+														<span *ngIf="talent?.emphasis" >
 															<b>Emphasis:</b>
-															<div *ngFor="let e of talent.emphasis" > {{ e }} </div>
+															<div *ngFor="let e of talent?.emphasis" > {{ e }} </div>
 														</span>
 													</td>
 										
 													<td width="3%" style="vertical-align: top;" >
 														<a href="javascript:;"
-															(click)="updateTalent(talent._id)" >
+															(click)="updateTalent(talent?._id)" >
 															<img style="width:20px;"
 																src="assets/img/sa-edit.svg" />
 														</a>
@@ -271,7 +273,7 @@
 													<td width="3%" style="vertical-align: top;" >
 														<img style="width:13px;cursor: pointer;"
 															src="assets/img/close-x-22.png"
-															(click)="removeTalent(talent._id)" />
+															(click)="removeTalent(talent?._id)" />
 													</td>
 
 												</div>
@@ -431,31 +433,31 @@
 						
 											<tr *ngFor="let school of education" >
 												<td width="5%" >
-													<img *ngIf="school.current" style="width:12px;" 
+													<img *ngIf="school?.current" style="width:12px;" 
 														src="assets/img/favorite-star-42.png" />
 						
-													<img *ngIf="!school.current" style="width:12px;"
+													<img *ngIf="!school?.current" style="width:12px;"
 														src="assets/img/not-yet-favorite-star-41.png" />
 												</td>
 												<td width="35%" >
 													<span class="bumpup-txt" >
-														<u>{{ school.name }}</u>
+														<u>{{ school?.name }}</u>
 													</span>
-													<br />{{ school.city }} {{ school.state }}
+													<br />{{ school?.city }} {{ school?.state }}
 												</td>
 												<td width="25%" >
 													<strong>Duration</strong>
-													<br />{{ school.attended_from }} - {{ school.attended_to }}
+													<br />{{ school?.attended_from }} - {{ school?.attended_to }}
 												</td>
 												<td width="3%" >
-													<a href="javascript:;" (click)="updateStudentES(school._id)" >
+													<a href="javascript:;" (click)="updateStudentES(school?._id)" >
 														<img style="width:20px;" 
 															src="assets/img/sa-edit.svg" />
 													</a>
 												</td>
 												<td width="3%" >
 													<img style="width:13px;cursor: pointer;" 
-														(click)="removeStudentES(school._id)"
+														(click)="removeStudentES(school?._id)"
 														src="assets/img/close-x-22.png" />
 												</td>
 											</tr>
@@ -665,21 +667,21 @@
 										<tbody>
 											<tr *ngFor=" let honorAward of honors_awards; let i = index ">
 												<td width="5%">
-													<button *ngIf="honorAward.video_url" type="button" class="btn btn-play"
-														(click)="playVideo(honorAward.video_url)">
+													<button *ngIf="honorAward?.video_url" type="button" class="btn btn-play"
+														(click)="playVideo(honorAward?.video_url)">
 														<img src="assets/img/play-arrow-black-19.png" />
 													</button>
 												</td>
 												<td width="35%">
 													<span class="bumpup-txt">
-														<u>{{ honorAward.composition_title }}</u>
+														<u>{{ honorAward?.composition_title }}</u>
 													</span>
 													<br />
-													{{ honorAward.event }}
+													{{ honorAward?.event }}
 												</td>
-												<td width="25%">{{ honorAward.date_performed }}</td>
+												<td width="25%">{{ honorAward?.date_performed }}</td>
 												<td width="3%">
-													<a href="javascript:;" (click)="updateStudentHA(honorAward._id)">
+													<a href="javascript:;" (click)="updateStudentHA(honorAward?._id)">
 														<img style="width:20px;" src="assets/img/sa-edit.svg" />
 													</a>
 												</td>
@@ -712,7 +714,7 @@
 											<tr *ngFor=" let item of festivals_competitions; let i = index ">
 												<td width="5%">
 						
-													<button type="button" class="btn btn-play" (click)="playVideo(item.video_url)"
+													<button type="button" class="btn btn-play" (click)="playVideo(item?.video_url)"
 														*ngIf="item.video_url">
 						
 														<img src="assets/img/play-arrow-black-19.png" />
@@ -724,17 +726,17 @@
 						
 													<span class="bumpup-txt">
 														<u>
-															{{ item.event }}
+															{{ item?.event }}
 														</u>
 													</span>
 						
 													<br />
 						
-													{{ item.composition_title }}
+													{{ item?.composition_title }}
 						
 													<br />
 						
-													{{ item.talent }}
+													{{ item?.talent }}
 						
 												</td>
 												<td width="15%">
@@ -747,18 +749,18 @@
 						
 												</td>
 												<td width="30%">
-													{{ item.date_performed }}
+													{{ item?.date_performed }}
 												</td>
 												<td width="3%">
 						
-													<a href="javascript:;" (click)="updateStudentFC(item._id)">
+													<a href="javascript:;" (click)="updateStudentFC(item?._id)">
 														<img style="width:20px;" src="assets/img/sa-edit.svg" />
 													</a>
 						
 												</td>
 												<td width="3%">
 						
-													<img (click)="removeStudentFC(item._id)" style="width:13px;cursor: pointer;"
+													<img (click)="removeStudentFC(item?._id)" style="width:13px;cursor: pointer;"
 														src="assets/img/close-x-22.png" />
 						
 												</td>
@@ -767,13 +769,6 @@
 										</tbody>
 						
 									</table>
-
-
-
-
-
-
-									
 									
 									<!-- Private Instruction -->
 									<hr>
@@ -789,7 +784,7 @@
 									</div>
 									<div class="px-2">
 										<p>
-											This information should be reflective of private one-toone instruction of at least six weeks. 
+											This information should be reflective of private one-to-one instruction of at least six weeks. 
 											Private lessons given during a summer camp, symposium, or an intensive for a shorter time (minimum 
 											two weeks) should be included in this section. Master class participation should not be included 
 											in this form. Your class instructor providing after-school help with your ensemble music does not 
@@ -852,27 +847,27 @@
 												<td width="5%"></td>
 												<td width="20%">
 													<span class="bumpup-txt">
-														<u>{{ study.subject }}</u>
+														<u>{{ study?.subject }}</u>
 													</span>
-													<br />{{ study.institution }} {{ study.instructor }}
+													<br />{{ study?.institution }} {{ study?.instructor }}
 												</td>
 												<td width="20%">
-													{{ study.talent }}{{ study.dicipline }}
-													<br />{{ study.hours }} hours
+													{{ study?.talent }}{{ study?.dicipline }}
+													<br />{{ study?.hours }} hours
 													<span *ngIf=" study.critiqued && study.critiqued == 'Yes' ">
 														(critiqued)
 													</span>
 												</td>
 												<td width="45%">
-													{{ "Started: " + study.dates.started + " . Ended: " + study.dates.ended }}
+													{{ "Started: " + study?.dates.started + " . Ended: " + study?.dates.ended }}
 												</td>
 												<td width="5%">
-													<a href="javascript:;" (click)="updateStudentPrivateStudy(study._id)">
+													<a href="javascript:;" (click)="updateStudentPrivateStudy(study?._id)">
 														<img style="width:20px;" src="assets/img/sa-edit.svg" />
 													</a>
 												</td>
 												<td width="5%">
-													<img (click)="removeStudentPrivateStudy(study._id)" 
+													<img (click)="removeStudentPrivateStudy(study?._id)" 
 														style="width:13px;cursor: pointer;"
 														src="assets/img/close-x-22.png" />
 												</td>
@@ -970,44 +965,44 @@
 										<tbody>
 						
 											<tr *ngFor="let mc of master_classes; let i = index" >
-												<td width="5%" >						
-													<button *ngIf="mc.video_url" type="button" class="btn btn-play"
-														(click)="playVideo(mc.video_url)" >						
+												<td width="5%" >
+													<button *ngIf="mc?.video_url" type="button" class="btn btn-play"
+														(click)="playVideo(mc?.video_url)" >
 														<img src="assets/img/play-arrow-black-19.png" />
-													</button>						
+													</button>
 												</td>
-												<td width="20%" >						
+												<td width="20%" >
 													<span class="bumpup-txt" >
-														{{ mc.instructor }}
-													</span>						
+														{{ mc?.instructor }}
+													</span>
 													<br />
-													{{ mc.institution }}						
+													{{ mc?.institution }}
 													<small>
-														{{ mc.talent }}
-													</small>						
+														{{ mc?.talent }}
+													</small>
 												</td>
-												<td width="20%" >						
-													({{ mc.subject }})						
-													<ng-container *ngIf="mc.subject2 && mc.subject2.length" >
-														{{ mc.subject2 }}
+												<td width="20%" >
+													({{ mc?.subject }})
+													<ng-container *ngIf="mc?.subject2 && mc?.subject2?.length" >
+														{{ mc?.subject2 }}
 														<br />
-													</ng-container>						
-													<br />{{ mc.hours }} hours						
-													<ng-container *ngIf="mc.critiqued && mc.critiqued == 'Yes'" >
+													</ng-container>
+													<br />{{ mc?.hours }} hours
+													<ng-container *ngIf="mc?.critiqued && mc?.critiqued == 'Yes'" >
 														(critiqued)
-													</ng-container>						
+													</ng-container>
 												</td>
 												<td width="45%" >
-													{{ mc.dates.started }} - {{ mc.dates.ended }}
+													{{ mc?.dates?.started }} - {{ mc?.dates?.ended }}
 												</td>
 												<td width="5%" >
-													<a href="javascript:;" (click)="updateStudentMC(mc._id)" >
+													<a href="javascript:;" (click)="updateStudentMC(mc?._id)" >
 														<img style="width:20px;" src="assets/img/sa-edit.svg" />
 													</a>
 												</td>
-												<td width="5%" >						
+												<td width="5%" >
 													<img style="width:13px;cursor: pointer;" src="assets/img/close-x-22.png"
-														(click)="removeStudentMC(mc._id)" />						
+														(click)="removeStudentMC(mc?._id)" />
 												</td>
 											</tr>
 						
@@ -1198,29 +1193,29 @@
 										<tbody>
 											<tr *ngFor=" let se of summer_enrichments; let i = index ">
 												<td width="5%">
-													<button *ngIf="se.video_url" type="button" class="btn btn-play"
-														(click)="playVideo(se.video_url)">
+													<button *ngIf="se?.video_url" type="button" class="btn btn-play"
+														(click)="playVideo(se?.video_url)">
 														<img src="assets/img/play-arrow-black-19.png" />
 													</button>
 												</td>
 												<td width="40%">
 													<span class="bumpup-txt">
-														<u>{{ se.event }}</u>
+														<u>{{ se?.event }}</u>
 													</span>
 													<br />
-													{{ se.talent }}
+													{{ se?.talent }}
 												</td>
 												<td width="45%">
-													{{ "Started: " + se.dates.started + " . Ended: " + se.dates.ended }}
+													{{ "Started: " + se?.dates?.started + " . Ended: " + se?.dates?.ended }}
 												</td>
 												<td width="5%">
 													<a href="javascript:;" 
-														(click)="updateStudentSummerEnrichment(se._id)">
+														(click)="updateStudentSummerEnrichment(se?._id)">
 														<img style="width:20px;" src="assets/img/sa-edit.svg" />
 													</a>
 												</td>
 												<td width="5%">
-													<img (click)="removeStudentSummerEnrichment(se._id)" 
+													<img (click)="removeStudentSummerEnrichment(se?._id)" 
 														style="width:13px;cursor: pointer;"
 														src="assets/img/close-x-22.png" />
 												</td>
@@ -1505,30 +1500,30 @@
 													let i = index
 												">
 												<td width="5%">
-													<button *ngIf="mt.video_url" type="button" class="btn btn-play"
-														(click)="playVideo(mt.video_url)">
+													<button *ngIf="mt?.video_url" type="button" class="btn btn-play"
+														(click)="playVideo(mt?.video_url)">
 														<img src="assets/img/play-arrow-black-19.png" />
 													</button>
 												</td>
 												<td width="35%">
 													<span class="bumpup-txt">
 														<u>
-															{{ mt.role }}
+															{{ mt?.role }}
 														</u> </span><br />
-													{{ mt.show }}
+													{{ mt?.show }}
 												</td>
 												<td width="25%">
-													{{ mt.date_performed }}
+													{{ mt?.date_performed }}
 												</td>
 						
 												<td width="3%">
-													<a href="javascript:;" (click)="updateStudentMT(mt._id)">
+													<a href="javascript:;" (click)="updateStudentMT(mt?._id)">
 														<img style="width:20px;" src="assets/img/sa-edit.svg" />
 													</a>
 												</td>
 												<td width="3%">
 													<img style="width:13px;cursor: pointer;" src="assets/img/close-x-22.png"
-														(click)="removeStudentMT(mt._id)" />
+														(click)="removeStudentMT(mt?._id)" />
 												</td>
 											</tr>
 										</tbody>
@@ -1598,29 +1593,29 @@
 						
 											<tr *ngFor=" let da of dance; let i = index " >
 												<td width="5%" >
-													<button *ngIf="da.video_url"
+													<button *ngIf="da?.video_url"
 														type="button"
 														class="btn btn-play"
-														(click)="playVideo(da.video_url)" >
+														(click)="playVideo(da?.video_url)" >
 														<img src="assets/img/play-arrow-black-19.png" />
 													</button>
 												</td>
 												<td width="35%" >
 													<span class="bumpup-txt" >
 														<u>
-															{{ da.piece }} {{ da.type }}
+															{{ da?.piece }} {{ da?.type }}
 														</u>
 													</span>
 													<br />
-													{{ da.show }} {{ da.role }}
+													{{ da?.show }} {{ da?.role }}
 												</td>
 												<td width="25%" >
-													{{ da.company }} {{ da.performed_at }}
+													{{ da?.company }} {{ da?.performed_at }}
 												</td>
 						
 												<td width="3%" >
 													<a href="javascript:;"
-														(click)="updateStudentDance(da._id)" >
+														(click)="updateStudentDance(da?._id)" >
 														<img style="width:20px;"
 															src="assets/img/sa-edit.svg" />
 													</a>
@@ -1628,7 +1623,7 @@
 												<td width="3%" >
 													<img style="width:13px;cursor: pointer;"
 														src="assets/img/close-x-22.png"
-														(click)="removeStudentDance(da._id)" />
+														(click)="removeStudentDance(da?._id)" />
 												</td>
 											</tr>
 						
@@ -1752,7 +1747,11 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
+
 		</div>
+
 	</div>
+
 </div>

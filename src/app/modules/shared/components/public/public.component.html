@@ -26,13 +26,17 @@
 
 	<!-- Hero Section -->
 	<div class="hero-section index-hero-video">
+	
 		<iframe src="https://www.youtube.com/embed/mD7Z8faovgM?playlist=mD7Z8faovgM&autoplay=1&mute=1&showinfo=0&controls=0&loop=1&modestbranding=1"></iframe>
+		
 		<div class="hero-subtext">
 			<h4>When you make the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right connection,</h4>
 		</div>
+
 		<div class="hero-maintext">
 			<h1>anything is<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possible.</h1>
 		</div>
+
 		<div class="text-right">
 			<button
 			[routerLink]="['/public/get-connected']"
@@ -42,6 +46,7 @@
 			aria-haspopup="true"
 			aria-expanded="false">GET CONNECTED</button>
 		</div>
+
 	</div>
 	<!-- Hero Section End -->
 
@@ -222,19 +227,19 @@
 
 				<div class="row">
 
-					<div class="col-lg-8 position-relative mt-4" (click)="openFeaturedStudent1(featureStudent1)" >
+					<div class="col-lg-8 position-relative mt-4 finger" (click)="openFeaturedStudent1(featureStudent1)" >
 						<img src="assets/images/featured/student1.png" alt="img" class="w-100" />
 						<div class="student-name">Percussion<br><span class="student-location">Odessa, TX</span></div>
 					</div>
 
 					<div class="col-lg-4 mt-4">
 
-						<div class="position-relative" (click)="openFeaturedStudent2(featureStudent2)" >
+						<div class="position-relative finger" (click)="openFeaturedStudent2(featureStudent2)" >
 							<img src="assets/images/featured/student2.png" alt="img" class="w-100" />
 							<div class="student-name">Musical Theater<br><span class="student-location">Dallas, TX</span></div>
 						</div>
 
-						<div class="position-relative mt-4" (click)="openFeaturedStudent3(featureStudent3)" >
+						<div class="position-relative mt-4 finger" (click)="openFeaturedStudent3(featureStudent3)" >
 							<img src="assets/images/featured/student3.png" alt="img" class="w-100" />
 							<div class="student-name">Vocal<br><span class="student-location">Cooksville, MD</span></div>
 						</div>
@@ -255,7 +260,7 @@
 
 		<div class="row align-items-center">
 
-			<div class="col-lg-6 position-relative px-0 order-0 order-lg-0" (click)="openFeaturedSchool(featureSchool)" >
+			<div class="col-lg-6 position-relative px-0 order-0 order-lg-0 finger" (click)="openFeaturedSchool(featureSchool)" >
 				<img src="assets/images/featured/school.jpg" alt="img" class="w-100 featured-img" />
 				<div class="feature-label right">Featured School</div>
 			</div>
@@ -270,7 +275,7 @@
 				Featured Program: Musical Theatre
 			</div>
 
-			<div class="col-lg-6 position-relative px-0 order-2 order-lg-3" (click)="openFeaturedProgram(featureProgram)" >
+			<div class="col-lg-6 position-relative px-0 order-2 order-lg-3 finger" (click)="openFeaturedProgram(featureProgram)" >
 				<img src="assets/images/featured/program.jpg" alt="img" class="w-100 featured-img" />
 				<div class="feature-label left">Featured Program</div>
 			</div>

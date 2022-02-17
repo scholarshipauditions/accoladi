@@ -34,7 +34,11 @@ export class DeleteTalentModalComponent {
 	delete() {
 		this.requestFailed = this.requestSuccess = false;
 		this.loading = true;
-		this.stService.deleteStudentTalent(this.student_id, this.talent_id)
+		this.stService
+			.deleteStudentTalent(
+				this.student_id, 
+				this.talent_id
+			)
 			.subscribe(
 				(response: any) => {
 					this.feedback = 'Talent information deleted';

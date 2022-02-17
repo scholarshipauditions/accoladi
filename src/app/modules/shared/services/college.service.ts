@@ -20,7 +20,8 @@ export class CollegeService {
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
-	getCollegeListByState(state: string) {
+	getCollegeListByState(state: string) { console.log('College Service - College List');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
@@ -38,7 +39,8 @@ export class CollegeService {
 					);
 	}
 
-	getCollegeByName( state: string, college: string ) {
+	getCollegeByName( state: string, college: string ) { console.log('College Service - College By Name');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
@@ -55,7 +57,8 @@ export class CollegeService {
 					);
 	}
 
-	getCollegeById(college_id: string) {
+	getCollegeById(college_id: string) { console.log('College Service - College By ID (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -73,7 +76,8 @@ export class CollegeService {
 					);
 	}
 
-	searchColleges(searchData: any, page, pageSize) {
+	searchColleges(searchData: any, page, pageSize) { console.log('College Service - Search (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -92,7 +96,8 @@ export class CollegeService {
 					);
 	}
 
-	getCollegeListByKeyword(search: string) {
+	getCollegeListByKeyword(search: string) { console.log('College Service - College By Keyword (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
@@ -109,7 +114,8 @@ export class CollegeService {
 					);
 	}
 
-	getFacultyListByKeyword(search: string, college_id: string) {
+	getFacultyListByKeyword(search: string, college_id: string) { console.log('College Service - Faculty List By Keyword (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -127,7 +133,8 @@ export class CollegeService {
 					);
 	}
 
-	getSavedColleges(student_id: string) {
+	getSavedColleges(student_id: string) { console.log('College Service - Saved College List (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -145,7 +152,8 @@ export class CollegeService {
 					);
 	}
 
-	saveCollege(student_id: string, college: any) {
+	saveCollege(student_id: string, college: any) { console.log('College Service - Save College (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -164,7 +172,8 @@ export class CollegeService {
 					);
 	}
 
-	removeSavedCollege(student_id: string, scid: string) {
+	removeSavedCollege(student_id: string, scid: string) { console.log('College Service - Remove Saved College (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -181,6 +190,7 @@ export class CollegeService {
 						catchError(this.handleError)
 					);
 	}
+
 
 	private handleError(error: HttpErrorResponse) {
 		if (error.error instanceof ErrorEvent) {

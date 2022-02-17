@@ -3,13 +3,15 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { StudentService } from '../../../../../student/services/student.service';
-import { TalentService } from '../../../../../student/services/talent.service';
 import { GoogleAnalyticsEventsService } from '../../../../../shared/shared.module';
-import {ListService} from '../../../../../student/services/list.service';
+import { UserModel } from '../../../../../shared/shared.module';
 
 import { TalentModel } from '../../../../../student/models/talent.model';
-import { UserModel } from '../../../../../shared/shared.module';
+
+import { StudentService } from '../../../../../student/services/student.service';
+import { TalentService } from '../../../../../student/services/talent.service';
+import { ListService } from '../../../../../student/services/list.service';
+
 
 @Component({
 	selector: 'app-update-talent-modal',
@@ -74,7 +76,7 @@ export class UpdateTalentModalComponent implements OnInit {
 			reg3_range: new FormControl(''),
 			reg4_range: new FormControl(''),
 			styles: new FormArray([]),
-			emphasis: new FormArray([])
+			emphasis: new FormArray([]),
 		});
 		
 		this.families = [];
@@ -82,52 +84,78 @@ export class UpdateTalentModalComponent implements OnInit {
 		this.years = this.genYears();
 		this.addCheckboxesStyles();
 		this.addCheckboxesEmphasis();
-
 	}
 
 	ngOnInit() {
-		this.listService.getFamiliesList()
-		.subscribe(
-			(response: any) => {
-				this.families = response.data;
-			},
-			err => {
-				console.error('SA.talentInfo.talentInfo-form.component - - getFamiliesList', err);
-			}
-		);
+		this.listService
+			.getFamiliesList()
+			.subscribe(
+				(response: any) => {
+					this.families = response.data;
+				},
+				err => {
+					console.error( 'SA.talentInfo.talentInfo-form.component - - getFamiliesList', err );
+				}
+			);
 
 		this.getMyProfile();
 		this.respondToFamilyChange();
 	}
 
+	get formDisabled() {
+		return this.loading === true;
+	}
+
+	get formModel() {
+
+		return {
+			_id: this.talent_id,
+			family: this.form.get('family').value,
+			talent: this.form.get('instrument').value,
+			range: this.form.get('range').value,
+			primary: this.form.get('primary').value,
+			year_started: this.form.get('year_started').value,
+			reg1_range: this.form.get('reg1_range').value,
+			reg2_range: this.form.get('reg2_range').value,
+			reg3_range: this.form.get('reg3_range').value,
+			reg4_range: this.form.get('reg4_range').value,
+			styles: this.selectedStyles,
+			emphasis: this.selectedEmphasis
+		};
+
+	}
+
 	private addCheckboxesStyles() {
-		this.styles.map((o, i) => {
-			const control = new FormControl(i === -1); // if first item set to true, else false
-			(this.form.controls.styles as FormArray).push(control);
-		});
+		this.styles
+			.map((o, i) => {
+				const control = new FormControl(i === -1); // if first item set to true, else false
+				(this.form.controls.styles as FormArray).push(control);
+			});
 	}
 
 	private addCheckboxesEmphasis() {
-		this.emphasis.map((o, i) => {
-			const control = new FormControl(i === -1); // if first item set to true, else false
-			(this.form.controls.emphasis as FormArray).push(control);
-		});
+		this.emphasis
+			.map((o, i) => {
+				const control = new FormControl(i === -1); // if first item set to true, else false
+				(this.form.controls.emphasis as FormArray).push(control);
+			});
 	}
 
 	getMyProfile() {
-		this.studentService.getStudentById(this.student_id)
+		this.studentService
+			.getStudentById(this.student_id)
 			.subscribe(
 				(response: any) => {
 					this.student = response.data;
-					this.updateForm();
+					this.populateForm();
 				},
 				err => {
-					console.error('SA.talentInfo.talentInfo-form.component - getUser', err);
+					console.error( 'SA.talentInfo.talentInfo-form.component - getUser', err );
 				}
 			);
 	}
 
-	updateForm() {
+	populateForm() {
 
 		const talent = this.student.talents.find(t => {
 			return t._id === this.talent_id;
@@ -201,29 +229,6 @@ export class UpdateTalentModalComponent implements OnInit {
 		});
 	}
 
-	get formDisabled() {
-		return this.loading === true;
-	}
-
-	get formModel() {
-
-		return {
-			_id: this.talent_id,
-			family: this.form.get('family').value,
-			talent: this.form.get('instrument').value,
-			range: this.form.get('range').value,
-			primary: this.form.get('primary').value,
-			year_started: this.form.get('year_started').value,
-			reg1_range: this.form.get('reg1_range').value,
-			reg2_range: this.form.get('reg2_range').value,
-			reg3_range: this.form.get('reg3_range').value,
-			reg4_range: this.form.get('reg4_range').value,
-			styles: this.selectedStyles,
-			emphasis: this.selectedEmphasis
-		};
-
-	}
-
 	resetForm() {
 		this.form.reset();
 		this.submitAttempted = false;
@@ -237,45 +242,49 @@ export class UpdateTalentModalComponent implements OnInit {
 	}
 
 	submitForm() {
+		console.error( 'SA.talentInfo.talentInfo-form.component - updateStudentTalent' );
+
 		if (!this.loading) {
+
 			this.loading = true;
 			this.submitAttempted = true;
 			this.googleAnalyticsEventsService.emitEvent('Public', 'Form Submition', 'Student Talent Form', 19000);
 			this.requestFailed = this.requestSuccess = false;
 
 			this.selectedStyles = this.form.value.styles
-				.map((checked, index) => checked ? this.styles[index].name : null)
-				.filter(value => value !== null);
+													.map((checked, index) => checked ? this.styles[index].name : null)
+													.filter(value => value !== null);
 
 			this.selectedEmphasis = this.form.value.emphasis
-				.map((checked, index) => checked ? this.emphasis[index].name : null)
-				.filter(value => value !== null);
+													.map((checked, index) => checked ? this.emphasis[index].name : null)
+													.filter(value => value !== null);
 
 			if (this.form.valid) {
-				this.talentService.updateStudentTalent(this.student_id, new TalentModel(this.formModel))
+
+				this.talentService
+					.updateStudentTalent(this.student_id, new TalentModel(this.formModel))
 					.subscribe(
 						(response: any) => {
 							this.loading = false;
 							this.student = response.data;
 							this.googleAnalyticsEventsService.emitEvent('Public', 'Form Submition', 'Student Talent Form', 19100);
 							this.feedback = 'Talent information updated';
-							//this.form.reset();
 							this.requestSuccess = true;
 
 							setTimeout(() => {
-								//this.resetForm();
 								this.activeModal.close(this.student);
 							}, 2000);
 
 						},
 						err => {
 							this.loading = false;
-							console.error('SA.talentInfo.talentInfo-form.component - updateStudentTalent', err);
+							console.error( 'SA.talentInfo.talentInfo-form.component - updateStudentTalent', err );
 							this.googleAnalyticsEventsService.emitEvent('Public', 'Form Submition', 'Student Talent Form', 19200);
 							this.feedback = 'Unable to update talent information';
 							this.requestFailed = true;
 						}
 					);
+
 			} else {
 				this.validateAllFormFields(this.form);
 				this.loading = false;

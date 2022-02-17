@@ -7,8 +7,6 @@
 		<div class="row justify-content-md-center">
 			
 			<div class="col-8">
-					
-				
 
 				Accoladi’s Collegiate Premier Programs are collegiate music
 				programs that are independently researched and updated
@@ -22,6 +20,14 @@
 					<li>Directors/Instructors who have been performers or conductors in a nationally recognized professional ensemble(s)</li>
 					<li>Directors/Instructors with renowned solo performance or recording careers</li>
 				</ul>
+
+				<div>
+
+					<button *ngIf="!loggedin"  [routerLink]="['/public/get-connected']" class="btn btn-sm join-pitch-btn" >Get Started</button>
+					<button *ngIf="loggedin"  [routerLink]="['/premier-program-search']" class="btn btn-sm join-pitch-btn" >Search Premier programs</button>
+
+				</div>
+				<!--<app-premier-program-search></app-premier-program-search>-->
 				
 			</div>
 

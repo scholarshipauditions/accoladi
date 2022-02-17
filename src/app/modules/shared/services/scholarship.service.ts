@@ -21,7 +21,8 @@ export class ScholarshipService {
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
-	search(searchData: any, page: number, pageSize: number) {
+	search(searchData: any, page: number, pageSize: number) { console.log('Scholarship Service - Search (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -40,7 +41,8 @@ export class ScholarshipService {
 					);
 	}
 
-	getScholarshipById(scholarship_id: string) {
+	getScholarshipById(scholarship_id: string) { console.log('Scholarship Service - Scholarship By ID (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -58,7 +60,8 @@ export class ScholarshipService {
 					);
 	}
 
-	getScholarshipByName(scholarship: string) {
+	getScholarshipByName(scholarship: string) { console.log('Scholarship Service - Scholarship By Name (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -76,7 +79,8 @@ export class ScholarshipService {
 					);
 	}
 	
-	getScholarshipListByState(state: string) {
+	getScholarshipListByState(state: string) { console.log('Scholarship Service - Scholarship By State (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
@@ -93,7 +97,8 @@ export class ScholarshipService {
 					);
 	}
 	
-	getScholarshipByStateAndName(state: string, name:string) {
+	getScholarshipByStateAndName(state: string, name:string) { console.log('Scholarship Service - Scholarship By State & Name');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
@@ -110,7 +115,8 @@ export class ScholarshipService {
 					);
 	}
 
-	getSavedScholarships(student_id: string) {
+	getSavedScholarships(student_id: string) { console.log('Scholarship Service - Saved Scholarship (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -128,7 +134,8 @@ export class ScholarshipService {
 					);
 	}
 
-	saveScholarship(student_id: string, scholarship: any) {
+	saveScholarship(student_id: string, scholarship: any) { console.log('Scholarship Service - Save Scholarship (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -147,7 +154,8 @@ export class ScholarshipService {
 					);
 	}
 
-	removeSavedScholarship(student_id: string, ssid: string) {
+	removeSavedScholarship(student_id: string, ssid: string) { console.log('Scholarship Service - Remove Saved Scholarship (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -164,6 +172,7 @@ export class ScholarshipService {
 						catchError(this.handleError)
 					);
 	}
+
 
 	sendEvent(event: any) {
 		this.eventSubscription.next(event);

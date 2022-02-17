@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { UserModel } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
 	selector: 'app-premier-programs',
@@ -9,6 +11,15 @@ import { Component } from '@angular/core';
 
 export class PremierProgramsComponent {
 
-	constructor() { }
+	public user = new UserModel({});
+	loggedin: boolean = false;
+
+	constructor(
+		public userService: UserService
+	) { 
+		if (this.userService.currentUser) {
+			this.loggedin = true;
+		}
+	}
 
 }

@@ -14,7 +14,6 @@ export class RepertoireSearchComponent implements OnInit {
 
 	searchForm: FormGroup;
 	searchResults: any[] = [];
-
 	instrumentList: any[] = [];
 	gradeLevelList: any[] = [];
 	total: number;
@@ -51,11 +50,7 @@ export class RepertoireSearchComponent implements OnInit {
 			sku: this.searchForm.get('sku').value
 		};
 	}
-
-	/**
-	 * @name getInitialData
-	 * @description will get all initial data which is required to load a form
-	 */
+	
 	getInitialData() {
 		this.gradeLevelList = [
 			{ id: '6', name: '6th' },
@@ -74,7 +69,6 @@ export class RepertoireSearchComponent implements OnInit {
 		});
 	}
 
-
 	groupBy(data: any[], filedName: string) {
 		let group = data.reduce((r, a) => {
 			r[a[filedName]] = [...r[a[filedName]] || [], a];
@@ -82,7 +76,6 @@ export class RepertoireSearchComponent implements OnInit {
 		}, {});
 		return group;
 	}
-
 
 	onSubmitForm() {
 		console.log('form submitted - ', this.searchForm);
@@ -101,8 +94,8 @@ export class RepertoireSearchComponent implements OnInit {
 
 		this.catalogService
 			.search(
-				this.searchForm.value, 
-				this.page, 
+				this.searchForm.value,
+				this.page,
 				this.pageSize
 			)
 			.subscribe((response: any) => {
@@ -115,7 +108,6 @@ export class RepertoireSearchComponent implements OnInit {
 				}
 			);
 	}
-
 
 	validateForm(frm: any): boolean {
 		let count = 0;
@@ -136,10 +128,6 @@ export class RepertoireSearchComponent implements OnInit {
 		this.onSubmitForm();
 	}
 
-	/**
-	 * @name initializeForm
-	 * @description initialize search from
-	 */
 	private initializeForm() {
 		this.searchForm = this.fb.group({
 			instrument: '',

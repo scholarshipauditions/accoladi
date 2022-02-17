@@ -20,7 +20,7 @@ export class SchoolService {
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
-	getSchoolListByState(state: string) {
+	getSchoolListByState(state: string) { console.log('School Service - Schools By State');
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export class SchoolService {
 					);
 	}
 	
-	getSchoolById(school_id: string) {
+	getSchoolById(school_id: string) { console.log('School Service - School By ID (A)');
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export class SchoolService {
 					);
 	}
 
-	createNewSchool(school: any) {
+	createNewSchool(school: any) { console.log('School Service - New School');
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -74,6 +74,7 @@ export class SchoolService {
 					);
 	}
 
+	
 	private handleError(error: HttpErrorResponse) {
 		if (error.error instanceof ErrorEvent) {
 			// A client-side or network error occurred. Handle it accordingly.

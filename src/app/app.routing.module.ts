@@ -2,42 +2,45 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-	MessagesComponent,
-	InviteComponent,
-	InviteActionComponent,
-	CollegeSearchComponent,
-	ScholarshipSearchComponent,
-	PremierProgramSearchComponent,
-	PaymentComponent,
-	PremiumComponent,
-	BillingComponent,
-	PublicComponent,
 	AboutComponent,
-	ArticlesComponent,
-	ResourcesComponent,
 	AdvantagesComponent,
-	WhoComponent,
-	WhatComponent,
-	WhyComponent,
-	HowComponent,
-	StudentsComponent,
-	TeachersComponent,
-	RecruitersComponent,
-	OverviewComponent,
-	RequirementsComponent,
+	ArticlesComponent,
+	AuditionRequirementsComponent,
+	BillingComponent,
+	CampsSearchComponent,
+	CollegeSearchComponent,
 	ExamComponent,
+	FastTrackComponent,
 	FeatureComponent,
 	GetConnectedComponent,
-	RepertoireSearchComponent,
-	PremierProgramsComponent,
-	NonInstitutionalScholarshipsComponent,
-	InstitutionalScholarshipsComponent,
-	FastTrackComponent,
-	AuditionRequirementsComponent,
-	SoarComponent,
-	TeachingMomentsComponent,
-	SuccessComponent,
 	GradeByGradeGuideComponent,
+	HowComponent,
+	InstitutionalScholarshipsComponent,
+	InviteActionComponent,
+	InviteComponent,
+	MessagesComponent,
+	NonInstitutionalScholarshipsComponent,
+	MusicalTermsComponent,
+	MusicHistoryGuidsComponent,
+	OverviewComponent,
+	PaymentComponent,
+	PremierProgramsComponent,
+	PremierProgramSearchComponent,
+	PremiumComponent,
+	PublicComponent,
+	RecruitersComponent,
+	RepertoireSearchComponent,
+	RequirementsComponent,
+	ResourcesComponent,
+	ScholarshipSearchComponent,
+	SoarComponent,
+	StudentsComponent,
+	SuccessComponent,
+	TeachersComponent,
+	TeachingMomentsComponent,
+	WhatComponent,
+	WhoComponent,
+	WhyComponent,
 	ZzzComponent
 } from './modules/shared/shared.module';
 
@@ -115,6 +118,14 @@ const appRoutes: Routes = [
 		path: 'scholarships/:state/:name',
 		component: ScholarshipsComponent
 	},
+	{
+		path: 'resources/music-history',
+		component: MusicHistoryGuidsComponent
+	},
+	{
+		path: 'resources/musical-terms',
+		component: MusicalTermsComponent
+	},	
 // public stuff...
 	{
 		path: 'public',
@@ -219,6 +230,10 @@ const appRoutes: Routes = [
 	{
 		path: 'public/repertoire_search',
 		component: RepertoireSearchComponent
+	},
+	{
+		path: 'public/summer-camp-search',
+		component: CampsSearchComponent
 	},
 	{
 		path: 'public/soar',

@@ -22,7 +22,8 @@ export class CatalogService {
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
-	getCompositions(term: string) {
+	getCompositions(term: string) { console.log('Catalog Service - Compositions (A)');
+		
 		const httpOptions = {
 			params: { title: term },
 			headers: new HttpHeaders({
@@ -42,7 +43,8 @@ export class CatalogService {
 
 	}
 
-	getCompositionById(id: string) {
+	getCompositionById(id: string) { console.log('Catalog Service - Compositions By ID (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -61,7 +63,8 @@ export class CatalogService {
 
 	}
 
-	getCatalogsByInstrument(instrument: string) {
+	getCatalogsByInstrument(instrument: string) { console.log('Catalog Service - Catalog By Instrument (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -80,7 +83,8 @@ export class CatalogService {
 
 	}
 
-	getCatalogsByType(type: string) {
+	getCatalogsByType(type: string) { console.log('Catalog Service - Catalog By Type (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -135,7 +139,8 @@ export class CatalogService {
 
 	}
 
-	getCatalogsByTypeInstrument(type: string, instrument: string) {
+	getCatalogsByTypeInstrument(type: string, instrument: string) { console.log('Catalog Service - Catalog By Type & Instrument (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -162,7 +167,8 @@ export class CatalogService {
 
 	}
 
-	addNewCatalog(catalogItem: Catalog) {
+	addNewCatalog(catalogItem: Catalog) { console.log('Catalog Service - New Compositions (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -181,7 +187,8 @@ export class CatalogService {
 					);
 	}
 
-	search(searchData: any, page: number, pageSize: number) {
+	search(searchData: any, page: number, pageSize: number) { console.log('Catalog Service - Search');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -200,6 +207,7 @@ export class CatalogService {
 					);
 	}
 
+	
 	private handleError(error: HttpErrorResponse) {
 		if (error.error instanceof ErrorEvent) {
 			// A client-side or network error occurred. Handle it accordingly.

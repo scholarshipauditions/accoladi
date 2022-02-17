@@ -21,7 +21,8 @@ export class PremierProgramService {
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
-	search(searchData: any, page: number, pageSize: number) {
+	search(searchData: any, page: number, pageSize: number) { console.log('Premier Program Service - Search (A)')
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -40,7 +41,8 @@ export class PremierProgramService {
 					);
 	}
 
-	getPremierProgramById(premier_program_id: string) {
+	getPremierProgramById(premier_program_id: string) { console.log('Premier Program Service - Program By ID (A)')
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -58,7 +60,8 @@ export class PremierProgramService {
 					);
 	}
 
-	getPremierProgramsSubjects() {
+	getPremierProgramsSubjects() { console.log('Premier Program Service - Program By Subject (A)')
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -76,7 +79,8 @@ export class PremierProgramService {
 					);
 	}
 
-	getPremierProgramsStyles() {
+	getPremierProgramsStyles() { console.log('Premier Program Service - Program Styles (A)')
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -94,7 +98,8 @@ export class PremierProgramService {
 					);
 	}
 
-	getSavedPremierPrograms(student_id: string) {
+	getSavedPremierPrograms(student_id: string) { console.log('Premier Program Service - Saved Programs (A)')
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -112,7 +117,8 @@ export class PremierProgramService {
 					);
 	}
 
-	savePremierProgram(student_id: string, premier_programs: any) {
+	savePremierProgram(student_id: string, premier_programs: any) { console.log('Premier Program Service - Save Program (A)')
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -131,7 +137,8 @@ export class PremierProgramService {
 					);
 	}
 
-	removeSavedPremierProgram(student_id: string, ppid: string) {
+	removeSavedPremierProgram(student_id: string, ppid: string) { console.log('Premier Program Service - Remove Saved program (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -148,6 +155,7 @@ export class PremierProgramService {
 						catchError(this.handleError)
 					);
 	}
+
 
 	sendEvent(event: any) {
 		this.eventSubscription.next(event);

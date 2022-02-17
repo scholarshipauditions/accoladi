@@ -6,7 +6,9 @@ import { process, State } from '@progress/kendo-data-query';
 
 import { Observable } from 'rxjs/Rx';
 
+import { UserModel } from '../../models/user.model';
 import { CampSearchService } from '../../../student/services/camp-search.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
 	selector: 'app-camps-search',
@@ -16,6 +18,7 @@ import { CampSearchService } from '../../../student/services/camp-search.service
 
 export class CampsSearchComponent implements OnInit {
 
+	public user = new UserModel({});
 	public view: Observable<GridDataResult>;
 	public gridState: State = {
 		sort: [],
@@ -75,23 +78,28 @@ export class CampsSearchComponent implements OnInit {
 	ageGroup: any;
 	discipline: any;
 	loading = false;
+	loggedin: boolean = false;
 
 	constructor(
-		private campSearchService: CampSearchService
+		private campSearchService: CampSearchService,
+		public userService: UserService
 	) { }
 
 	ngOnInit() {
-		this.campSearchService
-			.getCamps()
-			.subscribe(
-				(response: any) => {
-					this.rawData = response.data;
-					this.data = response.data;
-					console.log(response.data)
-					//	this.view = Observable.of(this.data).map(data => process(data, this.gridState));
-				},
-				err => { }
-			);
+		if ( this.userService.currentUser ) {
+			this.loggedin = true;
+			this.campSearchService
+				.getCamps()
+				.subscribe(
+					(response: any) => {
+						this.rawData = response.data;
+						this.data = response.data;
+						console.log(response.data)
+						//	this.view = Observable.of(this.data).map(data => process(data, this.gridState));
+					},
+					err => { }
+				);
+		}
 	}
 
 	public pageChange(event: PageChangeEvent): void {

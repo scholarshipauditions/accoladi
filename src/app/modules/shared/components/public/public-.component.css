@@ -1689,7 +1689,7 @@ a.dropdown-item {
 	background: url(/assets/images/resources-page-bg.png) no-repeat center;
 	margin-top: 75px;
 	background-size: 100% 100%;
-	padding-bottom: 0;
+	padding-bottom: 2rem;
 }
 
 @media (max-width: 500.98px) {
@@ -2499,27 +2499,12 @@ a.dropdown-item {
 	font-size: 18px;
 }
 
-.directories-type .button {
-	margin-top: 13px;
-    color: #fafafa;
-    font-size: 18px;
-    font-weight: 400;
-    background: #007690;
-    border-radius: 5px;
-    padding: 6px 13px;
-    text-decoration: none;
-}
-
 @media (max-width: 1199.98px) {
 	.directories-type .title {
 		font-size: 22px;
 	}
 
 	.directories-type .text {
-		font-size: 16px;
-	}
-
-	.directories-type .button {
 		font-size: 16px;
 	}
 }

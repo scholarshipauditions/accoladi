@@ -147,7 +147,7 @@
 				</div>
 
 				<div *ngFor="let talent of talents">
-					<p>{{ talent.talent }}<br />({{ talent.year_started }})</p>
+					<p>{{ talent?.talent }}<br />({{ talent?.year_started }})</p>
 				</div>
 
 			</section>
@@ -174,7 +174,7 @@
 								message.last_msg.date_sent
 									| date: "EEEE, MMMM d"
 							}}</span>
-							<br />{{ message.last_msg.message }}
+							<br />{{ message?.last_msg.message }}
 						</p>
 					</div>
 
@@ -219,7 +219,7 @@
 							<tbody>
 								<tr>
 									<td *ngFor="let p of studentParents">
-										{{ p.first_name }} {{ p.last_name }}
+										{{ p?.first_name }} {{ p?.last_name }}
 									</td>
 								</tr>
 							</tbody>
@@ -238,7 +238,7 @@
 							<tbody>
 								<tr>
 									<td *ngFor="let s of studentSponsors">
-										{{ s.first_name }} {{ s.last_name }}
+										{{ s?.first_name }} {{ s?.last_name }}
 									</td>
 								</tr>
 							</tbody>

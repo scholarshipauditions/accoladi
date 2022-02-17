@@ -5,17 +5,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from '../../modules/auth/auth.service';
 // import { UserService } from '../shared/services/user.service';
+
 import { UserModel, UserService, VideoPlayerModalComponent } from '../shared/shared.module';
-import { TalentService } from './services/talent.service';
-import { PersonalStatementService } from './services/personal-statement.service';
-import { EducationSchoolService } from './services/education-school.service';
-import { PrivateStudyService } from './services/private-study.service';
-import { MasterClassService } from './services/master-class.service';
-import { SummerEnrichmentService } from './services/summer-enrichment.service';
-import { MusicalTheaterService } from './services/musical-theater.service';
-import { DanceService } from './services/dance.service';
-import { HonorAwardService } from './services/honor-award.service';
-import { FestivalCompetitionService } from './services/festival-competition.service';
+// import { TalentService } from './services/talent.service';
+// import { PersonalStatementService } from './services/personal-statement.service';
+// import { EducationSchoolService } from './services/education-school.service';
+// import { PrivateStudyService } from './services/private-study.service';
+// import { MasterClassService } from './services/master-class.service';
+// import { SummerEnrichmentService } from './services/summer-enrichment.service';
+// import { MusicalTheaterService } from './services/musical-theater.service';
+// import { DanceService } from './services/dance.service';
+// import { HonorAwardService } from './services/honor-award.service';
+// import { FestivalCompetitionService } from './services/festival-competition.service';
 
 import { FestivalCompetitionModel } from './models/festival-competition.model';
 import { HonorAwardModel } from './models/honor-award.model';
@@ -103,17 +104,17 @@ export class StudentComponent implements OnInit {
 		private authService: AuthService,
 		private router: Router,
 		private userService: UserService,
-		private talentService: TalentService,
-		private honorAwardService: HonorAwardService,
-		private festivalCompetitionService: FestivalCompetitionService,
-		private privateStudyService: PrivateStudyService,
-		private personalStatementService: PersonalStatementService,
-		private educationSchoolService: EducationSchoolService,
-		private masterClassService: MasterClassService,
-		private summerEnrichmentService: SummerEnrichmentService,
-		private musicalTheaterService: MusicalTheaterService,
-		private danceService: DanceService
-	) {
+		// private talentService: TalentService,
+		// private honorAwardService: HonorAwardService,
+		// private festivalCompetitionService: FestivalCompetitionService,
+		// private privateStudyService: PrivateStudyService,
+		// private personalStatementService: PersonalStatementService,
+		// private educationSchoolService: EducationSchoolService,
+		// private masterClassService: MasterClassService,
+		// private summerEnrichmentService: SummerEnrichmentService,
+		// private musicalTheaterService: MusicalTheaterService,
+		// private danceService: DanceService
+	) {console.log('STUDENT COMPONENT CONSTRUCTOR');
 		this.months = [
 			'January',
 			'February',
@@ -130,7 +131,7 @@ export class StudentComponent implements OnInit {
 		]; 
 	}
 
-	ngOnInit() {
+	ngOnInit() {console.log('STUDENT COMPONENT INIT');
 		
 		if (this.userService.currentUser.role === 'Teacher') {
 			this.displayMessage = false;
@@ -156,17 +157,17 @@ export class StudentComponent implements OnInit {
 			)
 			.subscribe(
 				(result: any) => { 
-					console.log(['result.data',result.data]);
+					console.log({'result.data':result.data});
 
 					this.paid = result.data.meta.dates.paid_thru;
 					this.user = result.data;
 					this.studentId = result.data._id;
 					this.setDOB();
 
-					if (new Date() < new Date(this.paid)) {
+					if ( new Date() < new Date(this.paid) ) {
 						this.displayMessage = false; // console.log('paid? = yes' );
 					} else {
-						if (this.userService.currentUser.role === 'Teacher') {
+						if ( this.userService.currentUser.role === 'Teacher' ) {
 							this.displayMessage = false;
 						} else {
 							this.displayMessage = true; // console.log('paid? = No');
@@ -183,7 +184,7 @@ export class StudentComponent implements OnInit {
 					// 			this.talents = response.data.talents;
 					// 		}
 					// 	);
-					this.talents = result.data.talents;
+					this.talents = ( result.data.talents ? result.data.talents : [] );
 
 					// Personal Statement
 					// this.personalStatementService
@@ -196,20 +197,20 @@ export class StudentComponent implements OnInit {
 					// 		}
 					// 	);
 					this.personal_statement = result.data.personal_statement;
-					if ( this.personal_statement.length ) {
+					if ( result.data.personal_statement && this.personal_statement.length ) {
 						this.personal_statement_button_text = 'Update Statement';
 					} else {
 						this.personal_statement_button_text = 'Add Statement';
 					}
 
-					this.education = result.data.education;
-					this.honors_awards = result.data.honors_awards;
-					this.festivals_competitions = result.data.festivals_competitions;
-					this.private_studies = result.data.private_studies;
-					this.master_classes = result.data.master_classes;
-					this.summer_enrichments = result.data.summer_enrichments;
-					this.musical_theater = result.data.musical_theater;
-					this.dance = result.data.dance;
+					this.education = ( result.data.education ? result.data.education : [] );
+					this.honors_awards = ( result.data.honors_awards ? result.data.honors_awards : [] );
+					this.festivals_competitions = ( result.data.festivals_competitions ? result.data.festivals_competitions : [] );
+					this.private_studies = ( result.data.private_studies ? result.data.private_studies : [] );
+					this.master_classes = ( result.data.master_classes ? result.data.master_classes : [] );
+					this.summer_enrichments = ( result.data.summer_enrichments ? result.data.summer_enrichments : [] );
+					this.musical_theater = ( result.data.musical_theater ? result.data.musical_theater : [] );
+					this.dance = ( result.data.dance ? result.data.dance : [] );
 				}
 			);
 

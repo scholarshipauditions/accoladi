@@ -20,7 +20,8 @@ export class SummerEnrichmentService {
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
-	getAllStudentSummerEnrichments(sid: string) {
+	getAllStudentSummerEnrichments(sid: string) { console.log('Summer Enrichment Service - All Student (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -38,7 +39,8 @@ export class SummerEnrichmentService {
 					);
 	}
 
-	getStudentSummerEnrichmentById(sid: string, pid: string) {
+	getStudentSummerEnrichmentById(sid: string, pid: string) { console.log('Summer Enrichment Service - Student Enrichment By ID (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -56,7 +58,8 @@ export class SummerEnrichmentService {
 					);
 	}
 
-	createStudentSummerEnrichment(sid: string, summerEnrichment: any) {
+	createStudentSummerEnrichment(sid: string, summerEnrichment: any) { console.log('Summer Enrichment Service - Add Student Enrichment (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -75,7 +78,8 @@ export class SummerEnrichmentService {
 					);
 	}
 
-	updateStudentSummerEnrichment(sid: string, summerEnrichment: any) {
+	updateStudentSummerEnrichment(sid: string, summerEnrichment: any) { console.log('Summer Enrichment Service - Update Student Enrichment (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -94,7 +98,8 @@ export class SummerEnrichmentService {
 					);
 	}
 
-	deleteStudentSummerEnrichment(sid: string, pid: string) {
+	deleteStudentSummerEnrichment(sid: string, pid: string) { console.log('Summer Enrichment Service - Remove Student Enrichment (A)');
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',

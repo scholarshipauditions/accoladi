@@ -1,6 +1,6 @@
 <style>
 	.public-scholarship-page {
-		margin-top: 4em;
+		margin-top: 3em;
 	}
 </style>
 
@@ -97,10 +97,9 @@
 
 	</ng-container>
 
-
 	<ng-container *ngIf="showScholarshipList" >
 		
-		<h2 class="heading text-center">Scholarship List</h2>
+		<h1 class="heading text-center">Scholarship List</h1>
 
 		<div class="table-responsive" >
 
@@ -129,10 +128,10 @@
 
 	</ng-container>
 
-
 	<ng-container *ngIf="!showScholarshipList && !showScholarship" >
 
-		<h2 class="heading text-center">FIND SCHOLARSHIPS</h2>
+		<h1 class="heading text-center">FIND SCHOLARSHIPS</h1>
+		
 		<div class="container" >
 
 			<div class="row" >
@@ -157,12 +156,7 @@
 						<div class="join-pitch text-center" >
 
 							<h4>Become a member today for even more resources and greater access to our library</h4>
-
-							<form method="GET" action="https://www.accoladi.com/register" class="register-form" >
-
-								<button class="btn btn-sm join-pitch-btn" >Get Started</button>
-
-							</form>
+							<button  [routerLink]="['/public/get-connected']" class="btn btn-sm join-pitch-btn" >Get Started</button>
 
 						</div>
 
@@ -314,7 +308,6 @@
 		</div>
 
 	</ng-container>
-
 
 	<app-footer></app-footer>
 

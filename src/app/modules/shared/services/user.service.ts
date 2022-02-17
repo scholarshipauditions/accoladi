@@ -15,42 +15,65 @@ import { UserModel } from '../models/user.model';
 export class UserService {
 
 	private apiURL: string;
+	private localdebug: boolean = false;
 	sidebarSubject = new Subject();
 
 	constructor(
 		private http: HttpClient
 	) {
+		console.log('USER SERVICE CONSTRUCTOR');
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
 	get token() {
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> get token', localStorage.getItem('id_token') );
+		}
 		return localStorage.getItem('id_token');
 	}
 
 	get user() {
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> get user', localStorage.getItem('user') );
+		}
 		return localStorage.getItem('user');
 	}
 
 	get currentUser() {
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> get currentUser', JSON.parse(this.user) );
+		}
 		return JSON.parse(this.user);
 	}
 
 	get sidebar() {
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> get sidebar', localStorage.getItem('sidebar') );
+		}
 		return localStorage.getItem('sidebar');
 	}
 
 	set sidebar(value) {
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> set sidebar', {next:this.sidebarSubject.next(value),setItem:localStorage.setItem('sidebar', value)} );
+		}
 		this.sidebarSubject.next(value);
 		localStorage.setItem('sidebar', value);
 	}
 
 	getUserProfile(id: string): Observable<UserModel> {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> getUserProfile', {id:id} );
+		}
+
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': this.token
 			})
 		};
+
 		return this.http
 					.get<any>(
 						this.apiURL + '/users/' + id, 
@@ -59,9 +82,14 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	updateUserAccount(user: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> updateUserAccount', {user:user} );
+		}
 		
 		const httpOptions = {
 			headers: new HttpHeaders({
@@ -80,9 +108,14 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	updateUserDemographics(id: string, demographics: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> updateUserDemographics', {id:id,demographics:demographics} );
+		}
 		
 		const httpOptions = {
 			headers: new HttpHeaders({
@@ -101,9 +134,14 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	updateUserAddress(id: any, user: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> updateUserAddress', {id:id,user:user} );
+		}
 		
 		const httpOptions = {
 			headers: new HttpHeaders({
@@ -122,9 +160,15 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	updateUserPhone(id: any,user: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> updateUserPhone', {id:id,user:user} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -142,9 +186,15 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	updateUserParent(user: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> updateUserParent', {user:user} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -168,6 +218,11 @@ export class UserService {
 	}
 
 	addPromoCode(user: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> addPromoCode', {user:user} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -185,9 +240,15 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	getUserAccount(user: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> getUserAccount', {user:user} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -206,6 +267,11 @@ export class UserService {
 	}
 
 	editUserInformation(data: any) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> editUserInformation', {data:data} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -222,9 +288,15 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	checkEmailNotTaken(email: string) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> checkEmailNotTaken', {email:email} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json'
@@ -242,6 +314,11 @@ export class UserService {
 	}
 
 	uploadProfileImage(file: File, userId): Observable<any> {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> uploadProfileImage', {file:file,userId:userId} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Authorization': this.token
@@ -258,9 +335,15 @@ export class UserService {
 						formData, 
 						httpOptions
 					);
+
 	}
 
 	sideNavigation(id, role) {
+		
+		if ( this.localdebug ) {
+			console.log( 'USER.SERVICE -> sideNavigation', {id:id,role:role} );
+		}
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -277,9 +360,11 @@ export class UserService {
 					.pipe(
 						catchError(this.handleError)
 					);
+
 	}
 
 	private handleError(error: HttpErrorResponse) {
+
 		if (error.error instanceof ErrorEvent) {
 			// A client-side or network error occurred. Handle it accordingly.
 			console.error('An error occurred:', error.error.message);
@@ -295,6 +380,7 @@ export class UserService {
 		// return throwError('Something bad happened; please try again later.');
 
 		return throwError(error);
+
 	}
 
 }

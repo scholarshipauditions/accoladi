@@ -1,15 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { StudentService } from '../../../../../student/services/student.service';
-import { TalentService } from '../../../../../student/services/talent.service';
 import { GoogleAnalyticsEventsService } from '../../../../../shared/shared.module';
-import {ListService} from '../../../../../student/services/list.service';
+import { UserModel } from '../../../../../shared/shared.module';
 
 import { TalentModel } from '../../../../../student/models/talent.model';
-import { UserModel } from '../../../../../shared/shared.module';
+
+import { StudentService } from '../../../../../student/services/student.service';
+import { TalentService } from '../../../../../student/services/talent.service';
+import { ListService } from '../../../../../student/services/list.service';
+
 
 @Component({
 	selector: 'app-add-talent-modal',
@@ -23,10 +25,10 @@ export class AddTalentModalComponent implements OnInit {
 	student = new UserModel({});
 	model = new TalentModel({});
 	form: FormGroup;
-	submitAttempted = false;
 	loading = false;
 	requestFailed = false;
 	requestSuccess = false;
+	submitAttempted = false;
 	families: string[];
 	instruments: any[];
 	years: string[];
@@ -36,23 +38,23 @@ export class AddTalentModalComponent implements OnInit {
 	selectedEmphasis = '';
 
 	styles = [
-		{ id: 1, name: 'Jazz' },
-		{ id: 2, name: 'Blues' },
-		{ id: 3, name: 'Folk' },
-		{ id: 4, name: 'Popular' },
-		{ id: 5, name: 'Classical' },
-		{ id: 6, name: 'Opera' },
-		{ id: 7, name: 'Musical Theater' },
-		{ id: 8, name: 'Electronic' }
+		{ id: 1, isChecked: false, name: 'Jazz' },
+		{ id: 2, isChecked: false, name: 'Blues' },
+		{ id: 3, isChecked: false, name: 'Folk' },
+		{ id: 4, isChecked: false, name: 'Popular' },
+		{ id: 5, isChecked: false, name: 'Classical' },
+		{ id: 6, isChecked: false, name: 'Opera' },
+		{ id: 7, isChecked: false, name: 'Musical Theater' },
+		{ id: 8, isChecked: false, name: 'Electronic' }
 	];
 
 	emphasis = [
-		{ id: 1, name: 'Performance' },
-		{ id: 2, name: 'Composition' },
-		{ id: 3, name: 'Production / Engineering' },
-		{ id: 4, name: 'Song Writing' },
-		{ id: 5, name: 'Conducting' },
-		//{ id: 6, name: 'Music Business' }		
+		{ id: 1, isChecked: false, name: 'Performance' },
+		{ id: 2, isChecked: false, name: 'Composition' },
+		{ id: 3, isChecked: false, name: 'Production / Engineering' },
+		{ id: 4, isChecked: false, name: 'Song Writing' },
+		{ id: 5, isChecked: false, name: 'Conducting' },
+		// { id: 6, isChecked: false, name: 'Music Business' }
 	];
 
 	constructor(
@@ -60,7 +62,7 @@ export class AddTalentModalComponent implements OnInit {
 		public activeModal: NgbActiveModal,
 		private talentService: TalentService,
 		private listService:ListService,
-		public googleAnalyticsEventsService: GoogleAnalyticsEventsService
+		public googleAnalyticsEventsService: GoogleAnalyticsEventsService,
 	) {
 		this.form = new FormGroup({
 			family: new FormControl('', [Validators.required]),
@@ -83,38 +85,61 @@ export class AddTalentModalComponent implements OnInit {
 		this.addCheckboxesEmphasis();
 	}
 
-
-	private addCheckboxesStyles() {
-		this.styles.map((o, i) => {
-			const control = new FormControl(i === -1); // if first item set to true, else false
-			(this.form.controls.styles as FormArray).push(control);
-		});
-	}
-
-	private addCheckboxesEmphasis() {
-		this.emphasis.map((o, i) => {
-			const control = new FormControl(i === -1); // if first item set to true, else false
-			(this.form.controls.emphasis as FormArray).push(control);
-		});
-	}
-
 	ngOnInit() {
-		this.listService.getFamiliesList()
-		.subscribe(
-			(response: any) => {
-				this.families = response.data;
-			},
-			err => {
-				console.error( 'SA.talentInfo.talentInfo-form.component - getFamiliesList', err );
-			}
-		);
+		this.listService
+			.getFamiliesList()
+			.subscribe(
+				(response: any) => {
+					this.families = response.data;
+				},
+				err => {
+					console.error( 'SA.talentInfo.talentInfo-form.component - getFamiliesList', err );
+				}
+			);
 
 		this.getMyProfile();
 		this.respondToFamilyChange();
 	}
 
+	get formDisabled() {
+		return this.loading === true;
+	}
+
+	get formModel() {
+		return {
+			family: this.form.get('family').value,
+			talent: this.form.get('instrument').value,
+			range: this.form.get('range').value,
+			primary: this.form.get('primary').value,
+			year_started: this.form.get('year_started').value,
+			reg1_range: this.form.get('reg1_range').value,
+			reg2_range: this.form.get('reg2_range').value,
+			reg3_range: this.form.get('reg3_range').value,
+			reg4_range: this.form.get('reg4_range').value,
+			styles:this.selectedStyles,
+			emphasis:this.selectedEmphasis
+		};
+	}
+
+	private addCheckboxesStyles() {
+		this.styles
+			.map((o, i) => {
+				const control = new FormControl(i === -1); // if first item set to true, else false
+				(this.form.controls.styles as FormArray).push(control);
+			});
+	}
+
+	private addCheckboxesEmphasis() {
+		this.emphasis
+			.map((o, i) => {
+				const control = new FormControl(i === -1); // if first item set to true, else false
+				(this.form.controls.emphasis as FormArray).push(control);
+			});
+	}
+
 	getMyProfile() {
-		this.studentService.getStudentById(this.student_id)
+		this.studentService
+			.getStudentById(this.student_id)
 			.subscribe(
 				(response: any) => {
 					this.student = response.data;
@@ -157,26 +182,6 @@ export class AddTalentModalComponent implements OnInit {
 		});
 	}
 
-	get formDisabled() {
-		return this.loading === true;
-	}
-
-	get formModel() {
-		return {
-			family: this.form.get('family').value,
-			talent: this.form.get('instrument').value,
-			range: this.form.get('range').value,
-			primary: this.form.get('primary').value,
-			year_started: this.form.get('year_started').value,
-			reg1_range: this.form.get('reg1_range').value,
-			reg2_range: this.form.get('reg2_range').value,
-			reg3_range: this.form.get('reg3_range').value,
-			reg4_range: this.form.get('reg4_range').value,
-			styles:this.selectedStyles,
-			emphasis:this.selectedEmphasis
-		};
-	}
-
 	resetForm() {
 		this.form.reset();
 		this.submitAttempted = false;
@@ -190,38 +195,36 @@ export class AddTalentModalComponent implements OnInit {
 	}
 
 	submitForm() {
+		console.log( 'SA.talentInfo.talentInfo-form.component - createStudentTalent' );
+		
 		if (!this.loading) {
-			console.log( 'SA.talentInfo.talentInfo-form.component - createStudentTalent' );
-
-			var x = this.formModel;
-
-			this.selectedStyles = this.form.value.styles
-				.map((checked, index) => checked ? this.styles[index].name : null)
-				.filter(value => value !== null);
-
-			this.selectedEmphasis = this.form.value.emphasis
-			.map((checked, index) => checked ? this.emphasis[index].name : null)
-			.filter(value => value !== null);
 
 			this.loading = true;
 			this.submitAttempted = true;
 			this.googleAnalyticsEventsService.emitEvent('Public', 'Form Submition', 'Student Talent Form', 19000);
 			this.requestFailed = this.requestSuccess = false;
 
+			this.selectedStyles = this.form.value.styles
+													.map((checked, index) => checked ? this.styles[index].name : null)
+													.filter(value => value !== null);
+
+			this.selectedEmphasis = this.form.value.emphasis
+													.map((checked, index) => checked ? this.emphasis[index].name : null)
+													.filter(value => value !== null);
+
 			if (this.form.valid) {
 
-				this.talentService.createStudentTalent(this.student_id, new TalentModel(this.formModel))
+				this.talentService
+					.createStudentTalent(this.student_id, new TalentModel(this.formModel))
 					.subscribe(
 						(response: any) => {
-							
+							this.loading = false;
 							this.student = response.data;
 							this.googleAnalyticsEventsService.emitEvent('Public', 'Form Submition', 'Student Talent Form', 19100);
 							this.feedback = 'Talent information added';
 							this.requestSuccess = true;
 							
 							setTimeout(() => {
-								this.loading = false;
-								//this.resetForm();
 								this.activeModal.close(this.student);
 							}, 2000);
 
@@ -234,6 +237,7 @@ export class AddTalentModalComponent implements OnInit {
 							this.requestFailed = true;
 						}
 					);
+
 			} else {
 				this.validateAllFormFields(this.form);
 				this.loading = false;

@@ -20,7 +20,7 @@ export class CampSearchService {
 		this.apiURL = environment.apiUrl + environment.apiPath;
 	}
 
-	getCamps(): Observable<any> {
+	getCamps(): Observable<any> { console.log('Camps Service - Camp list (A)');
 
 		const httpOptions = {
 			headers: new HttpHeaders({
@@ -39,6 +39,27 @@ export class CampSearchService {
 					);
 
 	}
+	
+	search(searchData: any, page: number, pageSize: number) { console.log('Camps Service - Search');
+		
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				// 'Authorization': this.userService.token
+			})
+		};
+		
+		return this.http
+					.post(
+						this.apiURL + '/camp/search?page=' + page + '&count=' + pageSize,
+						searchData,
+						httpOptions
+					)
+					.pipe(
+						catchError(this.handleError)
+					);
+	}
+	
 
 	private handleError(error: HttpErrorResponse) {
 
